@@ -1,0 +1,6 @@
+[user]
+	email = me@enzu.ru
+	name = Ahmed Khanzada
+	editor = emacsclient
+[core]
+	editor = emacsclient

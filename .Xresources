@@ -1,0 +1,31 @@
+Xft.dpi: 69
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+xterm.font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*
+xterm.background2: rgb:2A/2F/38
+xterm.background3: rgb:12/0F/14
+xterm.background: rgb:00/00/00
+xterm.foreground: rgb:FF/FF/FF
+xterm.loginShell: true
+xterm.saveLines: 2000
+xterm.charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm.termName: xterm-color
+xterm.eightBitInput: false
+
+URxvt.foreground: #ffffff
+URxvt.background: #222833
+URxvt.scrollBar: false
+URxvt.termName: rxvt
+URxvt.saveLines: 100000
+URxvt.buffered: true
+URxvt.cursorBlink: true
+
+URxvt.font: xft:Iosevka:style=Regular:size=14
+URxvt.boldFont: xft:Iosevka:style=Bold:size=14
+URxvt.italicFont: xft:Iosevka:style=Italic:size=14
+URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=14

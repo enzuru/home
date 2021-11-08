@@ -1,0 +1,26 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# get started fast.
+
+[general]
+accounts = me
+maxsyncaccounts = 1
+
+[Account me]
+localrepository = me-Local
+remoterepository = me-Remote
+sync_labels = yes
+autorefresh = 60.0
+
+[Repository me-Local]
+type = GmailMaildir
+localfolders = ~/mail/me
+
+[Repository me-Remote]
+type = Gmail
+remoteuser = me@enzu.ru
+remotepass = <password>
+
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail']
+nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',foldername)
