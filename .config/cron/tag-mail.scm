@@ -1,1 +1,1 @@
-(job "/15 * * * *" "tag-mail")
+(job "/15 * * * *" "/home/enzuru/tag-mail")

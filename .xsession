@@ -20,5 +20,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 xsetroot -solid "#222833"
 
+# Run services
+shepherd &
+mcron -d
+
 # Start Emacs
 exec emacs

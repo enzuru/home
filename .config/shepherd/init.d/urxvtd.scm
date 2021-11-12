@@ -4,7 +4,7 @@
   (make <service>
     #:provides '(urxvtd)
     #:docstring "Run urxvtd"
-    #:start (make-forkexec-constructor '("urxvtd") #:log-file (string-append (getenv "HOME") "urxvtd.log"))
+    #:start (make-forkexec-constructor (list "/gnu/store/44s0dzbph80crxw9q441mzmw9xf6pa5z-profile/bin/urxvtd") #:user "enzuru" #:log-file "/home/enzuru/urxvtd.log")
     #:auto-start? #t
     #:respawn? #t))
 

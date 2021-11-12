@@ -5,12 +5,16 @@ notmuch new
 notmuch tag +openbsd -inbox -- to:"/openbsd\.org/" and tag:inbox
 notmuch tag +gnu -inbox -- to:"/gnu\.org/" and tag:inbox
 notmuch tag +9front -inbox -- to:"/9front\.org/" and tag:inbox
+notmuch tag +9front -inbox -- to:"/cat-v\.org/" and tag:inbox
 notmuch tag +system -inbox -- from:"/enzu\.ru/" and tag:inbox
-notmuch tag +misc -inbox -- tag:inbox and tag:inbox
+notmuch tag +misc -inbox -- tag:inbox
 
-notmuch tag -gnu +commits -- to:emacs-diffs@gnu.org
-notmuch tag -gnu +commits -- to:guix-commits@gnu.org
-notmuch tag -9front +commits -- to:9front-fqa@9front.org
-notmuch tag -9front +commits -- to:9front-commits@9front.org
-notmuch tag -openbsd +commits -- to:source-changes@cvs.openbsd.org
-notmuch tag -openbsd +commits -- to:ports-changes@cvs.openbsd.org
+notmuch tag -gnu +gnu-commits -- to:emacs-diffs@gnu.org and tag:gnu
+notmuch tag -gnu +gnu-commits -- to:guix-commits@gnu.org and tag:gnu
+notmuch tag -9front +9front-commits -- to:9front-fqa@9front.org and tag:9front
+notmuch tag -9front +9front-commits -- to:9front-commits@9front.org and tag:9front
+notmuch tag -openbsd +openbsd-commits -- to:source-changes@cvs.openbsd.org and tag:openbsd
+notmuch tag -openbsd +openbsd-commits -- to:ports-changes@cvs.openbsd.org and tag:openbsd
+
+notmuch tag -gnu +gnu-bugs -- to:"/bug/" and tag:gnu
+notmuch tag -openbsd +openbsd-bugs -- to:"/bug/" and tag:openbsd
