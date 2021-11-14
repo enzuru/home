@@ -2,19 +2,43 @@
 
 notmuch new
 
-notmuch tag +openbsd -inbox -- to:"/openbsd\.org/"
-notmuch tag +gnu -inbox -- to:"/gnu\.org/"
-notmuch tag +9front -inbox -- to:"/9front\.org/"
-notmuch tag +9front -inbox -- to:"/cat-v\.org/"
-notmuch tag +system -inbox -- from:"/enzu\.ru/"
-notmuch tag +misc -inbox -- tag:inbox
+# Bugs
 
-notmuch tag -gnu +gnu-commits -- to:emacs-diffs@gnu.org
-notmuch tag -gnu +gnu-commits -- to:guix-commits@gnu.org
-notmuch tag -9front +9front-commits -- to:9front-fqa@9front.org
-notmuch tag -9front +9front-commits -- to:9front-commits@9front.org
-notmuch tag -openbsd +openbsd-commits -- to:source-changes@cvs.openbsd.org
-notmuch tag -openbsd +openbsd-commits -- to:ports-changes@cvs.openbsd.org
+notmuch tag -inbox +gnu-bugs -- "tag:inbox and (from:\"/debbugs.gnu.org/\" or to:\"/debbugs.gnu.org/\") "
+notmuch tag -inbox +openbsd-bugs -- "tag:inbox and (from:bugs@openbsd.org or to:bugs@openbsd.org)"
 
-notmuch tag -gnu +gnu-bugs -- from:"/debbugs.gnu.org/" or to:"/debbugs.gnu.org/"
-notmuch tag -openbsd +openbsd-bugs -- from:bugs@openbsd.org or to:bugs@openbsd.org
+# Commits
+
+notmuch tag -inbox +gnu-commits -- tag:inbox and to:emacs-diffs@gnu.org
+notmuch tag -inbox +gnu-commits -- tag:inbox and to:guix-commits@gnu.org
+
+notmuch tag -inbox +9front-commits -- tag:inbox and to:9front-fqa@9front.org
+notmuch tag -inbox +9front-commits -- tag:inbox and to:9front-commits@9front.org
+
+notmuch tag -inbox +openbsd-commits -- tag:inbox and to:source-changes@cvs.openbsd.org
+notmuch tag -inbox +openbsd-commits -- tag:inbox and to:ports-changes@cvs.openbsd.org
+
+# Everything else
+
+notmuch tag -inbox +openbsd -- tag:inbox and to:"/openbsd\.org/"
+notmuch tag -inbox +gnu -- tag:inbox and to:"/gnu\.org/"
+notmuch tag -inbox +9front -- tag:inbox and to:"/9front\.org/"
+notmuch tag -inbox +9front -- tag:inbox and to:"/cat-v\.org/"
+notmuch tag -inbox +system -- tag:inbox and from:"/enzu\.ru/"
+notmuch tag -inbox +misc -- tag:inbox
+
+# Archive
+
+let one_year=31556926
+let date=$(date +%s)
+let one_year_ago=$date-$one_year
+
+notmuch tag -gnu +archive-gnu -- tag:gnu and not date:26weeks..now
+notmuch tag -gnu-commits +archive-gnu-commits -- tag:gnu-commits and not date:26weeks..now
+notmuch tag -gnu-bugs +archive-gnu-bugs -- tag:gnu-bugs and not date:26weeks..now
+
+notmuch tag -openbsd +archive-openbsd -- tag:openbsd and not date:26weeks..now
+notmuch tag -openbsd-commits +archive-openbsd-commits -- tag:openbsd-commits and not date:26weeks..now
+notmuch tag -openbsd-bugs +archive-openbsd-bugs -- tag:openbsd-bugs and not date:26weeks..now
+
+notmuch tag -9front +archive-9front -- tag:9front and not date:26weeks..now
