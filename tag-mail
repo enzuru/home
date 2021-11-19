@@ -11,6 +11,7 @@ notmuch tag -inbox +openbsd-bugs -- "tag:inbox and (from:bugs@openbsd.org or to:
 
 notmuch tag -inbox +gnu-commits -- tag:inbox and to:emacs-diffs@gnu.org
 notmuch tag -inbox +gnu-commits -- tag:inbox and to:guix-commits@gnu.org
+notmuch tag -inbox +gnu-commits -- tag:inbox and to:guile-commits@gnu.org
 
 notmuch tag -inbox +9front-commits -- tag:inbox and to:9front-fqa@9front.org
 notmuch tag -inbox +9front-commits -- tag:inbox and to:9front-commits@9front.org
