@@ -29,10 +29,6 @@ notmuch tag -inbox +misc -- tag:inbox
 
 # Archive
 
-let one_year=31556926
-let date=$(date +%s)
-let one_year_ago=$date-$one_year
-
 notmuch tag -gnu +archive-gnu -- tag:gnu and not date:26weeks..now
 notmuch tag -gnu-commits +archive-gnu-commits -- tag:gnu-commits and not date:26weeks..now
 notmuch tag -gnu-bugs +archive-gnu-bugs -- tag:gnu-bugs and not date:26weeks..now
