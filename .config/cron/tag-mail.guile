@@ -1,2 +1,2 @@
-(job "*/15 * * * *" "~/bin/tag-mail")
+(job "*/5 * * * *" "~/bin/tag-mail")
 
