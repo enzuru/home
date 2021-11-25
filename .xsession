@@ -21,8 +21,17 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 xsetroot -solid "#222833"
 
 # Run services
-shepherd &
-mcron -d
+SHEPHERD_PROC=$(ps -A | grep shepherd | wc --lines)
+if [$SHEPHERD_PROC -lt 1]
+then
+    shepherd &
+fi
+
+MCRON_PROC=$(ps -A | grep mcron | wc --lines)
+if [$MCRON_PROC -lt 1]
+then
+    mcron -d
+fi
 
 # Start Emacs
 exec emacs
