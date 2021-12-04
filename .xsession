@@ -35,3 +35,4 @@ fi
 
 # Start Emacs
 exec emacs
+
