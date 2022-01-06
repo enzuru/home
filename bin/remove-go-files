@@ -1,2 +1,2 @@
 #!/bin/sh
-find ~/ -name "*.go" -type f | xargs rm -f
+find /run/current-system -name "*.go" -type f | xargs rm -f

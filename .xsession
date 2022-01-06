@@ -20,18 +20,12 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 xsetroot -solid "#222833"
 
-# Run services
-SHEPHERD_PROC=$(ps -A | grep shepherd | wc --lines)
-if [$SHEPHERD_PROC -lt 1]
-then
-    shepherd &
-fi
+bin/remove-go-files
 
-MCRON_PROC=$(ps -A | grep mcron | wc --lines)
-if [$MCRON_PROC -lt 1]
-then
-    mcron -d
-fi
+# Run services
+shepherd &
+
+mcron -d
 
 # Start Emacs
 exec emacs
