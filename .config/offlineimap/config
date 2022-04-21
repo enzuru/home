@@ -12,15 +12,14 @@ sync_labels = yes
 autorefresh = 60.0
 
 [Repository me-Local]
-type = GmailMaildir
+type = Maildir
 localfolders = ~/mail/me
 
 [Repository me-Remote]
-type = Gmail
+type = IMAP
+remotehost = mail.enzu.ru
 remoteuser = me@enzu.ru
-remotepass = <password>
+remotepass = whatever
+ssl = yes
 
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-
-folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail']
-nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',foldername)
