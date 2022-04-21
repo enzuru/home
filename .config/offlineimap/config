@@ -9,7 +9,7 @@ maxsyncaccounts = 1
 localrepository = me-Local
 remoterepository = me-Remote
 sync_labels = yes
-autorefresh = 60.0
+autorefresh = 1.0
 
 [Repository me-Local]
 type = Maildir

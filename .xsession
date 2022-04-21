@@ -23,10 +23,17 @@ xsetroot -solid "#222833"
 bin/remove-go-files
 
 # Run services
-shepherd &
+SHEPHERD_PROC=$(ps -A | grep shepherd | wc --lines)
+if (($SHEPHERD_PROC < 2));
+then
+    shepherd &
+fi
 
-mcron -d
+MCRON_PROC=$(ps -A | grep mcron | wc --lines)
+if (($MCRON_PROC < 2));
+then
+    mcron -d
+fi
 
 # Start Emacs
 exec emacs
-
