@@ -1,5 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export JAVA18_PACKAGE:openjdk\x4018
+SETUVAR --export --path JAVA18_PATH:/gnu/store/87fdlls3k7p55bg6lk6lb8vcwmnc970k\x2dopenjdk\x2d18\x2djdk
 SETUVAR __fish_initialized:3100
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
