@@ -1,8 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export JAVA18_PACKAGE:openjdk\x4018
-SETUVAR --export --path JAVA18_PATH:/gnu/store/87fdlls3k7p55bg6lk6lb8vcwmnc970k\x2dopenjdk\x2d18\x2djdk
-SETUVAR __fish_initialized:3100
+SETUVAR --export --path JAVA18_PATH:/gnu/store/nhp7h4xjccbk5amrjqwy6h4386g488jc\x2dopenjdk\x2d18\x2djdk
+SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
@@ -32,3 +32,4 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_selected_background:\x2dr

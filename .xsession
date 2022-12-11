@@ -22,7 +22,7 @@ export JAVA18_PATH="$(guix build ${JAVA18_PACKAGE} | grep -- '-jdk$')"
 # Make Java applications aware this is a non-reparenting window manager.
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-xsetroot -solid "#222833"
+xsetroot -solid "#0c1014"
 
 bin/remove-go-files
 
