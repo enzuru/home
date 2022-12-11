@@ -22,17 +22,18 @@ export JAVA18_PATH="$(guix build ${JAVA18_PACKAGE} | grep -- '-jdk$')"
 # Make Java applications aware this is a non-reparenting window manager.
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# Set background color
 xsetroot -solid "#0c1014"
 
+# Remove outdated compiled files
 bin/remove-go-files
 
-# Run services
+# Run services if not running
 SHEPHERD_PROC=$(ps -A | grep shepherd | wc --lines)
 if (($SHEPHERD_PROC < 2));
 then
     shepherd &
 fi
-
 MCRON_PROC=$(ps -A | grep mcron | wc --lines)
 if (($MCRON_PROC < 2));
 then
