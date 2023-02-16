@@ -18,7 +18,7 @@ xterm.termName: xterm-color
 xterm.eightBitInput: false
 
 URxvt.foreground: #ffffff
-URxvt.background: #0c1014
+URxvt.background: #000F14
 URxvt.scrollBar: false
 URxvt.termName: rxvt
 URxvt.saveLines: 100000
