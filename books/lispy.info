@@ -1,0 +1,3229 @@
+This is lispy.info, produced by makeinfo version 6.7 from lispy.texi.
+
+
+File: lispy.info,  Node: Top,  Next: G az AZ x Global bindings,  Up: (dir)
+
+lispy.el function reference
+***************************
+
+Back to github (https://github.com/abo-abo/lispy)      This file in org-mode (https://raw.githubusercontent.com/abo-abo/lispy/gh-pages/index.org)      Parinfer function reference (./parinfer_index.html)
+
+* Menu:
+
+* G az AZ x Global bindings::
+* G az AZ x [a-z] local bindings::
+* G az AZ x [A-Z] local bindings::
+* G az AZ x x[a-z] local bindings::
+* Function reference::
+
+— The Detailed Node Listing —
+
+Function reference
+
+* lispy-forward::
+* lispy-backward::
+* lispy-right::
+* lispy-right-nostring::
+* lispy-left::
+* lispy-down::
+* lispy-up::
+* lispy-different::
+* lispy-flow::
+* lispy-back::
+* lispy-knight::
+* lispy-mark-car::
+* lispy-move-end-of-line::
+* lispy-ace-paren::
+* lispy-ace-symbol::
+* lispy-ace-subword::
+* lispy-splice::
+* lispy-occur::
+* lispy-follow::
+* lispy-goto-symbol::
+* pop-tag-mark::
+* lispy-describe-inline::
+* lispy-arglist-inline::
+* lispy-eval::
+* lispy-eval-and-insert::
+* lispy-bind-variable::
+* lispy-unbind-variable::
+* lispy-eval-and-replace::
+* lispy-store-region-and-buffer::
+* lispy-ediff-regions::
+* lispy-to-lambda::
+* lispy-to-defun::
+* lispy-parens::
+* lispy-braces::
+* lispy-brackets::
+* lispy-quotes::
+* lispy-parens-down::
+* lispy-space::
+* lispy-pair::
+* lispy-x::
+* lispy-kill::
+* lispy-new-copy::
+* lispy-yank::
+* lispy-delete::
+* lispy-delete-backward::
+* lispy-mark::
+* lispy-kill-at-point::
+* lispy-mark-symbol::
+* lispy-string-oneline::
+* lispy-outline-next::
+* lispy-outline-prev::
+* lispy-shifttab::
+* lispy-tab::
+* lispy-edebug-stop::
+* lispy-flatten::
+* lispy-to-ifs::
+* lispy-to-cond::
+* lispy-visit::
+* lispy-narrow::
+* lispy-widen::
+* lispy-oneline::
+* lispy-multiline::
+* lispy-view::
+* lispy-slurp::
+* lispy-barf::
+* lispy-other-mode::
+* lispy-move-left::
+* lispy-down-slurp::
+* lispy-up-slurp::
+* lispy-move-right::
+* lispy-comment::
+* lispy-clone::
+* lispy-goto::
+* lispy-goto-local::
+* lispy-goto-recursive::
+* lispy-goto-projectile::
+* lispy-goto-elisp-commands::
+* lispy-mark-list::
+* lispy-raise::
+* lispy-move-down::
+* lispy-move-up::
+* lispy-teleport::
+* lispy-undo::
+* lispy-ace-symbol-replace::
+* lispy-eval-other-window::
+* lispy-describe::
+* lispy-beginning-of-defun::
+* lispy-convolute::
+* lispy-ace-char::
+* lispy-raise-some::
+* lispy-ert::
+* lispy-stringify::
+* lispy-paste::
+* lispy-edebug::
+* lispy-debug-step-in::
+* lispy-kill-word::
+* lispy-backward-kill-word::
+* lispy-kill-sentence::
+* digit-argument::
+
+‘lispy-flow’
+
+* looking at lispy-left::
+* looking back lispy-right::
+
+‘lispy-mark-car’
+
+* when at list boundary::
+* when at string boundary::
+* when at region boundary::
+* when a quoted symbol is marked::
+
+‘lispy-move-end-of-line’
+
+* inside string::
+* otherwise::
+
+‘lispy-eval’
+
+* lispy-lax-eval::
+* eval of defvar::
+* eval of defcustom::
+* eval of defface::
+
+‘lispy-quotes’
+
+* region is active, contained in string: region is active contained in string.
+* region active::
+* in string and arg isn't nil::
+* in string and arg is nil::
+* arg isn't nil::
+* otherwise: otherwise (1).
+
+‘lispy-pair’
+
+* region active: region active (1).
+* inside a string before "\\"::
+* inside string or comment::
+* elisp character expression::
+* no arg is explicitly specified::
+* arg is positive::
+* arg is 0::
+* arg is -1::
+
+‘lispy-kill’
+
+* inside comment::
+* inside string and string extends past this line::
+* inside string that ends on this line::
+* on a line of whitespace::
+* inside empty list::
+* parens between point and eol are balanced::
+* possible to up-list::
+* otherwise: otherwise (2).
+
+‘lispy-delete’
+
+* region active: region active (2).
+* inside a string before \"::
+* at last char of the string::
+* in string near \::
+* the next char isn't end of string::
+* inside comment: inside comment (1).
+* before lispy-left::
+* before "::
+* before lispy-right::
+* otherwise: otherwise (3).
+
+‘lispy-delete-backward’
+
+* region active: region active (3).
+* at first char of the string::
+* in string near \: in string near \ (1).
+* in string or comment::
+* after lispy-right::
+* before ‘lispy-left’: before lispy-left (1).
+* after a string::
+* otherwise: otherwise (4).
+
+‘lispy-mark-symbol’
+
+* lispy-bind-variable in progress::
+* in comment::
+* looking at space or parens::
+* looking back ‘lispy-right’: looking back lispy-right (1).
+* region is active::
+* otherwise: otherwise (5).
+
+‘lispy-tab’
+
+* in outline::
+* region is active: region is active (1).
+* otherwise: otherwise (6).
+
+
+
+File: lispy.info,  Node: G az AZ x Global bindings,  Next: G az AZ x [a-z] local bindings,  Prev: Top,  Up: Top
+
+G az AZ x Global bindings
+*************************
+
+key     function name
+------------------------------------------------------------------
+]       *note lispy-forward: lispy-forward.
+[       *note lispy-backward: lispy-backward.
+(       *note lispy-parens: lispy-parens.
+{       *note lispy-braces: lispy-braces.
+}       *note lispy-brackets: lispy-brackets.
+"       *note lispy-quotes: lispy-quotes.
+)       *note lispy-right-nostring: lispy-right-nostring.
+;       *note lispy-comment: lispy-comment.
+DEL     *note lispy-delete-backward: lispy-delete-backward.
+C-d     *note lispy-delete: lispy-delete.
+C-k     *note lispy-kill: lispy-kill.
+C-y     *note lispy-yank: lispy-yank.
+C-e     *note lispy-move-end-of-line: lispy-move-end-of-line.
+C-,     *note lispy-kill-at-point: lispy-kill-at-point.
+C-M-,   *note lispy-mark: lispy-mark.
+C-1     *note lispy-describe-inline: lispy-describe-inline.
+C-2     *note lispy-arglist-inline: lispy-arglist-inline.
+C-3     *note lispy-right: lispy-right.
+C-4     *note lispy-x: lispy-x.
+C-8     *note lispy-parens-down: lispy-parens-down.
+M-d     *note lispy-kill-word: lispy-kill-word.
+M-k     *note lispy-kill-sentence: lispy-kill-sentence.
+M-m     *note lispy-mark-symbol: lispy-mark-symbol.
+M-DEL   *note lispy-backward-kill-word: lispy-backward-kill-word.
+M-.     *note lispy-goto-symbol: lispy-goto-symbol.
+M-,     *note pop-tag-mark: pop-tag-mark.
+
+
+File: lispy.info,  Node: G az AZ x [a-z] local bindings,  Next: G az AZ x [A-Z] local bindings,  Prev: G az AZ x Global bindings,  Up: Top
+
+G az AZ x [a-z] local bindings
+******************************
+
+key      function name
+-----------------------------------------------------------------
+a        *note lispy-ace-symbol: lispy-ace-symbol.
+b        *note lispy-back: lispy-back.
+c        *note lispy-clone: lispy-clone.
+d        *note lispy-different: lispy-different.
+e        *note lispy-eval: lispy-eval.
+f        *note lispy-flow: lispy-flow.
+g        *note lispy-goto: lispy-goto.
+h        *note lispy-left: lispy-left.
+i        *note lispy-tab: lispy-tab.
+j        *note lispy-down: lispy-down.
+k        *note lispy-up: lispy-up.
+l        *note lispy-right: lispy-right.
+m        *note lispy-mark-list: lispy-mark-list.
+n        *note lispy-new-copy: lispy-new-copy.
+o        *note lispy-other-mode: lispy-other-mode.
+p        *note lispy-eval-other-window: lispy-eval-other-window.
+q        *note lispy-ace-paren: lispy-ace-paren.
+r        *note lispy-raise: lispy-raise.
+s        *note lispy-move-down: lispy-move-down.
+t        *note lispy-teleport: lispy-teleport.
+u        *note lispy-undo: lispy-undo.
+v        *note lispy-view: lispy-view.
+w        *note lispy-move-up: lispy-move-up.
+x        *note see: G az AZ x x[a-z] local bindings.
+y        *note lispy-occur: lispy-occur.
+z        *note lispy-knight: lispy-knight.
+>        *note lispy-slurp: lispy-slurp.
+<        *note lispy-barf: lispy-barf.
+-        *note lispy-ace-subword: lispy-ace-subword.
+/        *note lispy-splice: lispy-splice.
+
+
+File: lispy.info,  Node: G az AZ x [A-Z] local bindings,  Next: G az AZ x x[a-z] local bindings,  Prev: G az AZ x [a-z] local bindings,  Up: Top
+
+G az AZ x [A-Z] local bindings
+******************************
+
+key   function name
+------------------------------------------------------------------
+A     *note lispy-beginning-of-defun: lispy-beginning-of-defun.
+B     *note lispy-ediff-regions: lispy-ediff-regions.
+C     *note lispy-convolute: lispy-convolute.
+D     *note pop-tag-mark: pop-tag-mark.
+E     *note lispy-eval-and-insert: lispy-eval-and-insert.
+F     *note lispy-follow: lispy-follow.
+G     *note lispy-goto-local: lispy-goto-local.
+H     *note lispy-ace-symbol-replace: lispy-ace-symbol-replace.
+I     *note lispy-shifttab: lispy-shifttab.
+J     *note lispy-outline-next: lispy-outline-next.
+K     *note lispy-outline-prev: lispy-outline-prev.
+L     unbound
+M     *note lispy-multiline: lispy-multiline.
+N     *note lispy-narrow: lispy-narrow.
+O     *note lispy-oneline: lispy-oneline.
+P     *note lispy-paste: lispy-paste.
+Q     *note lispy-ace-char: lispy-ace-char.
+R     *note lispy-raise-some: lispy-raise-some.
+S     *note lispy-stringify: lispy-stringify.
+U     unbound
+V     *note lispy-visit: lispy-visit.
+W     *note lispy-widen: lispy-widen.
+X     unbound
+Y     unbound
+Z     *note lispy-edebug-stop: lispy-edebug-stop.
+SPC   *note lispy-space: lispy-space.
+
+
+File: lispy.info,  Node: G az AZ x x[a-z] local bindings,  Next: Function reference,  Prev: G az AZ x [A-Z] local bindings,  Up: Top
+
+G az AZ x x[a-z] local bindings
+*******************************
+
+key   function name
+--------------------------------------------------------------------------
+xb    *note lispy-bind-variable: lispy-bind-variable.
+xc    *note lispy-to-cond: lispy-to-cond.
+xd    *note lispy-to-defun: lispy-to-defun.
+xf    *note lispy-flatten: lispy-flatten.
+xi    *note lispy-to-ifs: lispy-to-ifs.
+xl    *note lispy-to-lambda: lispy-to-lambda.
+xe    *note lispy-edebug: lispy-edebug.
+xh    *note lispy-describe: lispy-describe.
+xj    *note lispy-debug-step-in: lispy-debug-step-in.
+xr    *note lispy-eval-and-replace: lispy-eval-and-replace.
+xu    *note lispy-unbind-variable: lispy-unbind-variable.
+xB    *note lispy-store-region-and-buffer: lispy-store-region-and-buffer.
+xT    *note lispy-ert: lispy-ert.
+
+
+File: lispy.info,  Node: Function reference,  Prev: G az AZ x x[a-z] local bindings,  Up: Top
+
+Function reference
+******************
+
+* Menu:
+
+* lispy-forward::
+* lispy-backward::
+* lispy-right::
+* lispy-right-nostring::
+* lispy-left::
+* lispy-down::
+* lispy-up::
+* lispy-different::
+* lispy-flow::
+* lispy-back::
+* lispy-knight::
+* lispy-mark-car::
+* lispy-move-end-of-line::
+* lispy-ace-paren::
+* lispy-ace-symbol::
+* lispy-ace-subword::
+* lispy-splice::
+* lispy-occur::
+* lispy-follow::
+* lispy-goto-symbol::
+* pop-tag-mark::
+* lispy-describe-inline::
+* lispy-arglist-inline::
+* lispy-eval::
+* lispy-eval-and-insert::
+* lispy-bind-variable::
+* lispy-unbind-variable::
+* lispy-eval-and-replace::
+* lispy-store-region-and-buffer::
+* lispy-ediff-regions::
+* lispy-to-lambda::
+* lispy-to-defun::
+* lispy-parens::
+* lispy-braces::
+* lispy-brackets::
+* lispy-quotes::
+* lispy-parens-down::
+* lispy-space::
+* lispy-pair::
+* lispy-x::
+* lispy-kill::
+* lispy-new-copy::
+* lispy-yank::
+* lispy-delete::
+* lispy-delete-backward::
+* lispy-mark::
+* lispy-kill-at-point::
+* lispy-mark-symbol::
+* lispy-string-oneline::
+* lispy-outline-next::
+* lispy-outline-prev::
+* lispy-shifttab::
+* lispy-tab::
+* lispy-edebug-stop::
+* lispy-flatten::
+* lispy-to-ifs::
+* lispy-to-cond::
+* lispy-visit::
+* lispy-narrow::
+* lispy-widen::
+* lispy-oneline::
+* lispy-multiline::
+* lispy-view::
+* lispy-slurp::
+* lispy-barf::
+* lispy-other-mode::
+* lispy-move-left::
+* lispy-down-slurp::
+* lispy-up-slurp::
+* lispy-move-right::
+* lispy-comment::
+* lispy-clone::
+* lispy-goto::
+* lispy-goto-local::
+* lispy-goto-recursive::
+* lispy-goto-projectile::
+* lispy-goto-elisp-commands::
+* lispy-mark-list::
+* lispy-raise::
+* lispy-move-down::
+* lispy-move-up::
+* lispy-teleport::
+* lispy-undo::
+* lispy-ace-symbol-replace::
+* lispy-eval-other-window::
+* lispy-describe::
+* lispy-beginning-of-defun::
+* lispy-convolute::
+* lispy-ace-char::
+* lispy-raise-some::
+* lispy-ert::
+* lispy-stringify::
+* lispy-paste::
+* lispy-edebug::
+* lispy-debug-step-in::
+* lispy-kill-word::
+* lispy-backward-kill-word::
+* lispy-kill-sentence::
+* digit-argument::
+
+
+File: lispy.info,  Node: lispy-forward,  Next: lispy-backward,  Up: Function reference
+
+‘lispy-forward’
+===============
+
+Bound to ‘]’.
+
+   Works as replacement for the standard ‘forward-list’.
+
+   Takes a numeric prefix ‘arg’ and moves forward list ‘arg’ times or
+until error.
+
+   Unlike ‘forward-list’, no error will be reported if it’s not possible
+to move ‘arg’ times.  It that case, move as many times as possible.  To
+facilitate entering a very large ‘arg’, ‘arg’ 0 is interpreted as ‘arg’
+2000.
+
+   Return ‘t’ if could move at least once, otherwise call *note
+lispy-right:: and return ‘nil’.
+
+   Unlike ‘forward-list’, parens in strings and comments are ignored.
+
+
+File: lispy.info,  Node: lispy-backward,  Next: lispy-right,  Prev: lispy-forward,  Up: Function reference
+
+‘lispy-backward’
+================
+
+Bound to ‘[’.
+
+   Works as replacement for the standard ‘backward-list’.
+
+   Takes a numeric prefix ‘arg’ and moves backward list ‘arg’ times or
+until error.
+
+   Unlike ‘backward-list’, no error will be reported if it’s not
+possible to move ‘arg’ times.  It that case, move as many times as
+possible.  To facilitate entering a very large ‘arg’, ‘arg’ 0 is
+interpreted as ‘arg’ 2000.
+
+   Return ‘t’ if could move at least once, otherwise call *note
+lispy-left:: return ‘nil’.
+
+   Unlike ‘backward-list’, parens in strings and comments are ignored.
+
+
+File: lispy.info,  Node: lispy-right,  Next: lispy-right-nostring,  Prev: lispy-backward,  Up: Function reference
+
+‘lispy-right’
+=============
+
+Bound to ‘C-3’ and ‘l’.
+
+   Works as replacement for the standard ‘up-list’.
+
+   Takes a numeric prefix ‘arg’ and moves up forward list ‘arg’ times or
+until error.
+
+   Unlike ‘up-list’, no error will be reported if it’s not possible to
+move up ‘arg’ times.  It that case, move as many times as possible.
+
+   Return point if could move ‘arg’ times, otherwise return ‘nil’.
+
+   Unlike ‘up-list’, parens in strings and comments are ignored.
+
+
+File: lispy.info,  Node: lispy-right-nostring,  Next: lispy-left,  Prev: lispy-right,  Up: Function reference
+
+‘lispy-right-nostring’
+======================
+
+Bound to ‘)’.
+
+   Works the same ways as *note lispy-right::, except self-inserts in
+strings and comments.
+
+   Self-inserting in strings and comments makes parens different from
+the other pair functions that always insert the whole pair:
+
+key   function                              inserts
+------------------------------------------------------
+‘{’   *note lispy-braces: lispy-braces.     {}
+‘}’   *note lispy-brackets: lispy-brackets. []
+‘"’   *note lispy-quotes: lispy-quotes.     ""
+
+   When you want to insert a single character from the pair, use ‘C-q’.
+Or insert a pair and delete the other character.
+
+
+File: lispy.info,  Node: lispy-left,  Next: lispy-down,  Prev: lispy-right-nostring,  Up: Function reference
+
+‘lispy-left’
+============
+
+Bound to ‘h’.
+
+   Takes a numeric prefix ‘arg’ and moves up backward list ‘arg’ times
+or until error.  This is a combination of ‘arg’ times *note
+lispy-right:: and once *note lispy-different::.
+
+   When the region is active, the region (not the code) will move up
+backward ‘arg’ times:
+
+     (defun lispy-right (arg)
+       "Move outside list forwards ARG times.
+     Return nil on failure, t otherwise."
+       (interactive "p")
+       (if (region-active-p)
+           <cursor>(</cursor><span class="region">lispy-mark-right arg)</span>
+         (lispy--out-forward arg)))
+   -> ‘h’ ->
+     (defun lispy-right (arg)
+       "Move outside list forwards ARG times.
+     Return nil on failure, t otherwise."
+       (interactive "p")
+       <cursor>(</cursor><span class="region">if (region-active-p)
+           (lispy-mark-right arg)
+         (lispy--out-forward arg))</span>)
+
+
+File: lispy.info,  Node: lispy-down,  Next: lispy-up,  Prev: lispy-left,  Up: Function reference
+
+‘lispy-down’
+============
+
+Bound to ‘j’.
+
+   Takes a numeric prefix ‘arg’ and moves down the current list ‘arg’
+times.
+
+   Here, current list means the innermost list that contains the point.
+Moving down means so literally only if there is a newline after each
+element of current list, otherwise it’s down or left.
+
+   ‘j’ maintains a guarantee that it will not exit the current list, so
+you can use e.g.  ‘99j’ to move to the last element of the current list.
+
+   When region is active, ‘j’ will move the region by ‘forward-sexp’,
+i.e.  move the point and the mark by ‘forward-sexp’.
+
+   This allows to easily mark any element(s) of current list.  ‘j’
+maintains a guarantee that the region will not exit the currrent list,
+so if you want to mark last 3 elements of the current list, you can mark
+the first 3 elements of the current list and press ‘99j’.
+
+   For example, starting with:
+     <cursor>(</cursor>a b c d e f g h i j k l m n o p q r s t u v w x y z)
+   after ‘mi’:
+     (<span class="region">a</span><cursor> </cursor>b c d e f g h i j k l m n o p q r s t u v w x y z)
+
+   after ‘2>’:
+     (<span class="region">a b c</span><cursor> </cursor>d e f g h i j k l m n o p q r s t u v w x y z)
+
+   after ‘99j’:
+     (a b c d e f g h i j k l m n o p q r s t u v w <span class="region">x y z</span><cursor>)</cursor>
+
+
+File: lispy.info,  Node: lispy-up,  Next: lispy-different,  Prev: lispy-down,  Up: Function reference
+
+‘lispy-up’
+==========
+
+Bound to ‘k’.
+
+   Takes a numeric prefix ‘arg’ and moves up the current list ‘arg’
+times.
+
+   Here, current list means the innermost list that contains the point.
+Moving up means so literally only if there is a newline after each
+element of current list, otherwise it’s up or right.
+
+   ‘k’ maintains a guarantee that it will not exit the current list, so
+you can use e.g.  ‘99k’ to move to the first element of current list.
+
+   When region is active, ‘k’ will move the region by ‘backward-sexp’,
+i.e.  move the point and the mark by ‘backward-sexp’.
+
+
+File: lispy.info,  Node: lispy-different,  Next: lispy-flow,  Prev: lispy-up,  Up: Function reference
+
+‘lispy-different’
+=================
+
+Bound to ‘d’.
+
+   Switch to the different side of current sexp.
+
+   When region is active, equivalent to ‘exchange-point-and-mark’.
+
+
+File: lispy.info,  Node: lispy-flow,  Next: lispy-back,  Prev: lispy-different,  Up: Function reference
+
+‘lispy-flow’
+============
+
+Bound to ‘f’.
+
+   Flow in the direction of current paren, i.e.
+
+* Menu:
+
+* looking at lispy-left::
+* looking back lispy-right::
+
+
+File: lispy.info,  Node: looking at lispy-left,  Next: looking back lispy-right,  Up: lispy-flow
+
+looking at ‘lispy-left’
+-----------------------
+
+Find the next ‘lispy-left’ not in comment or string going down the file.
+
+
+File: lispy.info,  Node: looking back lispy-right,  Prev: looking at lispy-left,  Up: lispy-flow
+
+looking back ‘lispy-right’
+--------------------------
+
+Find the next ‘lispy-right’ not in comment or string going up the file.
+
+
+File: lispy.info,  Node: lispy-back,  Next: lispy-knight,  Prev: lispy-flow,  Up: Function reference
+
+‘lispy-back’
+============
+
+Bound to ‘b’.
+
+   Move point to the previous position in ‘lispy-back’ history.  The
+following functions write to this history:
+
+key   function name
+----------------------------------------------
+‘l’   *note lispy-right: lispy-right.
+‘h’   *note lispy-left: lispy-left.
+‘f’   *note lispy-flow: lispy-flow.
+‘j’   *note lispy-down: lispy-down.
+‘k’   *note lispy-up: lispy-up.
+‘m’   *note lispy-mark-list: lispy-mark-list.
+‘q’   *note lispy-ace-paren: lispy-ace-paren.
+‘i’   *note lispy-mark-car: lispy-mark-car.
+
+
+File: lispy.info,  Node: lispy-knight,  Next: lispy-mark-car,  Prev: lispy-back,  Up: Function reference
+
+‘lispy-knight’
+==============
+
+Bound to ‘z’.
+
+   ‘zj’ and ‘zk’ are bound in a hydra that allows to move through the
+leftmost parens on each line.
+
+   This is useful if you want to navigate disregarding syntax: since ‘j’
+and ‘k’ can’t exit the parent list they’re not suitable for this.
+
+   ‘zj’ and ‘zk’ move like the knight figure in chess, in a combination
+of horizontal and vertical movement.
+
+
+File: lispy.info,  Node: lispy-mark-car,  Next: lispy-move-end-of-line,  Prev: lispy-knight,  Up: Function reference
+
+‘lispy-mark-car’
+================
+
+Bound to ‘i’ while the region is active.
+
+   Mark the first element (car) of the currently selected thing (list or
+region).
+
+* Menu:
+
+* when at list boundary::
+* when at string boundary::
+* when at region boundary::
+* when a quoted symbol is marked::
+
+
+File: lispy.info,  Node: when at list boundary,  Next: when at string boundary,  Up: lispy-mark-car
+
+when at list boundary
+---------------------
+
+     <span class="region">(defun lispy-right (arg)
+       "Move outside list forwards ARG times\.
+     Return nil on failure, t otherwise\."
+       (interactive "p")
+       (if (region-active-p)
+           (lispy-mark-right arg)
+         (lispy--out-forward arg)))</span><cursor> </cursor>
+   -> ‘i’ ->
+     (<span class="region">defun</span><cursor> </cursor>lispy-right (arg)
+       "Move outside list forwards ARG times.
+     Return nil on failure, t otherwise."
+       (interactive "p")
+       (if (region-active-p)
+           (lispy-mark-right arg)
+         (lispy--out-forward arg)))
+
+
+File: lispy.info,  Node: when at string boundary,  Next: when at region boundary,  Prev: when at list boundary,  Up: lispy-mark-car
+
+when at string boundary
+-----------------------
+
+Mark its inner contents.
+     (list <span class="region">"spam spam spam"</span><cursor>)</cursor>
+   -> ‘i’ ->
+     (list "<span class="region">spam spam spam</span><cursor>"</cursor>)
+
+
+File: lispy.info,  Node: when at region boundary,  Next: when a quoted symbol is marked,  Prev: when at string boundary,  Up: lispy-mark-car
+
+when at region boundary
+-----------------------
+
+     (list "<span class="region">spam spam spam</span><cursor>"</cursor>)
+   -> ‘i’ ->
+     (list "<span class="region">spam</span><cursor> </cursor>spam spam")
+
+
+File: lispy.info,  Node: when a quoted symbol is marked,  Prev: when at region boundary,  Up: lispy-mark-car
+
+when a quoted symbol is marked
+------------------------------
+
+Select the unquoted part, it’s useful for a subsequent ‘e’
+(‘lispy-eval’).
+     (add-to-list <span class="region">'auto-mode-alist</span><cursor> </cursor>
+                  '("\\.\\(h\\)\\'" . c++-mode))
+   -> ‘i’ ->
+     (add-to-list '<span class="region">auto-mode-alist</span><cursor> </cursor>
+                  '("\\.\\(h\\)\\'" . c++-mode))
+
+
+File: lispy.info,  Node: lispy-move-end-of-line,  Next: lispy-ace-paren,  Prev: lispy-mark-car,  Up: Function reference
+
+‘lispy-move-end-of-line’
+========================
+
+Bound to ‘C-e’.
+
+   Works as replacement for the standard ‘move-end-of-line’.
+
+   Regular ‘move-end-of-line’ does nothing the second time when called
+twice in a row.
+
+   When called twice in a row and
+
+* Menu:
+
+* inside string::
+* otherwise::
+
+
+File: lispy.info,  Node: inside string,  Next: otherwise,  Up: lispy-move-end-of-line
+
+inside string
+-------------
+
+Move to the end of the string.
+
+
+File: lispy.info,  Node: otherwise,  Prev: inside string,  Up: lispy-move-end-of-line
+
+otherwise
+---------
+
+Return to the starting position.
+
+
+File: lispy.info,  Node: lispy-ace-paren,  Next: lispy-ace-symbol,  Prev: lispy-move-end-of-line,  Up: Function reference
+
+‘lispy-ace-paren’
+=================
+
+Bound to ‘q’.
+
+   Starting with this:
+     (defun lispy-define-key (keymap key def &optional from-start)
+       "Forward to (`define-key' KEYMAP KEY (`lispy-defun' DEF FROM-START))."
+       (let ((func (defalias (intern (concat "special-" (symbol-name def)))
+                       (lispy--insert-or-call def from-start))))
+         <cursor>(</cursor>unless (member func ac-trigger-commands)
+           (push func ac-trigger-commands))
+         (unless (member func company-begin-commands)
+           (push func company-begin-commands))
+         (eldoc-add-command func)
+         (define-key keymap (kbd key) func)))
+   by pressing ‘q’ you get this:
+
+   Now you can change the point position by pressing a letter or cancel
+with ‘C-g’.
+
+   Press ‘2q’ to use the whole window instead of just the current
+top-level sexp.
+
+
+File: lispy.info,  Node: lispy-ace-symbol,  Next: lispy-ace-subword,  Prev: lispy-ace-paren,  Up: Function reference
+
+‘lispy-ace-symbol’
+==================
+
+Bound to ‘a’.
+
+   Starting with this:
+     (defun lispy-define-key (keymap key def &optional from-start)
+       "Forward to (`define-key' KEYMAP KEY (`lispy-defun' DEF FROM-START))."
+       (let ((func (defalias (intern (concat "special-" (symbol-name def)))
+                       (lispy--insert-or-call def from-start))))
+         <cursor>(</cursor>unless (member func ac-trigger-commands)
+           (push func ac-trigger-commands))
+         (unless (member func company-begin-commands)
+           (push func company-begin-commands))
+         (eldoc-add-command func)
+         (define-key keymap (kbd key) func)))
+   by pressing ‘a’ you get this:
+
+   Now you can mark a symbol by pressing a letter, or cancel with ‘C-g’.
+
+   Here’s the end result of ‘ad’:
+
+     (defun lispy-define-key (keymap key def &optional from-start)
+       "Forward to (`define-key' KEYMAP KEY (`lispy-defun' DEF FROM-START))."
+       (let ((func (defalias (intern (concat "special-" (symbol-name def)))
+                       (lispy--insert-or-call def from-start))))
+         (unless (member func <span class="region">ac-trigger-commands</span><cursor>)</cursor>
+           (push func ac-trigger-commands))
+         (unless (member func company-begin-commands)
+           (push func company-begin-commands))
+         (eldoc-add-command func)
+         (define-key keymap (kbd key) func)))
+
+   ‘lispy-ace-symbol’’s jump scope is the current list by default.
+Calling it with *note digit-argument:: will extend this to the current
+list’s parents.
+
+   Now you can follow up with
+key   function name
+----------------------------------------------------------
+F     *note lispy-follow: lispy-follow.
+C-1   *note lispy-describe-inline: lispy-describe-inline.
+e     *note lispy-eval: lispy-eval.
+E     *note lispy-eval-and-insert: lispy-eval-and-insert.
+P     *note lispy-paste: lispy-paste.
+r     *note lispy-raise: lispy-raise.
+
+
+File: lispy.info,  Node: lispy-ace-subword,  Next: lispy-splice,  Prev: lispy-ace-symbol,  Up: Function reference
+
+‘lispy-ace-subword’
+===================
+
+Bound to ‘-’.
+
+   Similar to *note lispy-ace-symbol::, but selects a subword instead.
+
+
+File: lispy.info,  Node: lispy-splice,  Next: lispy-occur,  Prev: lispy-ace-subword,  Up: Function reference
+
+‘lispy-splice’
+==============
+
+Bound to ‘/’.
+
+   Splice the current list into the parent list.  Move the point to the
+next list to splice in appropriate direction.  If there are none within
+the parent list, move to the parent list in appropriate direction.
+
+     (<cursor>(</cursor>a) (b) (c))
+   -> ‘/’ ->
+     (a <cursor>(</cursor>b) (c))
+
+
+File: lispy.info,  Node: lispy-occur,  Next: lispy-follow,  Prev: lispy-splice,  Up: Function reference
+
+‘lispy-occur’
+=============
+
+Bound to ‘y’.
+
+   Do an occur for the current top-level sexp.  Go back-to-paren
+afterwards.
+
+   This is useful e.g.  to see where a particular variable is used
+within the current defun.
+
+
+File: lispy.info,  Node: lispy-follow,  Next: lispy-goto-symbol,  Prev: lispy-occur,  Up: Function reference
+
+‘lispy-follow’
+==============
+
+Bound to ‘F’.
+
+   When region is active jump to the definition of marked symbol.
+Otherwise jump to the definition of the first symbol in current sexp.
+
+   Use ‘D’ or ‘M-,’ to go back.
+
+   Elisp, Clojure and Common Lisp are supported.
+
+
+File: lispy.info,  Node: lispy-goto-symbol,  Next: pop-tag-mark,  Prev: lispy-follow,  Up: Function reference
+
+‘lispy-goto-symbol’
+===================
+
+Bound to ‘M-.’.
+
+   Goto definition of symbol at point.  You can go back with ‘M-,’
+(*note pop-tag-mark::).
+
+
+File: lispy.info,  Node: pop-tag-mark,  Next: lispy-describe-inline,  Prev: lispy-goto-symbol,  Up: Function reference
+
+‘pop-tag-mark’
+==============
+
+Bound to ‘D’ and ‘M-,’.
+
+   This is a standard Emacs function that reverses:
+
+   • ‘F’ (*note lispy-follow::)
+   • ‘M-.’ (*note lispy-goto-symbol::)
+
+   It’s bound to ‘M-*’ in the default Emacs.  I like to bind it to ‘M-,’
+everywhere.
+
+
+File: lispy.info,  Node: lispy-describe-inline,  Next: lispy-arglist-inline,  Prev: pop-tag-mark,  Up: Function reference
+
+‘lispy-describe-inline’
+=======================
+
+Bound to ‘C-1’.
+
+   Show the documentation for current function or currently marked
+symbol (see *note lispy-ace-symbol::).
+
+
+File: lispy.info,  Node: lispy-arglist-inline,  Next: lispy-eval,  Prev: lispy-describe-inline,  Up: Function reference
+
+‘lispy-arglist-inline’
+======================
+
+Bound to ‘C-2’.
+
+   Show the argument list for current function.
+
+
+File: lispy.info,  Node: lispy-eval,  Next: lispy-eval-and-insert,  Prev: lispy-arglist-inline,  Up: Function reference
+
+‘lispy-eval’
+============
+
+Bound to ‘e’.
+
+   Eval current region or sexp.  The result will be displayed in the
+minibuffer.
+
+   Elisp, Clojure, Scheme and Common Lisp are supported.
+
+   Elisp extensions:
+
+* Menu:
+
+* lispy-lax-eval::
+* eval of defvar::
+* eval of defcustom::
+* eval of defface::
+
+
+File: lispy.info,  Node: lispy-lax-eval,  Next: eval of defvar,  Up: lispy-eval
+
+‘lispy-lax-eval’
+----------------
+
+When ‘lispy-lax-eval’ isn’t ‘nil’, "Symbol’s value as variable is
+void..." error will be caught and the variable in question will be set
+to ‘nil’.
+
+
+File: lispy.info,  Node: eval of defvar,  Next: eval of defcustom,  Prev: lispy-lax-eval,  Up: lispy-eval
+
+eval of ‘defvar’
+----------------
+
+Will do a ‘setq’ in addition to ‘defvar’ (i.e.  the behavior of
+‘C-M-x’).
+
+
+File: lispy.info,  Node: eval of defcustom,  Next: eval of defface,  Prev: eval of defvar,  Up: lispy-eval
+
+eval of ‘defcustom’
+-------------------
+
+Same as for ‘defvar’.
+
+
+File: lispy.info,  Node: eval of defface,  Prev: eval of defcustom,  Up: lispy-eval
+
+eval of ‘defface’
+-----------------
+
+The behavior of ‘C-M-x’.
+
+
+File: lispy.info,  Node: lispy-eval-and-insert,  Next: lispy-bind-variable,  Prev: lispy-eval,  Up: Function reference
+
+‘lispy-eval-and-insert’
+=======================
+
+Bound to ‘E’.
+
+   Eval current region or sexp.  The result will be inserted in the
+current buffer after the evaluated expression.
+
+   • Starting with ‘|(’ the point will not be moved, allowing to press
+     ‘E’ again.
+   • Starting with ‘)|’ the point will end up after the inserted
+     expression.
+   • Starting with an active region, the region will be deactivated and
+     result will be inserted at point.
+
+
+File: lispy.info,  Node: lispy-bind-variable,  Next: lispy-unbind-variable,  Prev: lispy-eval-and-insert,  Up: Function reference
+
+‘lispy-bind-variable’
+=====================
+
+Bound to ‘xb’.
+
+   Transform the current list expression into a let-bound variable;
+‘iedit-mode’ is used to name the new variable.  Use ‘M-m’ to finish
+naming the variable.
+
+     (defun my-forward-line (arg)
+       (message "%S lines"
+                <cursor>(</cursor>forward-line arg)))
+   -> ‘xbln M-m ChO’->
+     (defun my-forward-line (arg)
+       (let ((ln (forward-line arg)))
+         <cursor>(</cursor>message "%S lines" ln)))
+
+
+File: lispy.info,  Node: lispy-unbind-variable,  Next: lispy-eval-and-replace,  Prev: lispy-bind-variable,  Up: Function reference
+
+‘lispy-unbind-variable’
+=======================
+
+Bound to ‘xu’.
+
+   Unbind a let-bound variable.  Also works for Clojure.
+
+     (defun foobar ()
+       (let (<cursor>(</cursor>x 10)
+             (y 20)
+             (z 30))
+         (foo1 x y z)
+         (foo2 x z y)
+         (foo3 y x z)
+         (foo4 y z x)
+         (foo5 z x y)
+         (foo6 z y x)))
+   -> ‘xu’ ->
+     (defun foobar ()
+       (let (<cursor>(</cursor>y 20)
+             (z 30))
+         (foo1 10 y z)
+         (foo2 10 z y)
+         (foo3 y 10 z)
+         (foo4 y z 10)
+         (foo5 z 10 y)
+         (foo6 z y 10)))
+
+
+File: lispy.info,  Node: lispy-eval-and-replace,  Next: lispy-store-region-and-buffer,  Prev: lispy-unbind-variable,  Up: Function reference
+
+‘lispy-eval-and-replace’
+========================
+
+Bound to ‘xr’.
+
+   Eval current expression and replace it at point.
+
+     (foo <cursor>(</cursor>+ 2 2))
+   -> ‘xr’ ->
+     <cursor>(</cursor>foo 4)
+
+
+File: lispy.info,  Node: lispy-store-region-and-buffer,  Next: lispy-ediff-regions,  Prev: lispy-eval-and-replace,  Up: Function reference
+
+‘lispy-store-region-and-buffer’
+===============================
+
+Bound to ‘xB’.
+
+   Store current buffer and region for further usage.  When region isn’t
+active, store the bounds of current expression instead.
+
+   Currently, these functions make use of stored info:
+key   function name
+------------------------------------------------------
+B     *note lispy-ediff-regions: lispy-ediff-regions.
+
+
+File: lispy.info,  Node: lispy-ediff-regions,  Next: lispy-to-lambda,  Prev: lispy-store-region-and-buffer,  Up: Function reference
+
+‘lispy-ediff-regions’
+=====================
+
+Bound to ‘B’.
+
+   Comparable to ‘ediff-regions-linewise’, except the region and buffer
+selection is done differently:
+
+   • first buffer and region are defined by *note
+     lispy-store-region-and-buffer::.
+   • second buffer and region are the current buffer and region (or
+     current sexp bounds if the region isn’t active)
+
+   The buffers can of course be the same.
+
+   A useful scenario for this function is ‘C-x v ~’
+(‘vc-revision-other-window’) ‘RET’ and then follow up by selecting one
+function that was changed with ‘b’ in one buffer and with ‘B’ in other
+buffer.  This results in ediff just for that one single function.  This
+is helpful if ‘ediff-buffers’ isn’t what you want.
+
+   Another scenario is to compare two different functions that have
+similar code, for instance ‘lispy-move-down’ and ‘lispy-move-up’.
+
+
+File: lispy.info,  Node: lispy-to-lambda,  Next: lispy-to-defun,  Prev: lispy-ediff-regions,  Up: Function reference
+
+‘lispy-to-lambda’
+=================
+
+Use ‘xl’ (local) or ‘C-4 l’ (global) to turn the current function
+definition into a lambda.
+
+   One use case is when I want to edebug a lambda but not the function
+that’s using it.  So I extract the lambda with *note lispy-to-defun::,
+edebug it and turn it back into a lambda with this function.
+
+   Other use case is that I simply want to get the lambda since the
+function isn’t used anywhere else.
+
+   Starting with this:
+
+     (defun helm-owiki-action (x)
+       (find-file (expand-file-name
+                   (format "%s.org" x)<cursor> </cursor>
+                   helm-owiki-directory)))
+
+   by pressing ‘xl’ you will get this:
+
+     <cursor>(</cursor>lambda (x)
+       (find-file (expand-file-name
+                   (format "%s.org" x)
+                   helm-owiki-directory)))
+
+
+File: lispy.info,  Node: lispy-to-defun,  Next: lispy-parens,  Prev: lispy-to-lambda,  Up: Function reference
+
+‘lispy-to-defun’
+================
+
+Use ‘xd’ (local) or ‘C-4 d’ (global) to turn the current lambda into a
+defun.
+
+   You’ll be prompted for a name, the lambda will be replaced with that
+name and the new definition will be in the kill ring.
+
+   Starting with this:
+     (mapcar <cursor>(</cursor>lambda (x) (* x x))
+             (number-sequence 1 10))
+
+   by pressing ‘xd’ and entering ‘square’ and then pressing ‘d C-m C-y’
+you’ll get this:
+     (mapcar #'square
+             (number-sequence 1 10))
+     (defun square (x) (* x x))<cursor> </cursor>
+
+   It’s also possible to transform a toplevel function call into a defun
+with ‘xd’:
+
+   Starting with this
+     (foo-delete-region beg end)<cursor> </cursor>
+
+   by pressing ‘xd’ you’ll get this:
+     (defun foo-delete-region (beg end)
+       <cursor>)</cursor>
+
+   It’s also possible to transform a block into a defun.  Start with:
+     (defun cube (x)
+       (* x <cursor>(</cursor>* x x)))
+   Enter ‘xdsquare x[’ to get:
+     (defun square (x)
+       (* x x))
+
+     (defun cube (x)
+       (* x <cursor>(</cursor>square x)))
+
+
+File: lispy.info,  Node: lispy-parens,  Next: lispy-braces,  Prev: lispy-to-defun,  Up: Function reference
+
+‘lispy-parens’
+==============
+
+Bound to ‘(’.
+
+   Call *note lispy-pair:: specialized with ‘()’.
+
+
+File: lispy.info,  Node: lispy-braces,  Next: lispy-brackets,  Prev: lispy-parens,  Up: Function reference
+
+‘lispy-braces’
+==============
+
+Bound to ‘{’.
+
+   Call *note lispy-pair:: specialized with ‘{}’.
+
+
+File: lispy.info,  Node: lispy-brackets,  Next: lispy-quotes,  Prev: lispy-braces,  Up: Function reference
+
+‘lispy-brackets’
+================
+
+Bound to ‘}’.
+
+   Call *note lispy-pair:: specialized with ‘[]’.
+
+
+File: lispy.info,  Node: lispy-quotes,  Next: lispy-parens-down,  Prev: lispy-brackets,  Up: Function reference
+
+‘lispy-quotes’
+==============
+
+Bound to ".
+
+   Insert a pair of quotes around the point.
+
+   Takes a prefix ‘arg’.
+
+   The result depends on the following conditions, each tried one by one
+until one that holds true is found:
+
+* Menu:
+
+* region is active, contained in string: region is active contained in string.
+* region active::
+* in string and arg isn't nil::
+* in string and arg is nil::
+* arg isn't nil::
+* otherwise: otherwise (1).
+
+
+File: lispy.info,  Node: region is active contained in string,  Next: region active,  Up: lispy-quotes
+
+region is active, contained in string
+-------------------------------------
+
+Wrap the region with quoted quotes:
+     (message "We are the Knights who say <cursor>N</cursor><span class="region">i</span>")
+   -> " ->
+     (message "We are the Knights who say \"<cursor>N</cursor>i\"")
+
+
+File: lispy.info,  Node: region active,  Next: in string and arg isn't nil,  Prev: region is active contained in string,  Up: lispy-quotes
+
+region active
+-------------
+
+Wrap the region with quotes.
+     (list 'foo <span class="region">bar</span><cursor>)</cursor>
+   -> " ->
+     (list 'foo "<cursor>b</cursor>ar")
+
+
+File: lispy.info,  Node: in string and arg isn't nil,  Next: in string and arg is nil,  Prev: region active,  Up: lispy-quotes
+
+in string and ‘arg’ isn’t ‘nil’
+-------------------------------
+
+Unquote current string.
+     (list 'foo "<cursor>b</cursor>ar")
+   -> C-u " ->
+     (list 'foo bar<cursor>)</cursor>
+
+
+File: lispy.info,  Node: in string and arg is nil,  Next: arg isn't nil,  Prev: in string and arg isn't nil,  Up: lispy-quotes
+
+in string and ‘arg’ is ‘nil’
+----------------------------
+
+Insert a pair of quoted quotes around point.
+
+   Starting with
+     "We are the Knights who say <cursor>"</cursor>
+
+   pressing " will give:
+     "We are the Knights who say \"<cursor>\</cursor>""
+
+
+File: lispy.info,  Node: arg isn't nil,  Next: otherwise (1),  Prev: in string and arg is nil,  Up: lispy-quotes
+
+‘arg’ isn’t ‘nil’
+-----------------
+
+Forward to *note lispy-stringify::.
+
+
+File: lispy.info,  Node: otherwise (1),  Prev: arg isn't nil,  Up: lispy-quotes
+
+otherwise
+---------
+
+Insert quotes, with a single space on either side where appropriate, and
+position the point between the quotes.
+
+   Starting with
+     (message<cursor>)</cursor>
+
+   pressing " will give:
+     (message "<cursor>"</cursor>)
+
+
+File: lispy.info,  Node: lispy-parens-down,  Next: lispy-space,  Prev: lispy-quotes,  Up: Function reference
+
+‘lispy-parens-down’
+===================
+
+Bound to ‘C-8’.
+
+   Exit current list and insert a newline and a pair of parens.
+
+     (foo<cursor>)</cursor>
+   -> ‘C-8’ ->
+     (foo)
+     (<cursor>)</cursor>
+
+
+File: lispy.info,  Node: lispy-space,  Next: lispy-pair,  Prev: lispy-parens-down,  Up: Function reference
+
+‘lispy-space’
+=============
+
+Bound to ‘SPC’.
+
+   Insert a space.
+
+   Behave differently in this situation:
+
+     (<cursor>(</cursor>foo))
+   -> ‘SPC’ ->
+     (<cursor> </cursor>(foo))
+
+
+File: lispy.info,  Node: lispy-pair,  Next: lispy-x,  Prev: lispy-space,  Up: Function reference
+
+‘lispy-pair’
+============
+
+This function, taking arguments ‘left’ and ‘right’, is used to generate
+*note lispy-parens::, *note lispy-braces:: and *note lispy-brackets::,
+which in turn take prefix ‘arg’.  The arguments align with those of
+*note lispy-slurp::.
+
+   The result depends on the following conditions, each tried one by one
+until one that holds true is found:
+
+* Menu:
+
+* region active: region active (1).
+* inside a string before "\\"::
+* inside string or comment::
+* elisp character expression::
+* no arg is explicitly specified::
+* arg is positive::
+* arg is 0::
+* arg is -1::
+
+
+File: lispy.info,  Node: region active (1),  Next: inside a string before "\\",  Up: lispy-pair
+
+region active
+-------------
+
+Wrap the region with ‘left’ and ‘right’.
+
+
+File: lispy.info,  Node: inside a string before "\\",  Next: inside string or comment,  Prev: region active (1),  Up: lispy-pair
+
+inside a string before "\\"
+---------------------------
+
+Starting with
+     "a regex \\<cursor>"</cursor>
+   pressing ‘(’ will give:
+     "a regex \\(<cursor>\</cursor>\)"
+   and pressing ‘{’ will give:
+     "a regex \\{<cursor>\</cursor>\}"
+   and pressing ‘}’ will give:
+     "a regex \\[<cursor>\</cursor>\]"
+
+
+File: lispy.info,  Node: inside string or comment,  Next: elisp character expression,  Prev: inside a string before "\\",  Up: lispy-pair
+
+inside string or comment
+------------------------
+
+Insert ‘left’, ‘right’ and put the point between them.
+
+   Starting with:
+     "a string <cursor> </cursor>"
+key   result
+----------------------
+(     "a string ("
+)     "a string )"
+{     "a string {}"
+}     "a string []"
+
+
+File: lispy.info,  Node: elisp character expression,  Next: no arg is explicitly specified,  Prev: inside string or comment,  Up: lispy-pair
+
+elisp character expression
+--------------------------
+
+Starting with
+     ?\<cursor> </cursor>
+   pressing ‘(’ will self-insert it to give:
+     ?\(<cursor> </cursor>
+   This also works for ‘)’, ‘{’, ‘}’.
+
+   This doesn’t work for ‘[’ and ‘]’, they should be inserted with ‘C-q
+[’ and ‘C-q ]’.
+
+
+File: lispy.info,  Node: no arg is explicitly specified,  Next: arg is positive,  Prev: elisp character expression,  Up: lispy-pair
+
+no ‘arg’ is explicitly specified
+--------------------------------
+
+  1. Re-indent and insert space according to ‘lispy--space-unless’.
+  2. Insert ‘left’, ‘right’ and put the point between them.
+  3. Insert a space after ‘right’ if it’s appropriate.
+
+
+File: lispy.info,  Node: arg is positive,  Next: arg is 0,  Prev: no arg is explicitly specified,  Up: lispy-pair
+
+‘arg’ is positive
+-----------------
+
+Wrap that number of sexps with ‘left’ and ‘right’.
+
+   Starting with:
+     <cursor>(</cursor>do-some-thing)
+     (do-other-thing)
+
+   pressing ‘1(’ will give:
+     (<cursor> </cursor>(do-some-thing))
+     (do-other-thing)
+
+   ‘1’ here is responsible to setting ‘arg’ to 1.  ‘C-u’ will also cause
+a single sexp to be wrapped.
+
+
+File: lispy.info,  Node: arg is 0,  Next: arg is -1,  Prev: arg is positive,  Up: lispy-pair
+
+‘arg’ is 0
+----------
+
+Wrap as many sexps as possible.
+
+   Starting with:
+     (foo
+      <cursor>b</cursor>ar baz
+      quux)
+
+   pressing ‘M-0(’ will give:
+     (foo
+      (<cursor> </cursor>bar baz
+            quux))
+
+
+File: lispy.info,  Node: arg is -1,  Prev: arg is 0,  Up: lispy-pair
+
+‘arg’ is -1
+-----------
+
+Wrap to the end of the line where the current sexp ends or as far as
+possible before that position.
+
+   Starting with:
+     (foo
+      <cursor>b</cursor>ar baz
+      quux)
+
+   pressing ‘M--(’ will give:
+     (foo
+      (<cursor> </cursor>bar baz)
+      quux)
+
+
+File: lispy.info,  Node: lispy-x,  Next: lispy-kill,  Prev: lispy-pair,  Up: Function reference
+
+‘lispy-x’
+=========
+
+Bound to ‘x’ (locally) or ‘C-4’ (globally).
+
+   Just a prefix to calling other commands, *note see: G az AZ x x[a-z]
+local bindings.
+
+
+File: lispy.info,  Node: lispy-kill,  Next: lispy-new-copy,  Prev: lispy-x,  Up: Function reference
+
+‘lispy-kill’
+============
+
+Bound to ‘C-k’.
+
+   A replacement for ‘kill-line’ that keeps parens consistent.
+
+   The result depends on the following conditions, each tried one by one
+until one that holds true is found:
+
+* Menu:
+
+* inside comment::
+* inside string and string extends past this line::
+* inside string that ends on this line::
+* on a line of whitespace::
+* inside empty list::
+* parens between point and eol are balanced::
+* possible to up-list::
+* otherwise: otherwise (2).
+
+
+File: lispy.info,  Node: inside comment,  Next: inside string and string extends past this line,  Up: lispy-kill
+
+inside comment
+--------------
+
+Call ‘kill-line’.
+
+
+File: lispy.info,  Node: inside string and string extends past this line,  Next: inside string that ends on this line,  Prev: inside comment,  Up: lispy-kill
+
+inside string and string extends past this line
+-----------------------------------------------
+
+Call ‘kill-line’.
+
+
+File: lispy.info,  Node: inside string that ends on this line,  Next: on a line of whitespace,  Prev: inside string and string extends past this line,  Up: lispy-kill
+
+inside string that ends on this line
+------------------------------------
+
+Delete up to the end of the string.
+
+
+File: lispy.info,  Node: on a line of whitespace,  Next: inside empty list,  Prev: inside string that ends on this line,  Up: lispy-kill
+
+on a line of whitespace
+-----------------------
+
+Delete whole line, moving to the next one, and re-indent.
+
+
+File: lispy.info,  Node: inside empty list,  Next: parens between point and eol are balanced,  Prev: on a line of whitespace,  Up: lispy-kill
+
+inside empty list
+-----------------
+
+Delete the empty list.
+
+
+File: lispy.info,  Node: parens between point and eol are balanced,  Next: possible to up-list,  Prev: inside empty list,  Up: lispy-kill
+
+parens between point and eol are balanced
+-----------------------------------------
+
+Call ‘kill-line’.
+
+
+File: lispy.info,  Node: possible to up-list,  Next: otherwise (2),  Prev: parens between point and eol are balanced,  Up: lispy-kill
+
+possible to ‘up-list’
+---------------------
+
+Delete from point to end of list.
+
+
+File: lispy.info,  Node: otherwise (2),  Prev: possible to up-list,  Up: lispy-kill
+
+otherwise
+---------
+
+Delete current sexp.
+
+
+File: lispy.info,  Node: lispy-new-copy,  Next: lispy-yank,  Prev: lispy-kill,  Up: Function reference
+
+‘lispy-new-copy’
+================
+
+Bound to ‘n’.
+
+   Copy current sexp or region to kill ring.
+
+
+File: lispy.info,  Node: lispy-yank,  Next: lispy-delete,  Prev: lispy-new-copy,  Up: Function reference
+
+‘lispy-yank’
+============
+
+Bound to ‘C-y’.
+
+   Replaces ‘yank’.  The only difference is that yanking into an empty
+string will add escape sequences.
+
+   Starting with:
+     <cursor>(</cursor>message "test")
+
+   pressing ‘C-k’ " ‘C-y’ will give:
+     "(message \"test\")<cursor>"</cursor>
+
+   whereas a regular ‘yank’ would give:
+     "(message "test")<cursor>"</cursor>
+
+
+File: lispy.info,  Node: lispy-delete,  Next: lispy-delete-backward,  Prev: lispy-yank,  Up: Function reference
+
+‘lispy-delete’
+==============
+
+Bound to ‘C-d’.
+
+   Replaces ‘delete-char’, keeping parens consistent.
+
+   The result depends on the following conditions, each tried one by one
+until one that holds true is found:
+
+* Menu:
+
+* region active: region active (2).
+* inside a string before \"::
+* at last char of the string::
+* in string near \::
+* the next char isn't end of string::
+* inside comment: inside comment (1).
+* before lispy-left::
+* before "::
+* before lispy-right::
+* otherwise: otherwise (3).
+
+
+File: lispy.info,  Node: region active (2),  Next: inside a string before \",  Up: lispy-delete
+
+region active
+-------------
+
+Delete region.
+
+
+File: lispy.info,  Node: inside a string before \",  Next: at last char of the string,  Prev: region active (2),  Up: lispy-delete
+
+inside a string before \"
+-------------------------
+
+Delete \".
+
+     "say <cursor>\</cursor>"hi\""
+   -> ‘C-d’ ->
+     "say <cursor>h</cursor>i\""
+
+
+File: lispy.info,  Node: at last char of the string,  Next: in string near \,  Prev: inside a string before \",  Up: lispy-delete
+
+at last char of the string
+--------------------------
+
+Move to the beginning of string.  This allows to delete the whole string
+with the next ‘C-d’.
+
+     (message "more gold is required<cursor>"</cursor>)
+   -> ‘C-d’ ->
+     (message <cursor>"</cursor>more gold is required")
+
+
+File: lispy.info,  Node: in string near \,  Next: the next char isn't end of string,  Prev: at last char of the string,  Up: lispy-delete
+
+in string near \
+----------------
+
+Remove \.
+
+     (looking-at "\\([a-z]+<cursor>\</cursor>\)")
+   -> ‘C-d’ ->
+     (looking-at "[a-z]+<cursor>"</cursor>)
+     (looking-at "<cursor>\</cursor>\([a-z]+\\)")
+   -> ‘C-d’ ->
+     (looking-at "<cursor>[</cursor>a-z]+")
+
+
+File: lispy.info,  Node: the next char isn't end of string,  Next: inside comment (1),  Prev: in string near \,  Up: lispy-delete
+
+the next char isn’t end of string
+---------------------------------
+
+Call ‘delete-char’.
+
+
+File: lispy.info,  Node: inside comment (1),  Next: before lispy-left,  Prev: the next char isn't end of string,  Up: lispy-delete
+
+inside comment
+--------------
+
+Call ‘delete-char’.
+
+
+File: lispy.info,  Node: before lispy-left,  Next: before ",  Prev: inside comment (1),  Up: lispy-delete
+
+before ‘lispy-left’
+-------------------
+
+Delete ‘arg’ sexps.
+
+     (foo <cursor>(</cursor>bar) (baz))
+   -> ‘2’ ‘C-d’ ->
+     <cursor>(</cursor>foo)
+
+
+File: lispy.info,  Node: before ",  Next: before lispy-right,  Prev: before lispy-left,  Up: lispy-delete
+
+before "
+--------
+
+Delete string.
+
+
+File: lispy.info,  Node: before lispy-right,  Next: otherwise (3),  Prev: before ",  Up: lispy-delete
+
+before ‘lispy-right’
+--------------------
+
+Delete containing sexp.
+
+     (foo (bar) (baz<cursor>)</cursor>)
+   -> ‘C-d’ ->
+     (foo (bar)<cursor>)</cursor>
+
+
+File: lispy.info,  Node: otherwise (3),  Prev: before lispy-right,  Up: lispy-delete
+
+otherwise
+---------
+
+Call ‘delete-char’.
+
+
+File: lispy.info,  Node: lispy-delete-backward,  Next: lispy-mark,  Prev: lispy-delete,  Up: Function reference
+
+‘lispy-delete-backward’
+=======================
+
+Bound to ‘DEL’.
+
+   Replaces ‘backward-delete-char’, keeping parens consistent.
+
+   The result depends on the following conditions, each tried one by one
+until one that holds true is found:
+
+* Menu:
+
+* region active: region active (3).
+* at first char of the string::
+* in string near \: in string near \ (1).
+* in string or comment::
+* after lispy-right::
+* before ‘lispy-left’: before lispy-left (1).
+* after a string::
+* otherwise: otherwise (4).
+
+
+File: lispy.info,  Node: region active (3),  Next: at first char of the string,  Up: lispy-delete-backward
+
+region active
+-------------
+
+Delete region.
+
+
+File: lispy.info,  Node: at first char of the string,  Next: in string near \ (1),  Prev: region active (3),  Up: lispy-delete-backward
+
+at first char of the string
+---------------------------
+
+Move to the end of the string.  This allows to delete the whole string
+with the next ‘DEL’.
+
+     (message "<cursor>m</cursor>ore gold is required")
+   -> ‘DEL’ ->
+     (message "more gold is required"<cursor>)</cursor>
+
+
+File: lispy.info,  Node: in string near \ (1),  Next: in string or comment,  Prev: at first char of the string,  Up: lispy-delete-backward
+
+in string near \
+----------------
+
+Remove \.
+
+     (looking-at "\\([a-z]+\\)<cursor>"</cursor>)
+   -> ‘DEL’ ->
+     (looking-at "[a-z]+<cursor>"</cursor>)
+     (looking-at "\\(<cursor>[</cursor>a-z]+\\)")
+   -> ‘DEL’ ->
+     (looking-at "<cursor>[</cursor>a-z]+")
+
+
+File: lispy.info,  Node: in string or comment,  Next: after lispy-right,  Prev: in string near \ (1),  Up: lispy-delete-backward
+
+in string or comment
+--------------------
+
+Call ‘backward-delete-char’.
+
+
+File: lispy.info,  Node: after lispy-right,  Next: before lispy-left (1),  Prev: in string or comment,  Up: lispy-delete-backward
+
+after ‘lispy-right’
+-------------------
+
+Delete ‘arg’ sexps.
+
+     (foo (bar) (baz)<cursor>)</cursor>
+   -> ‘2’ ‘DEL’ ->
+     (foo)<cursor> </cursor>
+
+
+File: lispy.info,  Node: before lispy-left (1),  Next: after a string,  Prev: after lispy-right,  Up: lispy-delete-backward
+
+before ‘lispy-left’
+-------------------
+
+Delete containing sexp.
+
+     (foo (bar) (<cursor>b</cursor>az))
+   -> ‘DEL’ ->
+     (foo (bar)<cursor>)</cursor>
+
+
+File: lispy.info,  Node: after a string,  Next: otherwise (4),  Prev: before lispy-left (1),  Up: lispy-delete-backward
+
+after a string
+--------------
+
+Delete string.
+
+     (message "more gold is required"<cursor>)</cursor>
+   -> ‘DEL’ ->
+     (message)<cursor> </cursor>
+
+
+File: lispy.info,  Node: otherwise (4),  Prev: after a string,  Up: lispy-delete-backward
+
+otherwise
+---------
+
+Call ‘backward-delete-char’.
+
+
+File: lispy.info,  Node: lispy-mark,  Next: lispy-kill-at-point,  Prev: lispy-delete-backward,  Up: Function reference
+
+‘lispy-mark’
+============
+
+Bound to ‘C-M-,’.
+
+   Mark the smallest comment or string or list that includes point.
+
+   This command will expand region when repeated.
+
+
+File: lispy.info,  Node: lispy-kill-at-point,  Next: lispy-mark-symbol,  Prev: lispy-mark,  Up: Function reference
+
+‘lispy-kill-at-point’
+=====================
+
+Bound to ‘C-,’.
+
+   Kill the smallest comment or string or list that includes point.
+
+
+File: lispy.info,  Node: lispy-mark-symbol,  Next: lispy-string-oneline,  Prev: lispy-kill-at-point,  Up: Function reference
+
+‘lispy-mark-symbol’
+===================
+
+Bound to ‘M-m’.
+
+   The result depends on the following conditions, each tried one by one
+until one that holds true is found:
+
+* Menu:
+
+* lispy-bind-variable in progress::
+* in comment::
+* looking at space or parens::
+* looking back ‘lispy-right’: looking back lispy-right (1).
+* region is active::
+* otherwise: otherwise (5).
+
+
+File: lispy.info,  Node: lispy-bind-variable in progress,  Next: in comment,  Up: lispy-mark-symbol
+
+‘lispy-bind-variable’ in progress
+---------------------------------
+
+Exit ‘iedit-mode’ and mark the newly bound variable with a region.  This
+allows to use *note lispy-convolute:: to place the new ‘let’ binding
+into an appropriate place.
+
+
+File: lispy.info,  Node: in comment,  Next: looking at space or parens,  Prev: lispy-bind-variable in progress,  Up: lispy-mark-symbol
+
+in comment
+----------
+
+Mark comment.
+
+
+File: lispy.info,  Node: looking at space or parens,  Next: looking back lispy-right (1),  Prev: in comment,  Up: lispy-mark-symbol
+
+looking at space or parens
+--------------------------
+
+Skip space and parens and mark the next thing between them.
+
+
+File: lispy.info,  Node: looking back lispy-right (1),  Next: region is active,  Prev: looking at space or parens,  Up: lispy-mark-symbol
+
+looking back ‘lispy-right’
+--------------------------
+
+Mark last symbol in previous list.
+
+
+File: lispy.info,  Node: region is active,  Next: otherwise (5),  Prev: looking back lispy-right (1),  Up: lispy-mark-symbol
+
+region is active
+----------------
+
+Call ‘forward-sexp’.
+
+
+File: lispy.info,  Node: otherwise (5),  Prev: region is active,  Up: lispy-mark-symbol
+
+otherwise
+---------
+
+Forward to ‘lispy-mark’.
+
+
+File: lispy.info,  Node: lispy-string-oneline,  Next: lispy-outline-next,  Prev: lispy-mark-symbol,  Up: Function reference
+
+‘lispy-string-oneline’
+======================
+
+Bound to ‘O’, when a string is marked.
+
+   Convert current string to one line.
+
+   Starting with
+     (message "foo<cursor> </cursor>
+     bar
+     baz")
+
+   pressing ‘M-m O’ will give:
+
+     (message "foo\nbar\nbaz"<cursor>)</cursor>
+
+   This can be useful when debugging a macro-generated function (i.e.
+it doesn’t have a body).  First produce the body with ‘symbol-function’,
+then prettify the body with ‘M’ and ‘O’, then ‘edebug’ with ‘x e’.
+
+
+File: lispy.info,  Node: lispy-outline-next,  Next: lispy-outline-prev,  Prev: lispy-string-oneline,  Up: Function reference
+
+‘lispy-outline-next’
+====================
+
+Bound to ‘J’.
+
+   Takes a numeric prefix ‘arg’ and calls ‘outline-next-visible-heading’
+‘arg’ times or until past the last ‘outline-regexp’.
+
+   See *note lispy-shifttab:: for more info.
+
+
+File: lispy.info,  Node: lispy-outline-prev,  Next: lispy-shifttab,  Prev: lispy-outline-next,  Up: Function reference
+
+‘lispy-outline-prev’
+====================
+
+Bound to ‘K’.
+
+   Takes a numeric prefix ‘arg’ and calls
+‘outline-previous-visible-heading’ ‘arg’ times or until past the first
+‘outline-regexp’.
+
+   See *note lispy-shifttab:: for more info.
+
+
+File: lispy.info,  Node: lispy-shifttab,  Next: lispy-tab,  Prev: lispy-outline-prev,  Up: Function reference
+
+‘lispy-shifttab’
+================
+
+Bound to ‘I’.
+
+   Toggles on/off an ‘org-mode’-like outline.
+
+   To make this work, ‘lispy-mode’ will modify ‘outline-regexp’ and
+‘outline-level-function’ for the current buffer while it’s on.
+
+   To give an example of the recommended outline syntax:
+
+     ;;* Level 1
+     ;;** Level 2
+     ;;*** Level 3
+
+   You can create new outlines with ‘M-RET’ (‘lispy-meta-return’).
+
+   You can promote the current outline with:
+   • ‘M-right’ (‘lispy-meta-right’),
+   • ‘l’ (‘lispy-right’).
+
+   You can demote the current outline with:
+   • ‘M-left’ (‘lispy-meta-left’),
+   • ‘h’ (‘lispy-left’).
+
+   Useful together with:
+
+key   function name
+----------------------------------------------------
+J     *note lispy-outline-next: lispy-outline-next.
+K     *note lispy-outline-prev: lispy-outline-prev.
+i     *note lispy-tab: lispy-tab.
+
+
+File: lispy.info,  Node: lispy-tab,  Next: lispy-edebug-stop,  Prev: lispy-shifttab,  Up: Function reference
+
+‘lispy-tab’
+===========
+
+Bound to ‘i’.
+
+   The result depends on the following conditions, each tried one by one
+until one that holds true is found:
+
+* Menu:
+
+* in outline::
+* region is active: region is active (1).
+* otherwise: otherwise (6).
+
+
+File: lispy.info,  Node: in outline,  Next: region is active (1),  Up: lispy-tab
+
+in outline
+----------
+
+Hide/show outline.
+
+
+File: lispy.info,  Node: region is active (1),  Next: otherwise (6),  Prev: in outline,  Up: lispy-tab
+
+region is active
+----------------
+
+Forward to *note lispy-mark-car::.
+
+
+File: lispy.info,  Node: otherwise (6),  Prev: region is active (1),  Up: lispy-tab
+
+otherwise
+---------
+
+Indent and prettify code.  Prettify means to remove hanging closing
+parens, extra spaces, and to add space where it’s needed, e.g.  ‘(lambda
+(x))’ instead of ‘(lambda(x))’:
+
+     <cursor>(</cursor>defun test-function ()
+       (message  "testing: %s"
+                 (mapconcat
+                  (lambda(x) (prin1-to-string
+                         (* x x)
+                         ))
+                  (list 0 1 2 3 4 5)
+                  ",")
+                 )
+       )
+   -> ‘i’ ->
+     <cursor>(</cursor>defun test-function ()
+       (message "testing: %s"
+                (mapconcat
+                 (lambda (x) (prin1-to-string
+                              (* x x)))
+                 (list 0 1 2 3 4 5)
+                 ",")))
+
+
+File: lispy.info,  Node: lispy-edebug-stop,  Next: lispy-flatten,  Prev: lispy-tab,  Up: Function reference
+
+‘lispy-edebug-stop’
+===================
+
+Bound to ‘Z’.
+
+   Does the same as ‘q’ in ‘edebug’, except current function’s arguments
+will be saved to their current values.
+
+   This allows to continue debugging with *note lispy-eval:: (‘e’) from
+‘edebug’’s current context.
+
+   The advantage is that you can edit the code as you debug, as ‘edebug’
+puts your code in read-only mode.
+
+
+File: lispy.info,  Node: lispy-flatten,  Next: lispy-to-ifs,  Prev: lispy-edebug-stop,  Up: Function reference
+
+‘lispy-flatten’
+===============
+
+Bound to ‘xf’.
+
+   Inline current function or macro call, i.e.  replace it with function
+body.  The function should be interned and its body find-able.
+
+     <cursor>(</cursor>setq-local foo 10)
+   -> ‘xf’ ->
+     <cursor>(</cursor>set (make-local-variable 'foo) 10)
+
+
+File: lispy.info,  Node: lispy-to-ifs,  Next: lispy-to-cond,  Prev: lispy-flatten,  Up: Function reference
+
+‘lispy-to-ifs’
+==============
+
+Bound to ‘xi’.
+
+   Transform current ‘cond’ expression to equivalent nested ‘if’
+expressions.  The whitespace, such as comments and newlines, is
+preserved as much as possible.
+
+   The reverse is *note lispy-to-cond::.
+
+     <cursor>(</cursor>cond ((region-active-p)
+            (dotimes-protect arg
+              (if (= (point) (region-beginning))
+                  (progn
+                    (forward-sexp 1)
+                    (skip-chars-forward " \n"))
+                (forward-sexp 1))))
+
+           ((looking-at lispy-left)
+            (lispy-forward arg)
+            (let ((pt (point)))
+              (if (lispy-forward 1)
+                  (lispy-backward 1)
+                (goto-char pt))))
+
+           ((looking-back lispy-right)
+            (let ((pt (point)))
+              (unless (lispy-forward arg)
+                (goto-char pt)
+                (lispy-backward 1))))
+
+           (t
+            (lispy-forward 1)
+            (lispy-backward 1)))
+   -> ‘xi’ ->
+     <cursor>(</cursor>if (region-active-p)
+         (dotimes-protect arg
+           (if (= (point) (region-beginning))
+               (progn
+                 (forward-sexp 1)
+                 (skip-chars-forward " \n"))
+             (forward-sexp 1)))
+
+       (if (looking-at lispy-left)
+           (progn
+             (lispy-forward arg)
+             (let ((pt (point)))
+               (if (lispy-forward 1)
+                   (lispy-backward 1)
+                 (goto-char pt))))
+
+         (if (looking-back lispy-right)
+             (let ((pt (point)))
+               (unless (lispy-forward arg)
+                 (goto-char pt)
+                 (lispy-backward 1)))
+
+           (lispy-forward 1)
+           (lispy-backward 1))))
+
+
+File: lispy.info,  Node: lispy-to-cond,  Next: lispy-visit,  Prev: lispy-to-ifs,  Up: Function reference
+
+‘lispy-to-cond’
+===============
+
+Bound to ‘xc’.
+
+   Transform current nested ‘if’ expressions to an equivalent ‘cond’
+expression.  Also works for ‘case’.  The whitespace, such as comments
+and newlines, is preserved as much as possible.
+
+   The reverse is *note lispy-to-ifs::.
+
+     <cursor>(</cursor>if (region-active-p)
+         (dotimes-protect arg
+           (if (= (point) (region-beginning))
+               (progn
+                 (forward-sexp 1)
+                 (skip-chars-forward " \n"))
+             (forward-sexp 1)))
+
+       (if (looking-at lispy-left)
+           (progn
+             (lispy-forward arg)
+             (let ((pt (point)))
+               (if (lispy-forward 1)
+                   (lispy-backward 1)
+                 (goto-char pt))))
+
+         (if (looking-back lispy-right)
+             (let ((pt (point)))
+               (unless (lispy-forward arg)
+                 (goto-char pt)
+                 (lispy-backward 1)))
+
+           (lispy-forward 1)
+           (lispy-backward 1))))
+   -> ‘xc’ ->
+     <cursor>(</cursor>cond ((region-active-p)
+            (dotimes-protect arg
+              (if (= (point) (region-beginning))
+                  (progn
+                    (forward-sexp 1)
+                    (skip-chars-forward " \n"))
+                (forward-sexp 1))))
+
+           ((looking-at lispy-left)
+            (lispy-forward arg)
+            (let ((pt (point)))
+              (if (lispy-forward 1)
+                  (lispy-backward 1)
+                (goto-char pt))))
+
+           ((looking-back lispy-right)
+            (let ((pt (point)))
+              (unless (lispy-forward arg)
+                (goto-char pt)
+                (lispy-backward 1))))
+
+           (t
+            (lispy-forward 1)
+            (lispy-backward 1)))
+
+
+File: lispy.info,  Node: lispy-visit,  Next: lispy-narrow,  Prev: lispy-to-cond,  Up: Function reference
+
+‘lispy-visit’
+=============
+
+Bound to ‘V’.
+
+   Visit another file within this project using ‘projectile’
+(https://github.com/bbatsov/projectile) or ‘find-file-in-project’
+(https://github.com/technomancy/find-file-in-project) (customize
+‘lispy-visit-method’ to choose).
+
+   Use ‘V’ to call ‘projectile-find-file’.  Use ‘2V’ to call
+‘projectile-find-file-other-window’.
+
+
+File: lispy.info,  Node: lispy-narrow,  Next: lispy-widen,  Prev: lispy-visit,  Up: Function reference
+
+‘lispy-narrow’
+==============
+
+Bound to ‘N’.
+
+   Narrow
+(http://www.gnu.org/software/emacs/manual/html_node/emacs/Narrowing.html)
+to current sexp or region.
+
+
+File: lispy.info,  Node: lispy-widen,  Next: lispy-oneline,  Prev: lispy-narrow,  Up: Function reference
+
+‘lispy-widen’
+=============
+
+Bound to ‘W’.
+
+   Forward to ‘widen’.
+
+
+File: lispy.info,  Node: lispy-oneline,  Next: lispy-multiline,  Prev: lispy-widen,  Up: Function reference
+
+‘lispy-oneline’
+===============
+
+Bound to ‘O’.
+
+   Turn current sexp into one line.
+     <cursor>(</cursor>progn
+       (foo)
+       (bar))
+   -> ‘O’ ->
+     <cursor>(</cursor>progn (foo) (bar))
+
+
+File: lispy.info,  Node: lispy-multiline,  Next: lispy-view,  Prev: lispy-oneline,  Up: Function reference
+
+‘lispy-multiline’
+=================
+
+Bound to ‘M’.
+
+   Extend current sexp into multiple lines.  Especially useful on
+results of ‘macroexpand’.
+
+   Turn current sexp into one line.
+     <cursor>(</cursor>progn (foo) (bar) (baz))
+   -> ‘M’ ->
+     <cursor>(</cursor>progn (foo)
+            (bar)
+            (baz))
+
+
+File: lispy.info,  Node: lispy-view,  Next: lispy-slurp,  Prev: lispy-multiline,  Up: Function reference
+
+‘lispy-view’
+============
+
+Bound to ‘v’.
+
+   Recenter current sexp to be on the first line of the window.  When
+called twice in a row, recenter back to the original position.
+
+   It’s just a slightly modified shorthand for the standard ‘C-l’
+(‘recenter-top-bottom’).
+
+
+File: lispy.info,  Node: lispy-slurp,  Next: lispy-barf,  Prev: lispy-view,  Up: Function reference
+
+‘lispy-slurp’
+=============
+
+Bound to ‘>’.
+
+   Grow either current sexp or region (if it’s active) in appropriate
+direction.  Opposite of *note lispy-barf::.  With an arg of ‘0’, grow as
+far as possible.  With an arg of ‘-1’, grow until the end of the line
+where the current sexp ends or as far as possible before that position.
+
+   Example 1:
+     (progn)<cursor> </cursor>(foo) (bar)
+   -> ‘>’ ->
+     (progn (foo))<cursor> </cursor>(bar)
+   Example 2:
+     "foo" <cursor>(</cursor>bar)
+   -> ‘>’ ->
+     <cursor>(</cursor>"foo" bar)
+   Example 3:
+
+     (foo <span class="region">bar</span><cursor> </cursor>baz)
+   -> ‘>’ ->
+     (foo <span class="region">bar baz</span><cursor>)</cursor>
+   Example 4:
+
+     ((foo)<cursor> </cursor>bar baz
+      quux)
+   -> ‘0>’ ->
+     ((foo bar baz
+           quux)<cursor>)</cursor>
+   Example 5:
+
+     ((foo)<cursor> </cursor>bar baz
+      quux)
+   -> ‘M-->’ ->
+     ((foo bar baz)<cursor> </cursor>
+      quux)
+
+
+File: lispy.info,  Node: lispy-barf,  Next: lispy-other-mode,  Prev: lispy-slurp,  Up: Function reference
+
+‘lispy-barf’
+============
+
+Bound to ‘<’.
+
+   Shrink either current sexp or region (if it’s active) in appropriate
+direction.  Opposite of *note lispy-slurp::.
+
+   Example 1:
+     (progn (foo))<cursor> </cursor>(bar)
+   -> ‘<’ ->
+     (progn)<cursor> </cursor>(foo) (bar)
+   Example 2:
+     <cursor>(</cursor>"foo" bar)
+   -> ‘<’ ->
+     "foo" <cursor>(</cursor>bar)
+   Example 3:
+     (foo <span class="region">bar bar</span><cursor>)</cursor>
+   -> ‘<’ ->
+     (foo <span class="region">bar</span><cursor> </cursor>bar)
+
+
+File: lispy.info,  Node: lispy-other-mode,  Next: lispy-move-left,  Prev: lispy-barf,  Up: Function reference
+
+‘lispy-other-mode’
+==================
+
+Bound to ‘o’.
+
+   This is a minor mode that changes the behavior of several key
+bindings, most notably the ‘hjkl’ arrow keys.  This mode can is turned
+off automatically after one of its key bindings is used.  You can toggle
+it off with ‘o’ if you change your mind about calling the modified
+‘hjkl’.
+
+key     function name
+--------------------------------------------------
+‘h’     *note lispy-move-left: lispy-move-left.
+‘j’     *note lispy-down-slurp: lispy-down-slurp.
+‘k’     *note lispy-up-slurp: lispy-up-slurp.
+‘l’     *note lispy-move-right: lispy-move-right.
+‘SPC’
+‘g’
+
+
+File: lispy.info,  Node: lispy-move-left,  Next: lispy-down-slurp,  Prev: lispy-other-mode,  Up: Function reference
+
+‘lispy-move-left’
+=================
+
+Bound to ‘oh’.
+
+   Move current expression to the left, outside the current list.
+
+     (require 'ob-python)
+     (let ((color "Blue"))
+       <cursor>(</cursor>message "What... is your favorite color?")
+       (message "%s. No yel..." color))
+   -> ‘oh’ ->
+     (require 'ob-python)
+     <cursor>(</cursor>message "What... is your favorite color?")
+     (let ((color "Blue"))
+       (message "%s. No yel..." color))
+
+
+File: lispy.info,  Node: lispy-down-slurp,  Next: lispy-up-slurp,  Prev: lispy-move-left,  Up: Function reference
+
+‘lispy-down-slurp’
+==================
+
+Bound to ‘oj’.
+
+   Move current expression to become the first element of the first list
+below.
+
+     <cursor>(</cursor>first!)
+     '(foo bar)
+   -> ‘oj’ ->
+     '(<cursor>(</cursor>first!)
+       foo bar)
+
+
+File: lispy.info,  Node: lispy-up-slurp,  Next: lispy-move-right,  Prev: lispy-down-slurp,  Up: Function reference
+
+‘lispy-up-slurp’
+================
+
+Bound to ‘ok’.
+
+   Move current expression to become the last element of the first list
+above.
+
+     (list 'my-sword
+           'my-bow)
+     <cursor>(</cursor>my-axe)
+   -> ‘ok’ ->
+     (list 'my-sword
+           'my-bow
+           <cursor>(</cursor>my-axe))
+
+
+File: lispy.info,  Node: lispy-move-right,  Next: lispy-comment,  Prev: lispy-up-slurp,  Up: Function reference
+
+‘lispy-move-right’
+==================
+
+Bound to ‘ol’.
+
+   Move current expression to the right, outside the current list.
+
+     (require 'ob-python)
+     (message "What... is your favorite color?")
+     (let ((color "Blue"))
+       (message color)
+       <cursor>(</cursor>message "Go on. Off you go."))
+   -> ‘ol’ ->
+     (require 'ob-python)
+     (message "What... is your favorite color?")
+     (let ((color "Blue"))
+       (message color))
+     <cursor>(</cursor>message "Go on. Off you go.")
+
+
+File: lispy.info,  Node: lispy-comment,  Next: lispy-clone,  Prev: lispy-move-right,  Up: Function reference
+
+‘lispy-comment’
+===============
+
+Bound to ‘;’.
+
+   Comment current expression or region.  With a prefix arg, comment
+many expressions.  With a prefix arg and already inside comment,
+uncomment instead.
+
+     (require 'ob-python)
+     <cursor>(</cursor>defun cheeseshop (kind)
+       (message "Do you have any %s?" kind))
+   -> ‘;’ ->
+     <cursor>(</cursor>require 'ob-python)
+     ;; (defun cheeseshop (kind)
+     ;;   (message "Do you have any %s?" kind))
+
+
+File: lispy.info,  Node: lispy-clone,  Next: lispy-goto,  Prev: lispy-comment,  Up: Function reference
+
+‘lispy-clone’
+=============
+
+Bound to ‘c’.
+
+   Copy current list or region and paste it below, without changing
+point or mark.
+
+   With a prefix arg, copy that many times.
+
+     <cursor>(</cursor>message "A witch!")
+   -> ‘3c’ ->
+     <cursor>(</cursor>message "A witch!")
+     (message "A witch!")
+     (message "A witch!")
+     (message "A witch!")
+
+
+File: lispy.info,  Node: lispy-goto,  Next: lispy-goto-local,  Prev: lispy-clone,  Up: Function reference
+
+‘lispy-goto’
+============
+
+Bound to ‘g’.
+
+   Collect the tags (e.g.  functions, variables ...) in current
+directory and offer a helm completion list to jump to a selected tag.
+
+
+File: lispy.info,  Node: lispy-goto-local,  Next: lispy-goto-recursive,  Prev: lispy-goto,  Up: Function reference
+
+‘lispy-goto-local’
+==================
+
+Bound to ‘G’.
+
+   Similar to *note lispy-goto::, but only current file’s tags are used
+instead of whole directory’s tags.
+
+
+File: lispy.info,  Node: lispy-goto-recursive,  Next: lispy-goto-projectile,  Prev: lispy-goto-local,  Up: Function reference
+
+‘lispy-goto-recursive’
+======================
+
+Bound to ‘ogr’.
+
+   Similar to *note lispy-goto::, but all sub-directories’ tags are used
+in addition to directory’s tags.
+
+
+File: lispy.info,  Node: lispy-goto-projectile,  Next: lispy-goto-elisp-commands,  Prev: lispy-goto-recursive,  Up: Function reference
+
+‘lispy-goto-projectile’
+=======================
+
+Bound to ‘0g’ and ‘ogp’.
+
+   Similar to *note lispy-goto-recursive::, but
+‘projectile-project-root’ is used as the base directory.
+
+
+File: lispy.info,  Node: lispy-goto-elisp-commands,  Next: lispy-mark-list,  Prev: lispy-goto-projectile,  Up: Function reference
+
+‘lispy-goto-elisp-commands’
+===========================
+
+Bound to ‘oge’.
+
+   Navigate to interactive Elisp functions (commands) in current file.
+
+
+File: lispy.info,  Node: lispy-mark-list,  Next: lispy-raise,  Prev: lispy-goto-elisp-commands,  Up: Function reference
+
+‘lispy-mark-list’
+=================
+
+Bound to ‘m’.
+
+   Mark the current sexp.  When the mark is already active, deactivate
+it instead.
+
+
+File: lispy.info,  Node: lispy-raise,  Next: lispy-move-down,  Prev: lispy-mark-list,  Up: Function reference
+
+‘lispy-raise’
+=============
+
+Bound to ‘r’.
+
+   Use current sexp or region as replacement for its parent.
+
+     (let ((foo 1))
+       <cursor>(</cursor>+ bar baz))
+   -> ‘r’ ->
+     <cursor>(</cursor>+ bar baz)
+
+
+File: lispy.info,  Node: lispy-move-down,  Next: lispy-move-up,  Prev: lispy-raise,  Up: Function reference
+
+‘lispy-move-down’
+=================
+
+Bound to ‘s’.
+
+   Move current sexp or region down arg times.  Don’t exit the parent
+list.  Also works for outlines.
+
+     (progn
+       <cursor>(</cursor>foo)
+       (bar)
+       (baz))
+   -> ‘s’ ->
+     (progn
+       (bar)
+       <cursor>(</cursor>foo)
+       (baz))
+
+
+File: lispy.info,  Node: lispy-move-up,  Next: lispy-teleport,  Prev: lispy-move-down,  Up: Function reference
+
+‘lispy-move-up’
+===============
+
+Bound to ‘w’.
+
+   Move current sexp or region up arg times.  Don’t exit the parent
+list.  Also works for outlines.
+
+   It’s the reciprocal of *note lispy-move-down::.
+
+
+File: lispy.info,  Node: lispy-teleport,  Next: lispy-undo,  Prev: lispy-move-up,  Up: Function reference
+
+‘lispy-teleport’
+================
+
+Bound to ‘t’.
+
+   Move the current sexp or region to a location specified by *note
+lispy-ace-paren::.  Press ‘tt’ to teleport to any sexp in the current
+window.
+
+
+File: lispy.info,  Node: lispy-undo,  Next: lispy-ace-symbol-replace,  Prev: lispy-teleport,  Up: Function reference
+
+‘lispy-undo’
+============
+
+Bound to ‘u’.
+
+   Forward to ‘undo’.  If the mark is active, deactivate it first.
+
+
+File: lispy.info,  Node: lispy-ace-symbol-replace,  Next: lispy-eval-other-window,  Prev: lispy-undo,  Up: Function reference
+
+‘lispy-ace-symbol-replace’
+==========================
+
+Bound to ‘H’.
+
+   Calls *note lispy-ace-symbol:: and deletes the selected symbol.
+
+
+File: lispy.info,  Node: lispy-eval-other-window,  Next: lispy-describe,  Prev: lispy-ace-symbol-replace,  Up: Function reference
+
+‘lispy-eval-other-window’
+=========================
+
+Bound to ‘p’.
+
+   Eval the current sexp in the context of the other window.  This is
+useful for debugging interactive Elisp functions:
+
+   • in one window keep the code of the function being debugged
+   • in the other window, keep the buffer on which the debugged function
+     is supposed to work
+
+   Special behavior in ‘let’ (what gets evaled is on the right):
+     (let (<cursor>(</cursor>foo 10))
+       (bar))
+   -> ‘p’ ->
+     (setq foo 10)
+   Special behavior in ‘cond’ (what gets evaled is on the right):
+     (cond <cursor>(</cursor>(foo-1)
+            (bar-1))
+           ((foo-2)
+            (bar-2)))
+   -> ‘p’ ->
+     (if (foo-1)
+         (progn
+           (bar-1))
+       (message "cond: nil"))
+   Similar special behavior for ‘pcase’.
+
+   Special behavior in ‘mapcar, =mapc’, ‘dolist’: cycle the loop
+variable through the list:
+     (mapcar <cursor>(</cursor>lambda (x) (* x x)) '(1 2 3))
+
+   ‘x’ will have value ‘1’ after the first ‘p’, value ‘2’ after the
+second ‘p’ etc.
+
+
+File: lispy.info,  Node: lispy-describe,  Next: lispy-beginning-of-defun,  Prev: lispy-eval-other-window,  Up: Function reference
+
+‘lispy-describe’
+================
+
+Bound to ‘xh’.
+
+   A shorthand for ‘describe-function’ or ‘describe-variable’.
+
+   If you want to call ‘describe-variable’, you should mark the symbol
+first.  You can do this quickly with:
+
+   From special:
+
+   • ‘2m’, ‘3m’, etc.  if you want the second or third element of the
+     list accordingly
+   • ‘a’ to select the symbol with *note lispy-ace-symbol::
+
+   Globally:
+
+   • ‘M-m’ to mark symbol at point with *note lispy-mark-symbol::
+
+
+File: lispy.info,  Node: lispy-beginning-of-defun,  Next: lispy-convolute,  Prev: lispy-describe,  Up: Function reference
+
+‘lispy-beginning-of-defun’
+==========================
+
+Bound to ‘A’.
+
+   Forward to ‘beginning-of-defun’.  When called twice in a row, restore
+the previous point and mark positions.
+
+   A useful combo while debugging is ‘Aa’ to select symbol, and ‘eA’ to
+look at its value and go back.  Repeat when needed.
+
+
+File: lispy.info,  Node: lispy-convolute,  Next: lispy-ace-char,  Prev: lispy-beginning-of-defun,  Up: Function reference
+
+‘lispy-convolute’
+=================
+
+Bound to ‘C’.
+
+   Exchange the order of application of two closest outer forms,
+relative to current expression or region.
+
+     (if (= (weight person) standard-duck-weight)
+         (unless (sinks-in-water person)
+           <cursor>(</cursor>message "Burn her!")))
+   -> ‘C’ ->
+     (unless (sinks-in-water person)
+       (if (= (weight person) standard-duck-weight)
+           <cursor>(</cursor>message "Burn her!")))
+   This operation reverses itself.  See gif
+(images/lispy-convolute.gif).
+
+
+File: lispy.info,  Node: lispy-ace-char,  Next: lispy-raise-some,  Prev: lispy-convolute,  Up: Function reference
+
+‘lispy-ace-char’
+================
+
+Bound to ‘Q’.
+
+   Call ‘ace-jump-mode’, while narrowed to current list.
+
+
+File: lispy.info,  Node: lispy-raise-some,  Next: lispy-ert,  Prev: lispy-ace-char,  Up: Function reference
+
+‘lispy-raise-some’
+==================
+
+Bound to ‘R’.
+
+   Use current sexp and the following (if called from the left), or the
+preceeding (if called from the right) sexps, or the active region as
+replacement for their parent.
+
+   Example 1:
+
+     (progn
+       (message "one")
+       <cursor>(</cursor>message "two")
+       (message "three"))
+   -> ‘R’ ->
+     <cursor>(</cursor>message "two")
+     (message "three")
+   Example 2:
+
+     (progn
+       (message "one")
+       (message "two")<cursor> </cursor>
+       (message "three"))
+   -> ‘R’ ->
+     progn
+     (message "one")
+     (message "two")
+
+
+File: lispy.info,  Node: lispy-ert,  Next: lispy-stringify,  Prev: lispy-raise-some,  Up: Function reference
+
+‘lispy-ert’
+===========
+
+Bound to ‘xT’.
+
+   Forward to ‘ert’
+(https://www.gnu.org/software/emacs/manual/html_node/ert/index.html).
+
+
+File: lispy.info,  Node: lispy-stringify,  Next: lispy-paste,  Prev: lispy-ert,  Up: Function reference
+
+‘lispy-stringify’
+=================
+
+Bound to ‘S’.
+
+   Transform current sexp into a string.  Quote newlines if ‘arg’ isn’t
+1.
+
+     (progn
+       (message "one")
+       <cursor>(</cursor>message "two")
+       (message "three"))
+   -> ‘S’ ->
+     (progn
+       (message "one")
+       "(message \"two\")"
+       <cursor>(</cursor>message "three"))
+
+
+File: lispy.info,  Node: lispy-paste,  Next: lispy-edebug,  Prev: lispy-stringify,  Up: Function reference
+
+‘lispy-paste’
+=============
+
+Bound to ‘P’.
+
+   When region is active, replace it with current kill.  Forward to
+‘yank’ otherwise.
+
+
+File: lispy.info,  Node: lispy-edebug,  Next: lispy-debug-step-in,  Prev: lispy-paste,  Up: Function reference
+
+‘lispy-edebug’
+==============
+
+Bound to ‘xe’.
+
+   ‘edebug’
+(http://www.gnu.org/software/emacs/manual/html_node/elisp/Using-Edebug.html)
+current defun.  Or ‘cider-debug-defun-at-point’ for Clojure.
+
+   ‘2xe’ will eval current defun instead.
+
+
+File: lispy.info,  Node: lispy-debug-step-in,  Next: lispy-kill-word,  Prev: lispy-edebug,  Up: Function reference
+
+‘lispy-debug-step-in’
+=====================
+
+Bound to ‘xj’.  Works for Elisp and Clojure (commit:dfcd4b9).
+
+  1. Evaluate the arguments at the current function’s call
+  2. Jump to the function’s definition
+  3. Set the result of evaluation to the function’s arguments
+
+   For example, starting with:
+
+     <cursor>(</cursor>do-stuff 1 (+ 1 1) (+ 2 2))
+   after pressing ‘xj’ you will jump to the definition of ‘do-stuff’:
+     <cursor>(</cursor>defun do-stuff (x y z &optional a &rest b)
+       (foo)
+       (bar))
+   At this point the following global variables will be set to their
+corresponding values:
+var   val
+------------
+x     1
+y     2
+z     4
+a     nil
+b     nil
+
+
+File: lispy.info,  Node: lispy-kill-word,  Next: lispy-backward-kill-word,  Prev: lispy-debug-step-in,  Up: Function reference
+
+‘lispy-kill-word’
+=================
+
+Bound to ‘M-d’.
+
+   Kill ‘arg’ words, keeping parens and quotes consistent
+
+
+File: lispy.info,  Node: lispy-backward-kill-word,  Next: lispy-kill-sentence,  Prev: lispy-kill-word,  Up: Function reference
+
+‘lispy-backward-kill-word’
+==========================
+
+Bound to ‘M-DEL’.
+
+   Kill ‘arg’ words backward, keeping parens and quotes consistent.
+
+
+File: lispy.info,  Node: lispy-kill-sentence,  Next: digit-argument,  Prev: lispy-backward-kill-word,  Up: Function reference
+
+‘lispy-kill-sentence’
+=====================
+
+Bound to ‘M-k’.
+
+   Kill until the end of the current list or string.
+
+   If located exactly at the beginning of the list or string, kill only
+that list or string instead.
+
+     (message "Then shalt thou count to three<cursor>,</cursor>
+     no more, no less.
+     Three shall be the number thou shalt count,
+     and the number of the counting shall be three.")
+   -> ‘M-k’ ->
+     (message "Then shalt thou count to three<cursor>"</cursor>)
+
+
+File: lispy.info,  Node: digit-argument,  Prev: lispy-kill-sentence,  Up: Function reference
+
+‘digit-argument’
+================
+
+Bound to ‘0’, ‘1’, ‘2’, ‘3’, ‘4’, ‘5’, ‘6’, ‘7’, ‘8’, ‘9’.
+
+   This is the standard Emacs function
+(https://www.gnu.org/software/emacs/manual/html_node/emacs/Arguments.html).
+Except instead of calling it globally with e.g.  ‘M-2’, you can call it
+locally with just e.g.  ‘2’.
+
+   Many lispy commands take a prefix arg, e.g.  ‘3j’ is equivalent to
+‘jjj’.
+
+
+
+Tag Table:
+Node: Top71
+Node: G az AZ x Global bindings4615
+Node: G az AZ x [a-z] local bindings6129
+Node: G az AZ x [A-Z] local bindings7746
+Node: G az AZ x x[a-z] local bindings9131
+Node: Function reference10060
+Node: lispy-forward12167
+Node: lispy-backward12893
+Node: lispy-right13640
+Node: lispy-right-nostring14271
+Node: lispy-left15065
+Node: lispy-down16107
+Node: lispy-up17589
+Node: lispy-different18308
+Node: lispy-flow18595
+Node: looking at lispy-left18866
+Node: looking back lispy-right19097
+Node: lispy-back19333
+Node: lispy-knight20018
+Node: lispy-mark-car20559
+Node: when at list boundary20974
+Node: when at string boundary21717
+Node: when at region boundary22092
+Node: when a quoted symbol is marked22451
+Node: lispy-move-end-of-line22989
+Node: inside string23423
+Node: otherwise23573
+Node: lispy-ace-paren23717
+Node: lispy-ace-symbol24718
+Node: lispy-ace-subword26808
+Node: lispy-splice27061
+Node: lispy-occur27527
+Node: lispy-follow27858
+Node: lispy-goto-symbol28252
+Node: pop-tag-mark28527
+Node: lispy-describe-inline28950
+Node: lispy-arglist-inline29256
+Node: lispy-eval29500
+Node: lispy-lax-eval29925
+Node: eval of defvar30211
+Node: eval of defcustom30446
+Node: eval of defface30628
+Node: lispy-eval-and-insert30786
+Node: lispy-bind-variable31395
+Node: lispy-unbind-variable32030
+Node: lispy-eval-and-replace32768
+Node: lispy-store-region-and-buffer33125
+Node: lispy-ediff-regions33673
+Node: lispy-to-lambda34730
+Node: lispy-to-defun35696
+Node: lispy-parens36935
+Node: lispy-braces37154
+Node: lispy-brackets37373
+Node: lispy-quotes37596
+Node: region is active contained in string38159
+Node: region active38550
+Node: in string and arg isn't nil38868
+Node: in string and arg is nil39191
+Node: arg isn't nil39586
+Node: otherwise (1)39786
+Node: lispy-parens-down40114
+Node: lispy-space40441
+Node: lispy-pair40748
+Node: region active (1)41454
+Node: inside a string before "\\"41632
+Node: inside string or comment42089
+Node: elisp character expression42513
+Node: no arg is explicitly specified42986
+Node: arg is positive43394
+Node: arg is 043902
+Node: arg is -144227
+Node: lispy-x44592
+Node: lispy-kill44858
+Node: inside comment45461
+Node: inside string and string extends past this line45631
+Node: inside string that ends on this line45912
+Node: on a line of whitespace46194
+Node: inside empty list46442
+Node: parens between point and eol are balanced46648
+Node: possible to up-list46897
+Node: otherwise (2)47118
+Node: lispy-new-copy47248
+Node: lispy-yank47458
+Node: lispy-delete47961
+Node: region active (2)48591
+Node: inside a string before \"48735
+Node: at last char of the string49022
+Node: in string near \49441
+Node: the next char isn't end of string49855
+Node: inside comment (1)50084
+Node: before lispy-left50274
+Node: before "50549
+Node: before lispy-right50693
+Node: otherwise (3)50964
+Node: lispy-delete-backward51098
+Node: region active (3)51729
+Node: at first char of the string51884
+Node: in string near \ (1)52309
+Node: in string or comment52724
+Node: after lispy-right52933
+Node: before lispy-left (1)53233
+Node: after a string53524
+Node: otherwise (4)53803
+Node: lispy-mark53951
+Node: lispy-kill-at-point54247
+Node: lispy-mark-symbol54504
+Node: lispy-bind-variable in progress55013
+Node: in comment55367
+Node: looking at space or parens55543
+Node: looking back lispy-right (1)55794
+Node: region is active56030
+Node: otherwise (5)56219
+Node: lispy-string-oneline56361
+Node: lispy-outline-next57016
+Node: lispy-outline-prev57399
+Node: lispy-shifttab57781
+Node: lispy-tab58830
+Node: in outline59195
+Node: region is active (1)59322
+Node: otherwise (6)59499
+Node: lispy-edebug-stop60358
+Node: lispy-flatten60879
+Node: lispy-to-ifs61306
+Node: lispy-to-cond63178
+Node: lispy-visit65080
+Node: lispy-narrow65593
+Node: lispy-widen65865
+Node: lispy-oneline66053
+Node: lispy-multiline66372
+Node: lispy-view66813
+Node: lispy-slurp67207
+Node: lispy-barf68303
+Node: lispy-other-mode68956
+Node: lispy-move-left69730
+Node: lispy-down-slurp70316
+Node: lispy-up-slurp70692
+Node: lispy-move-right71118
+Node: lispy-comment71743
+Node: lispy-clone72325
+Node: lispy-goto72795
+Node: lispy-goto-local73089
+Node: lispy-goto-recursive73381
+Node: lispy-goto-projectile73693
+Node: lispy-goto-elisp-commands74028
+Node: lispy-mark-list74315
+Node: lispy-raise74582
+Node: lispy-move-down74918
+Node: lispy-move-up75350
+Node: lispy-teleport75677
+Node: lispy-undo75995
+Node: lispy-ace-symbol-replace76237
+Node: lispy-eval-other-window76512
+Node: lispy-describe77749
+Node: lispy-beginning-of-defun78401
+Node: lispy-convolute78854
+Node: lispy-ace-char79523
+Node: lispy-raise-some79760
+Node: lispy-ert80487
+Node: lispy-stringify80743
+Node: lispy-paste81216
+Node: lispy-edebug81469
+Node: lispy-debug-step-in81844
+Node: lispy-kill-word82658
+Node: lispy-backward-kill-word82913
+Node: lispy-kill-sentence83198
+Node: digit-argument83828
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

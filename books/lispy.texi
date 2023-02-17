@@ -1,0 +1,3060 @@
+\input texinfo    @c -*- texinfo -*-
+@c %**start of header
+@setfilename lispy.info
+@settitle lispy.el function reference
+@documentencoding UTF-8
+@documentlanguage en
+@c %**end of header
+
+@finalout
+@titlepage
+@title lispy.el function reference
+@author Ahmed Khanzada
+@end titlepage
+
+@ifnottex
+@node Top
+@top lispy.el function reference
+
+@multitable {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+@item @uref{https://github.com/abo-abo/lispy, Back to github}
+@tab @uref{https://raw.githubusercontent.com/abo-abo/lispy/gh-pages/index.org, This file in org-mode}
+@tab @uref{./parinfer_index.html, Parinfer function reference}
+@end multitable
+@end ifnottex
+
+@menu
+* G az AZ x Global bindings::
+* G az AZ x [a-z] local bindings::
+* G az AZ x [A-Z] local bindings::
+* G az AZ x x[a-z] local bindings::
+* Function reference::
+
+@detailmenu
+--- The Detailed Node Listing ---
+
+Function reference
+
+* @samp{lispy-forward}::
+* @samp{lispy-backward}::
+* @samp{lispy-right}::
+* @samp{lispy-right-nostring}::
+* @samp{lispy-left}::
+* @samp{lispy-down}::
+* @samp{lispy-up}::
+* @samp{lispy-different}::
+* @samp{lispy-flow}::
+* @samp{lispy-back}::
+* @samp{lispy-knight}::
+* @samp{lispy-mark-car}::
+* @samp{lispy-move-end-of-line}::
+* @samp{lispy-ace-paren}::
+* @samp{lispy-ace-symbol}::
+* @samp{lispy-ace-subword}::
+* @samp{lispy-splice}::
+* @samp{lispy-occur}::
+* @samp{lispy-follow}::
+* @samp{lispy-goto-symbol}::
+* @samp{pop-tag-mark}::
+* @samp{lispy-describe-inline}::
+* @samp{lispy-arglist-inline}::
+* @samp{lispy-eval}::
+* @samp{lispy-eval-and-insert}::
+* @samp{lispy-bind-variable}::
+* @samp{lispy-unbind-variable}::
+* @samp{lispy-eval-and-replace}::
+* @samp{lispy-store-region-and-buffer}::
+* @samp{lispy-ediff-regions}::
+* @samp{lispy-to-lambda}::
+* @samp{lispy-to-defun}::
+* @samp{lispy-parens}::
+* @samp{lispy-braces}::
+* @samp{lispy-brackets}::
+* @samp{lispy-quotes}::
+* @samp{lispy-parens-down}::
+* @samp{lispy-space}::
+* @samp{lispy-pair}::
+* @samp{lispy-x}::
+* @samp{lispy-kill}::
+* @samp{lispy-new-copy}::
+* @samp{lispy-yank}::
+* @samp{lispy-delete}::
+* @samp{lispy-delete-backward}::
+* @samp{lispy-mark}::
+* @samp{lispy-kill-at-point}::
+* @samp{lispy-mark-symbol}::
+* @samp{lispy-string-oneline}::
+* @samp{lispy-outline-next}::
+* @samp{lispy-outline-prev}::
+* @samp{lispy-shifttab}::
+* @samp{lispy-tab}::
+* @samp{lispy-edebug-stop}::
+* @samp{lispy-flatten}::
+* @samp{lispy-to-ifs}::
+* @samp{lispy-to-cond}::
+* @samp{lispy-visit}::
+* @samp{lispy-narrow}::
+* @samp{lispy-widen}::
+* @samp{lispy-oneline}::
+* @samp{lispy-multiline}::
+* @samp{lispy-view}::
+* @samp{lispy-slurp}::
+* @samp{lispy-barf}::
+* @samp{lispy-other-mode}::
+* @samp{lispy-move-left}::
+* @samp{lispy-down-slurp}::
+* @samp{lispy-up-slurp}::
+* @samp{lispy-move-right}::
+* @samp{lispy-comment}::
+* @samp{lispy-clone}::
+* @samp{lispy-goto}::
+* @samp{lispy-goto-local}::
+* @samp{lispy-goto-recursive}::
+* @samp{lispy-goto-projectile}::
+* @samp{lispy-goto-elisp-commands}::
+* @samp{lispy-mark-list}::
+* @samp{lispy-raise}::
+* @samp{lispy-move-down}::
+* @samp{lispy-move-up}::
+* @samp{lispy-teleport}::
+* @samp{lispy-undo}::
+* @samp{lispy-ace-symbol-replace}::
+* @samp{lispy-eval-other-window}::
+* @samp{lispy-describe}::
+* @samp{lispy-beginning-of-defun}::
+* @samp{lispy-convolute}::
+* @samp{lispy-ace-char}::
+* @samp{lispy-raise-some}::
+* @samp{lispy-ert}::
+* @samp{lispy-stringify}::
+* @samp{lispy-paste}::
+* @samp{lispy-edebug}::
+* @samp{lispy-debug-step-in}::
+* @samp{lispy-kill-word}::
+* @samp{lispy-backward-kill-word}::
+* @samp{lispy-kill-sentence}::
+* @samp{digit-argument}::
+
+@samp{lispy-flow}
+
+* looking at @samp{lispy-left}::
+* looking back @samp{lispy-right}::
+
+@samp{lispy-mark-car}
+
+* when at list boundary::
+* when at string boundary::
+* when at region boundary::
+* when a quoted symbol is marked::
+
+@samp{lispy-move-end-of-line}
+
+* inside string::
+* otherwise::
+
+@samp{lispy-eval}
+
+* @samp{lispy-lax-eval}::
+* eval of @samp{defvar}::
+* eval of @samp{defcustom}::
+* eval of @samp{defface}::
+
+@samp{lispy-quotes}
+
+* region is active, contained in string: region is active contained in string. 
+* region active::
+* in string and @samp{arg} isn't @samp{nil}::
+* in string and @samp{arg} is @samp{nil}::
+* @samp{arg} isn't @samp{nil}::
+* otherwise: otherwise (1). 
+
+@samp{lispy-pair}
+
+* region active: region active (1). 
+* inside a string before "\\"::
+* inside string or comment::
+* elisp character expression::
+* no @samp{arg} is explicitly specified::
+* @samp{arg} is positive::
+* @samp{arg} is 0::
+* @samp{arg} is -1::
+
+@samp{lispy-kill}
+
+* inside comment::
+* inside string and string extends past this line::
+* inside string that ends on this line::
+* on a line of whitespace::
+* inside empty list::
+* parens between point and eol are balanced::
+* possible to @samp{up-list}::
+* otherwise: otherwise (2). 
+
+@samp{lispy-delete}
+
+* region active: region active (2). 
+* inside a string before \"::
+* at last char of the string::
+* in string near \::
+* the next char isn't end of string::
+* inside comment: inside comment (1). 
+* before @samp{lispy-left}::
+* before "::
+* before @samp{lispy-right}::
+* otherwise: otherwise (3). 
+
+@samp{lispy-delete-backward}
+
+* region active: region active (3). 
+* at first char of the string::
+* in string near \: in string near \ (1). 
+* in string or comment::
+* after @samp{lispy-right}::
+* before @samp{lispy-left}: before @samp{lispy-left} (1). 
+* after a string::
+* otherwise: otherwise (4). 
+
+@samp{lispy-mark-symbol}
+
+* @samp{lispy-bind-variable} in progress::
+* in comment::
+* looking at space or parens::
+* looking back @samp{lispy-right}: looking back @samp{lispy-right} (1). 
+* region is active::
+* otherwise: otherwise (5). 
+
+@samp{lispy-tab}
+
+* in outline::
+* region is active: region is active (1). 
+* otherwise: otherwise (6). 
+
+@end detailmenu
+@end menu
+
+@node G az AZ x Global bindings
+@unnumbered G az AZ x Global bindings
+
+@multitable {aaaaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+@headitem key
+@tab function name
+@item ]
+@tab @ref{@samp{lispy-forward}, , lispy-forward}
+@item [
+@tab @ref{@samp{lispy-backward}, , lispy-backward}
+@item (
+@tab @ref{@samp{lispy-parens}, , lispy-parens}
+@item @{
+@tab @ref{@samp{lispy-braces}, , lispy-braces}
+@item @}
+@tab @ref{@samp{lispy-brackets}, , lispy-brackets}
+@item "
+@tab @ref{@samp{lispy-quotes}, , lispy-quotes}
+@item )
+@tab @ref{@samp{lispy-right-nostring}, , lispy-right-nostring}
+@item ;
+@tab @ref{@samp{lispy-comment}, , lispy-comment}
+@item DEL
+@tab @ref{@samp{lispy-delete-backward}, , lispy-delete-backward}
+@item C-d
+@tab @ref{@samp{lispy-delete}, , lispy-delete}
+@item C-k
+@tab @ref{@samp{lispy-kill}, , lispy-kill}
+@item C-y
+@tab @ref{@samp{lispy-yank}, , lispy-yank}
+@item C-e
+@tab @ref{@samp{lispy-move-end-of-line}, , lispy-move-end-of-line}
+@item C-,
+@tab @ref{@samp{lispy-kill-at-point}, , lispy-kill-at-point}
+@item C-M-,
+@tab @ref{@samp{lispy-mark}, , lispy-mark}
+@item C-1
+@tab @ref{@samp{lispy-describe-inline}, , lispy-describe-inline}
+@item C-2
+@tab @ref{@samp{lispy-arglist-inline}, , lispy-arglist-inline}
+@item C-3
+@tab @ref{@samp{lispy-right}, , lispy-right}
+@item C-4
+@tab @ref{@samp{lispy-x}, , lispy-x}
+@item C-8
+@tab @ref{@samp{lispy-parens-down}, , lispy-parens-down}
+@item M-d
+@tab @ref{@samp{lispy-kill-word}, , lispy-kill-word}
+@item M-k
+@tab @ref{@samp{lispy-kill-sentence}, , lispy-kill-sentence}
+@item M-m
+@tab @ref{@samp{lispy-mark-symbol}, , lispy-mark-symbol}
+@item M-DEL
+@tab @ref{@samp{lispy-backward-kill-word}, , lispy-backward-kill-word}
+@item M-.
+@tab @ref{@samp{lispy-goto-symbol}, , lispy-goto-symbol}
+@item M-,
+@tab @ref{@samp{pop-tag-mark}, , pop-tag-mark}
+@end multitable
+
+@node G az AZ x [a-z] local bindings
+@unnumbered G az AZ x [a-z] local bindings
+
+@multitable {aaaaaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+@headitem key
+@tab function name
+@item a
+@tab @ref{@samp{lispy-ace-symbol}, , lispy-ace-symbol}
+@item b
+@tab @ref{@samp{lispy-back}, , lispy-back}
+@item c
+@tab @ref{@samp{lispy-clone}, , lispy-clone}
+@item d
+@tab @ref{@samp{lispy-different}, , lispy-different}
+@item e
+@tab @ref{@samp{lispy-eval}, , lispy-eval}
+@item f
+@tab @ref{@samp{lispy-flow}, , lispy-flow}
+@item g
+@tab @ref{@samp{lispy-goto}, , lispy-goto}
+@item h
+@tab @ref{@samp{lispy-left}, , lispy-left}
+@item i
+@tab @ref{@samp{lispy-tab}, , lispy-tab}
+@item j
+@tab @ref{@samp{lispy-down}, , lispy-down}
+@item k
+@tab @ref{@samp{lispy-up}, , lispy-up}
+@item l
+@tab @ref{@samp{lispy-right}, , lispy-right}
+@item m
+@tab @ref{@samp{lispy-mark-list}, , lispy-mark-list}
+@item n
+@tab @ref{@samp{lispy-new-copy}, , lispy-new-copy}
+@item o
+@tab @ref{@samp{lispy-other-mode}, , lispy-other-mode}
+@item p
+@tab @ref{@samp{lispy-eval-other-window}, , lispy-eval-other-window}
+@item q
+@tab @ref{@samp{lispy-ace-paren}, , lispy-ace-paren}
+@item r
+@tab @ref{@samp{lispy-raise}, , lispy-raise}
+@item s
+@tab @ref{@samp{lispy-move-down}, , lispy-move-down}
+@item t
+@tab @ref{@samp{lispy-teleport}, , lispy-teleport}
+@item u
+@tab @ref{@samp{lispy-undo}, , lispy-undo}
+@item v
+@tab @ref{@samp{lispy-view}, , lispy-view}
+@item w
+@tab @ref{@samp{lispy-move-up}, , lispy-move-up}
+@item x
+@tab @ref{G az AZ x x[a-z] local bindings, , see}
+@item y
+@tab @ref{@samp{lispy-occur}, , lispy-occur}
+@item z
+@tab @ref{@samp{lispy-knight}, , lispy-knight}
+@item >
+@tab @ref{@samp{lispy-slurp}, , lispy-slurp}
+@item <
+@tab @ref{@samp{lispy-barf}, , lispy-barf}
+@item -
+@tab @ref{@samp{lispy-ace-subword}, , lispy-ace-subword}
+@item /
+@tab @ref{@samp{lispy-splice}, , lispy-splice}
+@end multitable
+
+@node G az AZ x [A-Z] local bindings
+@unnumbered G az AZ x [A-Z] local bindings
+
+@multitable {aaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+@headitem key
+@tab function name
+@item A
+@tab @ref{@samp{lispy-beginning-of-defun}, , lispy-beginning-of-defun}
+@item B
+@tab @ref{@samp{lispy-ediff-regions}, , lispy-ediff-regions}
+@item C
+@tab @ref{@samp{lispy-convolute}, , lispy-convolute}
+@item D
+@tab @ref{@samp{pop-tag-mark}, , pop-tag-mark}
+@item E
+@tab @ref{@samp{lispy-eval-and-insert}, , lispy-eval-and-insert}
+@item F
+@tab @ref{@samp{lispy-follow}, , lispy-follow}
+@item G
+@tab @ref{@samp{lispy-goto-local}, , lispy-goto-local}
+@item H
+@tab @ref{@samp{lispy-ace-symbol-replace}, , lispy-ace-symbol-replace}
+@item I
+@tab @ref{@samp{lispy-shifttab}, , lispy-shifttab}
+@item J
+@tab @ref{@samp{lispy-outline-next}, , lispy-outline-next}
+@item K
+@tab @ref{@samp{lispy-outline-prev}, , lispy-outline-prev}
+@item L
+@tab unbound
+@item M
+@tab @ref{@samp{lispy-multiline}, , lispy-multiline}
+@item N
+@tab @ref{@samp{lispy-narrow}, , lispy-narrow}
+@item O
+@tab @ref{@samp{lispy-oneline}, , lispy-oneline}
+@item P
+@tab @ref{@samp{lispy-paste}, , lispy-paste}
+@item Q
+@tab @ref{@samp{lispy-ace-char}, , lispy-ace-char}
+@item R
+@tab @ref{@samp{lispy-raise-some}, , lispy-raise-some}
+@item S
+@tab @ref{@samp{lispy-stringify}, , lispy-stringify}
+@item U
+@tab unbound
+@item V
+@tab @ref{@samp{lispy-visit}, , lispy-visit}
+@item W
+@tab @ref{@samp{lispy-widen}, , lispy-widen}
+@item X
+@tab unbound
+@item Y
+@tab unbound
+@item Z
+@tab @ref{@samp{lispy-edebug-stop}, , lispy-edebug-stop}
+@item SPC
+@tab @ref{@samp{lispy-space}, , lispy-space}
+@end multitable
+
+@node G az AZ x x[a-z] local bindings
+@unnumbered G az AZ x x[a-z] local bindings
+
+@multitable {aaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+@headitem key
+@tab function name
+@item xb
+@tab @ref{@samp{lispy-bind-variable}, , lispy-bind-variable}
+@item xc
+@tab @ref{@samp{lispy-to-cond}, , lispy-to-cond}
+@item xd
+@tab @ref{@samp{lispy-to-defun}, , lispy-to-defun}
+@item xf
+@tab @ref{@samp{lispy-flatten}, , lispy-flatten}
+@item xi
+@tab @ref{@samp{lispy-to-ifs}, , lispy-to-ifs}
+@item xl
+@tab @ref{@samp{lispy-to-lambda}, , lispy-to-lambda}
+@item xe
+@tab @ref{@samp{lispy-edebug}, , lispy-edebug}
+@item xh
+@tab @ref{@samp{lispy-describe}, , lispy-describe}
+@item xj
+@tab @ref{@samp{lispy-debug-step-in}, , lispy-debug-step-in}
+@item xr
+@tab @ref{@samp{lispy-eval-and-replace}, , lispy-eval-and-replace}
+@item xu
+@tab @ref{@samp{lispy-unbind-variable}, , lispy-unbind-variable}
+@item xB
+@tab @ref{@samp{lispy-store-region-and-buffer}, , lispy-store-region-and-buffer}
+@item xT
+@tab @ref{@samp{lispy-ert}, , lispy-ert}
+@end multitable
+
+@node Function reference
+@unnumbered Function reference
+
+@menu
+* @samp{lispy-forward}::
+* @samp{lispy-backward}::
+* @samp{lispy-right}::
+* @samp{lispy-right-nostring}::
+* @samp{lispy-left}::
+* @samp{lispy-down}::
+* @samp{lispy-up}::
+* @samp{lispy-different}::
+* @samp{lispy-flow}::
+* @samp{lispy-back}::
+* @samp{lispy-knight}::
+* @samp{lispy-mark-car}::
+* @samp{lispy-move-end-of-line}::
+* @samp{lispy-ace-paren}::
+* @samp{lispy-ace-symbol}::
+* @samp{lispy-ace-subword}::
+* @samp{lispy-splice}::
+* @samp{lispy-occur}::
+* @samp{lispy-follow}::
+* @samp{lispy-goto-symbol}::
+* @samp{pop-tag-mark}::
+* @samp{lispy-describe-inline}::
+* @samp{lispy-arglist-inline}::
+* @samp{lispy-eval}::
+* @samp{lispy-eval-and-insert}::
+* @samp{lispy-bind-variable}::
+* @samp{lispy-unbind-variable}::
+* @samp{lispy-eval-and-replace}::
+* @samp{lispy-store-region-and-buffer}::
+* @samp{lispy-ediff-regions}::
+* @samp{lispy-to-lambda}::
+* @samp{lispy-to-defun}::
+* @samp{lispy-parens}::
+* @samp{lispy-braces}::
+* @samp{lispy-brackets}::
+* @samp{lispy-quotes}::
+* @samp{lispy-parens-down}::
+* @samp{lispy-space}::
+* @samp{lispy-pair}::
+* @samp{lispy-x}::
+* @samp{lispy-kill}::
+* @samp{lispy-new-copy}::
+* @samp{lispy-yank}::
+* @samp{lispy-delete}::
+* @samp{lispy-delete-backward}::
+* @samp{lispy-mark}::
+* @samp{lispy-kill-at-point}::
+* @samp{lispy-mark-symbol}::
+* @samp{lispy-string-oneline}::
+* @samp{lispy-outline-next}::
+* @samp{lispy-outline-prev}::
+* @samp{lispy-shifttab}::
+* @samp{lispy-tab}::
+* @samp{lispy-edebug-stop}::
+* @samp{lispy-flatten}::
+* @samp{lispy-to-ifs}::
+* @samp{lispy-to-cond}::
+* @samp{lispy-visit}::
+* @samp{lispy-narrow}::
+* @samp{lispy-widen}::
+* @samp{lispy-oneline}::
+* @samp{lispy-multiline}::
+* @samp{lispy-view}::
+* @samp{lispy-slurp}::
+* @samp{lispy-barf}::
+* @samp{lispy-other-mode}::
+* @samp{lispy-move-left}::
+* @samp{lispy-down-slurp}::
+* @samp{lispy-up-slurp}::
+* @samp{lispy-move-right}::
+* @samp{lispy-comment}::
+* @samp{lispy-clone}::
+* @samp{lispy-goto}::
+* @samp{lispy-goto-local}::
+* @samp{lispy-goto-recursive}::
+* @samp{lispy-goto-projectile}::
+* @samp{lispy-goto-elisp-commands}::
+* @samp{lispy-mark-list}::
+* @samp{lispy-raise}::
+* @samp{lispy-move-down}::
+* @samp{lispy-move-up}::
+* @samp{lispy-teleport}::
+* @samp{lispy-undo}::
+* @samp{lispy-ace-symbol-replace}::
+* @samp{lispy-eval-other-window}::
+* @samp{lispy-describe}::
+* @samp{lispy-beginning-of-defun}::
+* @samp{lispy-convolute}::
+* @samp{lispy-ace-char}::
+* @samp{lispy-raise-some}::
+* @samp{lispy-ert}::
+* @samp{lispy-stringify}::
+* @samp{lispy-paste}::
+* @samp{lispy-edebug}::
+* @samp{lispy-debug-step-in}::
+* @samp{lispy-kill-word}::
+* @samp{lispy-backward-kill-word}::
+* @samp{lispy-kill-sentence}::
+* @samp{digit-argument}::
+@end menu
+
+@node @samp{lispy-forward}
+@unnumberedsec @samp{lispy-forward}
+
+Bound to @code{]}.
+
+Works as replacement for the standard @samp{forward-list}.
+
+Takes a numeric prefix @samp{arg} and moves forward list @samp{arg} times or
+until error.
+
+Unlike @samp{forward-list}, no error will be reported if it's not possible
+to move @samp{arg} times.  It that case, move as many times as possible.
+To facilitate entering a very large @samp{arg}, @samp{arg} 0 is interpreted as
+@samp{arg} 2000.
+
+Return @samp{t} if could move at least once, otherwise
+call @ref{@samp{lispy-right}} and return @samp{nil}.
+
+Unlike @samp{forward-list}, parens in strings and comments are ignored.
+
+@node @samp{lispy-backward}
+@unnumberedsec @samp{lispy-backward}
+
+Bound to @code{[}.
+
+Works as replacement for the standard @samp{backward-list}.
+
+Takes a numeric prefix @samp{arg} and moves backward list @samp{arg} times or
+until error.
+
+Unlike @samp{backward-list}, no error will be reported if it's not possible
+to move @samp{arg} times.  It that case, move as many times as possible.
+To facilitate entering a very large @samp{arg}, @samp{arg} 0 is interpreted as
+@samp{arg} 2000.
+
+Return @samp{t} if could move at least once, otherwise
+call @ref{@samp{lispy-left}} return @samp{nil}.
+
+Unlike @samp{backward-list}, parens in strings and comments are ignored.
+
+@node @samp{lispy-right}
+@unnumberedsec @samp{lispy-right}
+
+Bound to @code{C-3} and @code{l}.
+
+Works as replacement for the standard @samp{up-list}.
+
+Takes a numeric prefix @samp{arg} and moves up forward list @samp{arg} times or
+until error.
+
+Unlike @samp{up-list}, no error will be reported if it's not possible to
+move up @samp{arg} times.  It that case, move as many times as possible.
+
+Return point if could move @samp{arg} times, otherwise return @samp{nil}.
+
+Unlike @samp{up-list}, parens in strings and comments are ignored.
+
+@node @samp{lispy-right-nostring}
+@unnumberedsec @samp{lispy-right-nostring}
+
+Bound to @code{)}.
+
+Works the same ways as @ref{@samp{lispy-right}}, except self-inserts in
+strings and comments.
+
+Self-inserting in strings and comments makes parens different from the
+other pair functions that always insert the whole pair:
+
+@multitable {aaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa} {aaaaaaa}
+@headitem key
+@tab function
+@tab inserts
+@item @code{@{}
+@tab @ref{@samp{lispy-braces}, , lispy-braces}
+@tab @{@}
+@item @code{@}}
+@tab @ref{@samp{lispy-brackets}, , lispy-brackets}
+@tab []
+@item @code{"}
+@tab @ref{@samp{lispy-quotes}, , lispy-quotes}
+@tab ""
+@end multitable
+
+When you want to insert a single character from the pair, use @code{C-q}.
+Or insert a pair and delete the other character.
+
+@node @samp{lispy-left}
+@unnumberedsec @samp{lispy-left}
+
+Bound to @code{h}.
+
+Takes a numeric prefix @samp{arg} and moves up backward list @samp{arg} times or
+until error. This is a combination of @samp{arg} times @ref{@samp{lispy-right}} and once
+@ref{@samp{lispy-different}}.
+
+When the region is active, the region (not the code) will move up
+backward @samp{arg} times:
+
+@lisp
+(defun lispy-right (arg)
+  "Move outside list forwards ARG times.
+Return nil on failure, t otherwise."
+  (interactive "p")
+  (if (region-active-p)
+      <cursor>(</cursor><span class="region">lispy-mark-right arg)</span>
+    (lispy--out-forward arg)))
+@end lisp
+-> @code{h} ->
+@lisp
+(defun lispy-right (arg)
+  "Move outside list forwards ARG times.
+Return nil on failure, t otherwise."
+  (interactive "p")
+  <cursor>(</cursor><span class="region">if (region-active-p)
+      (lispy-mark-right arg)
+    (lispy--out-forward arg))</span>)
+@end lisp
+
+@node @samp{lispy-down}
+@unnumberedsec @samp{lispy-down}
+
+Bound to @code{j}.
+
+Takes a numeric prefix @samp{arg} and moves down the current list @samp{arg} times.
+
+Here, current list means the innermost list that contains the point.
+Moving down means so literally only if there is a newline after
+each element of current list, otherwise it's down or left.
+
+@code{j} maintains a guarantee that it will not exit the current list, so
+you can use e.g. @code{99j} to move to the last element of the current list.
+
+When region is active, @code{j} will move the region by @samp{forward-sexp},
+i.e. move the point and the mark by @samp{forward-sexp}.
+
+This allows to easily mark any element(s) of current list.
+@code{j} maintains a guarantee that the region will not exit the currrent
+list, so if you want to mark last 3 elements of the current list, you
+can mark the first 3 elements of the current list and press @code{99j}.
+
+For example, starting with:
+@lisp
+<cursor>(</cursor>a b c d e f g h i j k l m n o p q r s t u v w x y z)
+@end lisp
+after @code{mi}:
+@lisp
+(<span class="region">a</span><cursor> </cursor>b c d e f g h i j k l m n o p q r s t u v w x y z)
+@end lisp
+
+after @code{2>}:
+@lisp
+(<span class="region">a b c</span><cursor> </cursor>d e f g h i j k l m n o p q r s t u v w x y z)
+@end lisp
+
+after @code{99j}:
+@lisp
+(a b c d e f g h i j k l m n o p q r s t u v w <span class="region">x y z</span><cursor>)</cursor>
+@end lisp
+
+@node @samp{lispy-up}
+@unnumberedsec @samp{lispy-up}
+
+Bound to @code{k}.
+
+Takes a numeric prefix @samp{arg} and moves up the current list @samp{arg} times.
+
+Here, current list means the innermost list that contains the point.
+Moving up means so literally only if there is a newline after
+each element of current list, otherwise it's up or right.
+
+@code{k} maintains a guarantee that it will not exit the current list, so
+you can use e.g. @code{99k} to move to the first element of current list.
+
+When region is active, @code{k} will move the region by @samp{backward-sexp},
+i.e. move the point and the mark by @samp{backward-sexp}.
+
+@node @samp{lispy-different}
+@unnumberedsec @samp{lispy-different}
+
+Bound to @code{d}.
+
+Switch to the different side of current sexp.
+
+When region is active, equivalent to @samp{exchange-point-and-mark}.
+
+@node @samp{lispy-flow}
+@unnumberedsec @samp{lispy-flow}
+
+Bound to @code{f}.
+
+Flow in the direction of current paren, i.e.
+
+@menu
+* looking at @samp{lispy-left}::
+* looking back @samp{lispy-right}::
+@end menu
+
+@node looking at @samp{lispy-left}
+@unnumberedsubsec looking at @samp{lispy-left}
+
+Find the next @samp{lispy-left} not in comment or string going down the
+file.
+
+@node looking back @samp{lispy-right}
+@unnumberedsubsec looking back @samp{lispy-right}
+
+Find the next @samp{lispy-right} not in comment or string going up the
+file.
+
+@node @samp{lispy-back}
+@unnumberedsec @samp{lispy-back}
+
+Bound to @code{b}.
+
+Move point to the previous position in @samp{lispy-back} history.
+The following functions write to this history:
+
+@multitable {aaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+@headitem key
+@tab function name
+@item @code{l}
+@tab @ref{@samp{lispy-right}, , lispy-right}
+@item @code{h}
+@tab @ref{@samp{lispy-left}, , lispy-left}
+@item @code{f}
+@tab @ref{@samp{lispy-flow}, , lispy-flow}
+@item @code{j}
+@tab @ref{@samp{lispy-down}, , lispy-down}
+@item @code{k}
+@tab @ref{@samp{lispy-up}, , lispy-up}
+@item @code{m}
+@tab @ref{@samp{lispy-mark-list}, , lispy-mark-list}
+@item @code{q}
+@tab @ref{@samp{lispy-ace-paren}, , lispy-ace-paren}
+@item @code{i}
+@tab @ref{@samp{lispy-mark-car}, , lispy-mark-car}
+@end multitable
+
+@node @samp{lispy-knight}
+@unnumberedsec @samp{lispy-knight}
+
+Bound to @code{z}.
+
+@code{zj} and @code{zk} are bound in a hydra that allows to move through the
+leftmost parens on each line.
+
+This is useful if you want to navigate disregarding syntax: since @code{j}
+and @code{k} can't exit the parent list they're not suitable for this.
+
+@code{zj} and @code{zk} move like the knight figure in chess, in a combination
+of horizontal and vertical movement.
+
+@node @samp{lispy-mark-car}
+@unnumberedsec @samp{lispy-mark-car}
+
+Bound to @code{i} while the region is active.
+
+Mark the first element (car) of the currently selected thing (list or
+region).
+
+@menu
+* when at list boundary::
+* when at string boundary::
+* when at region boundary::
+* when a quoted symbol is marked::
+@end menu
+
+@node when at list boundary
+@unnumberedsubsec when at list boundary
+
+@lisp
+<span class="region">(defun lispy-right (arg)
+  "Move outside list forwards ARG times\.
+Return nil on failure, t otherwise\."
+  (interactive "p")
+  (if (region-active-p)
+      (lispy-mark-right arg)
+    (lispy--out-forward arg)))</span><cursor> </cursor>
+@end lisp
+-> @code{i} ->
+@lisp
+(<span class="region">defun</span><cursor> </cursor>lispy-right (arg)
+  "Move outside list forwards ARG times.
+Return nil on failure, t otherwise."
+  (interactive "p")
+  (if (region-active-p)
+      (lispy-mark-right arg)
+    (lispy--out-forward arg)))
+@end lisp
+
+@node when at string boundary
+@unnumberedsubsec when at string boundary
+
+Mark its inner contents.
+@lisp
+(list <span class="region">"spam spam spam"</span><cursor>)</cursor>
+@end lisp
+-> @code{i} ->
+@lisp
+(list "<span class="region">spam spam spam</span><cursor>"</cursor>)
+@end lisp
+
+@node when at region boundary
+@unnumberedsubsec when at region boundary
+
+@lisp
+(list "<span class="region">spam spam spam</span><cursor>"</cursor>)
+@end lisp
+-> @code{i} ->
+@lisp
+(list "<span class="region">spam</span><cursor> </cursor>spam spam")
+@end lisp
+
+@node when a quoted symbol is marked
+@unnumberedsubsec when a quoted symbol is marked
+
+Select the unquoted part, it's useful for a subsequent @code{e}
+(@samp{lispy-eval}).
+@lisp
+(add-to-list <span class="region">'auto-mode-alist</span><cursor> </cursor>
+             '("\\.\\(h\\)\\'" . c++-mode))
+@end lisp
+-> @code{i} ->
+@lisp
+(add-to-list '<span class="region">auto-mode-alist</span><cursor> </cursor>
+             '("\\.\\(h\\)\\'" . c++-mode))
+@end lisp
+
+@node @samp{lispy-move-end-of-line}
+@unnumberedsec @samp{lispy-move-end-of-line}
+
+Bound to @code{C-e}.
+
+Works as replacement for the standard @samp{move-end-of-line}.
+
+Regular @samp{move-end-of-line} does nothing the second time when called
+twice in a row.
+
+When called twice in a row and
+
+@menu
+* inside string::
+* otherwise::
+@end menu
+
+@node inside string
+@unnumberedsubsec inside string
+
+Move to the end of the string.
+
+@node otherwise
+@unnumberedsubsec otherwise
+
+Return to the starting position.
+
+@node @samp{lispy-ace-paren}
+@unnumberedsec @samp{lispy-ace-paren}
+
+Bound to @code{q}.
+
+Starting with this:
+@lisp
+(defun lispy-define-key (keymap key def &optional from-start)
+  "Forward to (`define-key' KEYMAP KEY (`lispy-defun' DEF FROM-START))."
+  (let ((func (defalias (intern (concat "special-" (symbol-name def)))
+                  (lispy--insert-or-call def from-start))))
+    <cursor>(</cursor>unless (member func ac-trigger-commands)
+      (push func ac-trigger-commands))
+    (unless (member func company-begin-commands)
+      (push func company-begin-commands))
+    (eldoc-add-command func)
+    (define-key keymap (kbd key) func)))
+@end lisp
+by pressing @code{q} you get this:
+
+Now you can change the point position by pressing a letter or
+cancel with @code{C-g}.
+
+Press @code{2q} to use the whole window instead of just the current top-level sexp.
+
+@node @samp{lispy-ace-symbol}
+@unnumberedsec @samp{lispy-ace-symbol}
+
+Bound to @code{a}.
+
+Starting with this:
+@lisp
+(defun lispy-define-key (keymap key def &optional from-start)
+  "Forward to (`define-key' KEYMAP KEY (`lispy-defun' DEF FROM-START))."
+  (let ((func (defalias (intern (concat "special-" (symbol-name def)))
+                  (lispy--insert-or-call def from-start))))
+    <cursor>(</cursor>unless (member func ac-trigger-commands)
+      (push func ac-trigger-commands))
+    (unless (member func company-begin-commands)
+      (push func company-begin-commands))
+    (eldoc-add-command func)
+    (define-key keymap (kbd key) func)))
+@end lisp
+by pressing @code{a} you get this:
+
+Now you can mark a symbol by pressing a letter, or cancel with @code{C-g}.
+
+Here's the end result of @code{ad}:
+
+@lisp
+(defun lispy-define-key (keymap key def &optional from-start)
+  "Forward to (`define-key' KEYMAP KEY (`lispy-defun' DEF FROM-START))."
+  (let ((func (defalias (intern (concat "special-" (symbol-name def)))
+                  (lispy--insert-or-call def from-start))))
+    (unless (member func <span class="region">ac-trigger-commands</span><cursor>)</cursor>
+      (push func ac-trigger-commands))
+    (unless (member func company-begin-commands)
+      (push func company-begin-commands))
+    (eldoc-add-command func)
+    (define-key keymap (kbd key) func)))
+@end lisp
+
+@samp{lispy-ace-symbol}'s jump scope is the current list by default.
+Calling it with @ref{@samp{digit-argument}} will extend this to the current
+list's parents.
+
+Now you can follow up with
+@multitable {aaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+@headitem key
+@tab function name
+@item F
+@tab @ref{@samp{lispy-follow}, , lispy-follow}
+@item C-1
+@tab @ref{@samp{lispy-describe-inline}, , lispy-describe-inline}
+@item e
+@tab @ref{@samp{lispy-eval}, , lispy-eval}
+@item E
+@tab @ref{@samp{lispy-eval-and-insert}, , lispy-eval-and-insert}
+@item P
+@tab @ref{@samp{lispy-paste}, , lispy-paste}
+@item r
+@tab @ref{@samp{lispy-raise}, , lispy-raise}
+@end multitable
+
+@node @samp{lispy-ace-subword}
+@unnumberedsec @samp{lispy-ace-subword}
+
+Bound to @code{-}.
+
+Similar to @ref{@samp{lispy-ace-symbol}}, but selects a subword instead.
+
+@node @samp{lispy-splice}
+@unnumberedsec @samp{lispy-splice}
+
+Bound to @code{/}.
+
+Splice the current list into the parent list. Move the point to the next list to splice in appropriate direction.
+If there are none within the parent list, move to the parent list in appropriate direction.
+
+@lisp
+(<cursor>(</cursor>a) (b) (c))
+@end lisp
+-> @code{/} ->
+@lisp
+(a <cursor>(</cursor>b) (c))
+@end lisp
+
+@node @samp{lispy-occur}
+@unnumberedsec @samp{lispy-occur}
+
+Bound to @code{y}.
+
+Do an occur for the current top-level sexp. Go back-to-paren afterwards.
+
+This is useful e.g. to see where a particular variable is used within
+the current defun.
+
+@node @samp{lispy-follow}
+@unnumberedsec @samp{lispy-follow}
+
+Bound to @code{F}.
+
+When region is active jump to the definition of marked symbol.
+Otherwise jump to the definition of the first symbol in current sexp.
+
+Use @code{D} or @code{M-,} to go back.
+
+Elisp, Clojure and Common Lisp are supported.
+
+@node @samp{lispy-goto-symbol}
+@unnumberedsec @samp{lispy-goto-symbol}
+
+Bound to @code{M-.}.
+
+Goto definition of symbol at point.
+You can go back with @code{M-,} (@ref{@samp{pop-tag-mark}}).
+
+@node @samp{pop-tag-mark}
+@unnumberedsec @samp{pop-tag-mark}
+
+Bound to @code{D} and @code{M-,}.
+
+This is a standard Emacs function that reverses:
+
+@itemize
+@item
+@code{F} (@ref{@samp{lispy-follow}})
+@item
+@code{M-.} (@ref{@samp{lispy-goto-symbol}})
+@end itemize
+
+It's bound to @code{M-*} in the default Emacs. I like to bind it to @code{M-,}
+everywhere.
+
+@node @samp{lispy-describe-inline}
+@unnumberedsec @samp{lispy-describe-inline}
+
+Bound to @code{C-1}.
+
+Show the documentation for current function or currently
+marked symbol (see @ref{@samp{lispy-ace-symbol}}).
+
+@node @samp{lispy-arglist-inline}
+@unnumberedsec @samp{lispy-arglist-inline}
+
+Bound to @code{C-2}.
+
+Show the argument list for current function.
+
+@node @samp{lispy-eval}
+@unnumberedsec @samp{lispy-eval}
+
+Bound to @code{e}.
+
+Eval current region or sexp.
+The result will be displayed in the minibuffer.
+
+Elisp, Clojure, Scheme and Common Lisp are supported.
+
+Elisp extensions:
+
+@menu
+* @samp{lispy-lax-eval}::
+* eval of @samp{defvar}::
+* eval of @samp{defcustom}::
+* eval of @samp{defface}::
+@end menu
+
+@node @samp{lispy-lax-eval}
+@unnumberedsubsec @samp{lispy-lax-eval}
+
+When @samp{lispy-lax-eval} isn't @samp{nil}, "Symbol's value as variable is
+void@dots{}" error will be caught and the variable in question will be set
+to @samp{nil}.
+
+@node eval of @samp{defvar}
+@unnumberedsubsec eval of @samp{defvar}
+
+Will do a @samp{setq} in addition to @samp{defvar} (i.e. the behavior of @code{C-M-x}).
+
+@node eval of @samp{defcustom}
+@unnumberedsubsec eval of @samp{defcustom}
+
+Same as for @samp{defvar}.
+
+@node eval of @samp{defface}
+@unnumberedsubsec eval of @samp{defface}
+
+The behavior of @code{C-M-x}.
+
+@node @samp{lispy-eval-and-insert}
+@unnumberedsec @samp{lispy-eval-and-insert}
+
+Bound to @code{E}.
+
+Eval current region or sexp.
+The result will be inserted in the current buffer
+after the evaluated expression.
+
+@itemize
+@item
+Starting with @samp{|(} the point will not be moved,
+allowing to press @code{E} again.
+@item
+Starting with @samp{)|} the point will end up after the
+inserted expression.
+@item
+Starting with an active region, the region will be
+deactivated and result will be inserted at point.
+@end itemize
+
+@node @samp{lispy-bind-variable}
+@unnumberedsec @samp{lispy-bind-variable}
+
+Bound to @code{xb}.
+
+Transform the current list expression into a let-bound variable;
+@samp{iedit-mode} is used to name the new variable.  Use @code{M-m} to finish
+naming the variable.
+
+@lisp
+(defun my-forward-line (arg)
+  (message "%S lines"
+           <cursor>(</cursor>forward-line arg)))
+@end lisp
+-> @code{xbln M-m ChO}->
+@lisp
+(defun my-forward-line (arg)
+  (let ((ln (forward-line arg)))
+    <cursor>(</cursor>message "%S lines" ln)))
+@end lisp
+
+@node @samp{lispy-unbind-variable}
+@unnumberedsec @samp{lispy-unbind-variable}
+
+Bound to @code{xu}.
+
+Unbind a let-bound variable. Also works for Clojure.
+
+@lisp
+(defun foobar ()
+  (let (<cursor>(</cursor>x 10)
+        (y 20)
+        (z 30))
+    (foo1 x y z)
+    (foo2 x z y)
+    (foo3 y x z)
+    (foo4 y z x)
+    (foo5 z x y)
+    (foo6 z y x)))
+@end lisp
+-> @code{xu} ->
+@lisp
+(defun foobar ()
+  (let (<cursor>(</cursor>y 20)
+        (z 30))
+    (foo1 10 y z)
+    (foo2 10 z y)
+    (foo3 y 10 z)
+    (foo4 y z 10)
+    (foo5 z 10 y)
+    (foo6 z y 10)))
+@end lisp
+
+@node @samp{lispy-eval-and-replace}
+@unnumberedsec @samp{lispy-eval-and-replace}
+
+Bound to @code{xr}.
+
+Eval current expression and replace it at point.
+
+@lisp
+(foo <cursor>(</cursor>+ 2 2))
+@end lisp
+-> @code{xr} ->
+@lisp
+<cursor>(</cursor>foo 4)
+@end lisp
+
+@node @samp{lispy-store-region-and-buffer}
+@unnumberedsec @samp{lispy-store-region-and-buffer}
+
+Bound to @code{xB}.
+
+Store current buffer and region for further usage.  When
+region isn't active, store the bounds of current expression instead.
+
+Currently, these functions make use of stored info:
+@multitable {aaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+@headitem key
+@tab function name
+@item B
+@tab @ref{@samp{lispy-ediff-regions}, , lispy-ediff-regions}
+@end multitable
+
+@node @samp{lispy-ediff-regions}
+@unnumberedsec @samp{lispy-ediff-regions}
+
+Bound to @code{B}.
+
+Comparable to @samp{ediff-regions-linewise}, except the region and
+buffer selection is done differently:
+
+@itemize
+@item
+first buffer and region are defined by @ref{@samp{lispy-store-region-and-buffer}}.
+@item
+second buffer and region are the current buffer and region (or
+current sexp bounds if the region isn't active)
+@end itemize
+
+The buffers can of course be the same.
+
+A useful scenario for this function is @code{C-x v ~}
+(@samp{vc-revision-other-window}) @code{RET} and then follow up by selecting one
+function that was changed with @code{b} in one buffer and with @code{B} in other
+buffer.  This results in ediff just for that one single
+function. This is helpful if @samp{ediff-buffers} isn't what you want.
+
+Another scenario is to compare two different functions that have similar code,
+for instance @samp{lispy-move-down} and @samp{lispy-move-up}.
+
+@node @samp{lispy-to-lambda}
+@unnumberedsec @samp{lispy-to-lambda}
+
+Use @code{xl} (local) or @code{C-4 l} (global) to turn the current function
+definition into a lambda.
+
+One use case is when I want to edebug a lambda but not the function
+that's using it. So I extract the lambda with @ref{@samp{lispy-to-defun}}, edebug it and
+turn it back into a lambda with this function.
+
+Other use case is that I simply want to get the lambda since
+the function isn't used anywhere else.
+
+Starting with this:
+
+@lisp
+(defun helm-owiki-action (x)
+  (find-file (expand-file-name
+              (format "%s.org" x)<cursor> </cursor>
+              helm-owiki-directory)))
+@end lisp
+
+by pressing @code{xl} you will get this:
+
+@lisp
+<cursor>(</cursor>lambda (x)
+  (find-file (expand-file-name
+              (format "%s.org" x)
+              helm-owiki-directory)))
+@end lisp
+
+@node @samp{lispy-to-defun}
+@unnumberedsec @samp{lispy-to-defun}
+
+Use @code{xd} (local) or @code{C-4 d} (global) to turn the current lambda
+into a defun.
+
+You'll be prompted for a name, the lambda will be replaced with that
+name and the new definition will be in the kill ring.
+
+Starting with this:
+@lisp
+(mapcar <cursor>(</cursor>lambda (x) (* x x))
+        (number-sequence 1 10))
+@end lisp
+
+by pressing @code{xd} and entering @samp{square} and then pressing @code{d C-m C-y}
+you'll get this:
+@lisp
+(mapcar #'square
+        (number-sequence 1 10))
+(defun square (x) (* x x))<cursor> </cursor>
+@end lisp
+
+It's also possible to transform a toplevel function call into a defun
+with @code{xd}:
+
+Starting with this
+@lisp
+(foo-delete-region beg end)<cursor> </cursor>
+@end lisp
+
+by pressing @code{xd} you'll get this:
+@lisp
+(defun foo-delete-region (beg end)
+  <cursor>)</cursor>
+@end lisp
+
+It's also possible to transform a block into a defun. Start with:
+@lisp
+(defun cube (x)
+  (* x <cursor>(</cursor>* x x)))
+@end lisp
+Enter @code{xdsquare x[} to get:
+@lisp
+(defun square (x)
+  (* x x))
+
+(defun cube (x)
+  (* x <cursor>(</cursor>square x)))
+@end lisp
+
+@node @samp{lispy-parens}
+@unnumberedsec @samp{lispy-parens}
+
+Bound to @code{(}.
+
+Call @ref{@samp{lispy-pair}} specialized with @samp{()}.
+
+@node @samp{lispy-braces}
+@unnumberedsec @samp{lispy-braces}
+
+Bound to @code{@{}.
+
+Call @ref{@samp{lispy-pair}} specialized with @samp{@{@}}.
+
+@node @samp{lispy-brackets}
+@unnumberedsec @samp{lispy-brackets}
+
+Bound to @code{@}}.
+
+Call @ref{@samp{lispy-pair}} specialized with @samp{[]}.
+
+@node @samp{lispy-quotes}
+@unnumberedsec @samp{lispy-quotes}
+
+Bound to ".
+
+Insert a pair of quotes around the point.
+
+Takes a prefix @samp{arg}.
+
+The result depends on the following conditions, each tried one by one until one that holds true is found:
+
+@menu
+* region is active, contained in string: region is active contained in string. 
+* region active::
+* in string and @samp{arg} isn't @samp{nil}::
+* in string and @samp{arg} is @samp{nil}::
+* @samp{arg} isn't @samp{nil}::
+* otherwise: otherwise (1). 
+@end menu
+
+@node region is active contained in string
+@unnumberedsubsec region is active, contained in string
+
+Wrap the region with quoted quotes:
+@lisp
+(message "We are the Knights who say <cursor>N</cursor><span class="region">i</span>")
+@end lisp
+-> " ->
+@lisp
+(message "We are the Knights who say \"<cursor>N</cursor>i\"")
+@end lisp
+
+@node region active
+@unnumberedsubsec region active
+
+Wrap the region with quotes.
+@lisp
+(list 'foo <span class="region">bar</span><cursor>)</cursor>
+@end lisp
+-> " ->
+@lisp
+(list 'foo "<cursor>b</cursor>ar")
+@end lisp
+
+@node in string and @samp{arg} isn't @samp{nil}
+@unnumberedsubsec in string and @samp{arg} isn't @samp{nil}
+
+Unquote current string.
+@lisp
+(list 'foo "<cursor>b</cursor>ar")
+@end lisp
+-> C-u " ->
+@lisp
+(list 'foo bar<cursor>)</cursor>
+@end lisp
+
+@node in string and @samp{arg} is @samp{nil}
+@unnumberedsubsec in string and @samp{arg} is @samp{nil}
+
+Insert a pair of quoted quotes around point.
+
+Starting with
+@lisp
+"We are the Knights who say <cursor>"</cursor>
+@end lisp
+
+pressing " will give:
+@lisp
+"We are the Knights who say \"<cursor>\</cursor>""
+@end lisp
+
+@node @samp{arg} isn't @samp{nil}
+@unnumberedsubsec @samp{arg} isn't @samp{nil}
+
+Forward to @ref{@samp{lispy-stringify}}.
+
+@node otherwise (1)
+@unnumberedsubsec otherwise
+
+Insert quotes, with a single space on either side where appropriate,
+and position the point between the quotes.
+
+Starting with
+@lisp
+(message<cursor>)</cursor>
+@end lisp
+
+pressing " will give:
+@lisp
+(message "<cursor>"</cursor>)
+@end lisp
+
+@node @samp{lispy-parens-down}
+@unnumberedsec @samp{lispy-parens-down}
+
+Bound to @code{C-8}.
+
+Exit current list and insert a newline and a pair of parens.
+
+@lisp
+(foo<cursor>)</cursor>
+@end lisp
+-> @code{C-8} ->
+@lisp
+(foo)
+(<cursor>)</cursor>
+@end lisp
+
+@node @samp{lispy-space}
+@unnumberedsec @samp{lispy-space}
+
+Bound to @code{SPC}.
+
+Insert a space.
+
+Behave differently in this situation:
+
+@lisp
+(<cursor>(</cursor>foo))
+@end lisp
+-> @code{SPC} ->
+@lisp
+(<cursor> </cursor>(foo))
+@end lisp
+
+@node @samp{lispy-pair}
+@unnumberedsec @samp{lispy-pair}
+
+This function, taking arguments @samp{left} and @samp{right}, is used to generate
+@ref{@samp{lispy-parens}},
+@ref{@samp{lispy-braces}}
+and @ref{@samp{lispy-brackets}}, which in turn take prefix @samp{arg}.
+The arguments align with those of @ref{@samp{lispy-slurp}}.
+
+The result depends on the following conditions, each tried one by one until one that holds true is found:
+
+@menu
+* region active: region active (1). 
+* inside a string before "\\"::
+* inside string or comment::
+* elisp character expression::
+* no @samp{arg} is explicitly specified::
+* @samp{arg} is positive::
+* @samp{arg} is 0::
+* @samp{arg} is -1::
+@end menu
+
+@node region active (1)
+@unnumberedsubsec region active
+
+Wrap the region with @samp{left} and @samp{right}.
+
+@node inside a string before "\\"
+@unnumberedsubsec inside a string before "\\"
+
+Starting with
+@example
+"a regex \\<cursor>"</cursor>
+@end example
+pressing  @code{(} will give:
+@example
+"a regex \\(<cursor>\</cursor>\)"
+@end example
+and pressing @code{@{} will give:
+@example
+"a regex \\@{<cursor>\</cursor>\@}"
+@end example
+and pressing @code{@}} will give:
+@example
+"a regex \\[<cursor>\</cursor>\]"
+@end example
+
+@node inside string or comment
+@unnumberedsubsec inside string or comment
+
+Insert @samp{left}, @samp{right} and put the point between them.
+
+Starting with:
+@example
+"a string <cursor> </cursor>"
+@end example
+@multitable {aaa} {aaaaaaaaaaaaa}
+@headitem key
+@tab result
+@item (
+@tab "a string ("
+@item )
+@tab "a string )"
+@item @{
+@tab "a string @{@}"
+@item @}
+@tab "a string []"
+@end multitable
+
+@node elisp character expression
+@unnumberedsubsec elisp character expression
+
+Starting with
+@example
+?\<cursor> </cursor>
+@end example
+pressing @code{(} will self-insert it to give:
+@example
+?\(<cursor> </cursor>
+@end example
+This also works for @code{)}, @code{@{}, @code{@}}.
+
+This doesn't work for @code{[} and @code{]},
+they should be inserted with @code{C-q [} and @code{C-q ]}.
+
+@node no @samp{arg} is explicitly specified
+@unnumberedsubsec no @samp{arg} is explicitly specified
+
+@enumerate
+@item
+Re-indent and insert space according to @samp{lispy--space-unless}.
+@item
+Insert @samp{left}, @samp{right} and put the point between them.
+@item
+Insert a space after @samp{right} if it's appropriate.
+@end enumerate
+
+@node @samp{arg} is positive
+@unnumberedsubsec @samp{arg} is positive
+
+Wrap that number of sexps with @samp{left} and @samp{right}.
+
+Starting with:
+@lisp
+<cursor>(</cursor>do-some-thing)
+(do-other-thing)
+@end lisp
+
+pressing @code{1(} will give:
+@lisp
+(<cursor> </cursor>(do-some-thing))
+(do-other-thing)
+@end lisp
+
+@code{1} here is responsible to setting @samp{arg} to 1. @code{C-u} will also cause a
+single sexp to be wrapped.
+
+@node @samp{arg} is 0
+@unnumberedsubsec @samp{arg} is 0
+
+Wrap as many sexps as possible.
+
+Starting with:
+@lisp
+(foo
+ <cursor>b</cursor>ar baz
+ quux)
+@end lisp
+
+pressing @code{M-0(} will give:
+@lisp
+(foo
+ (<cursor> </cursor>bar baz
+       quux))
+@end lisp
+
+@node @samp{arg} is -1
+@unnumberedsubsec @samp{arg} is -1
+
+Wrap to the end of the line where the current sexp ends or as far as
+possible before that position.
+
+Starting with:
+@lisp
+(foo
+ <cursor>b</cursor>ar baz
+ quux)
+@end lisp
+
+pressing @code{M--(} will give:
+@lisp
+(foo
+ (<cursor> </cursor>bar baz)
+ quux)
+@end lisp
+
+@node @samp{lispy-x}
+@unnumberedsec @samp{lispy-x}
+
+Bound to @code{x} (locally) or @code{C-4} (globally).
+
+Just a prefix to calling other commands,  @ref{G az AZ x x[a-z] local bindings, , see}.
+
+@node @samp{lispy-kill}
+@unnumberedsec @samp{lispy-kill}
+
+Bound to @code{C-k}.
+
+A replacement for @samp{kill-line} that keeps parens consistent.
+
+The result depends on the following conditions, each tried one by one until one that holds true is found:
+
+@menu
+* inside comment::
+* inside string and string extends past this line::
+* inside string that ends on this line::
+* on a line of whitespace::
+* inside empty list::
+* parens between point and eol are balanced::
+* possible to @samp{up-list}::
+* otherwise: otherwise (2). 
+@end menu
+
+@node inside comment
+@unnumberedsubsec inside comment
+
+Call @samp{kill-line}.
+
+@node inside string and string extends past this line
+@unnumberedsubsec inside string and string extends past this line
+
+Call @samp{kill-line}.
+
+@node inside string that ends on this line
+@unnumberedsubsec inside string that ends on this line
+
+Delete up to the end of the string.
+
+@node on a line of whitespace
+@unnumberedsubsec on a line of whitespace
+
+Delete whole line, moving to the next one, and re-indent.
+
+@node inside empty list
+@unnumberedsubsec inside empty list
+
+Delete the empty list.
+
+@node parens between point and eol are balanced
+@unnumberedsubsec parens between point and eol are balanced
+
+Call @samp{kill-line}.
+
+@node possible to @samp{up-list}
+@unnumberedsubsec possible to @samp{up-list}
+
+Delete from point to end of list.
+
+@node otherwise (2)
+@unnumberedsubsec otherwise
+
+Delete current sexp.
+
+@node @samp{lispy-new-copy}
+@unnumberedsec @samp{lispy-new-copy}
+
+Bound to @code{n}.
+
+Copy current sexp or region to kill ring.
+
+@node @samp{lispy-yank}
+@unnumberedsec @samp{lispy-yank}
+
+Bound to @code{C-y}.
+
+Replaces @samp{yank}.
+The only difference is that yanking into an empty string will add
+escape sequences.
+
+Starting with:
+@lisp
+<cursor>(</cursor>message "test")
+@end lisp
+
+pressing @code{C-k} " @code{C-y} will give:
+@lisp
+"(message \"test\")<cursor>"</cursor>
+@end lisp
+
+whereas a regular @samp{yank} would give:
+@lisp
+"(message "test")<cursor>"</cursor>
+@end lisp
+
+@node @samp{lispy-delete}
+@unnumberedsec @samp{lispy-delete}
+
+Bound to @code{C-d}.
+
+Replaces @samp{delete-char}, keeping parens consistent.
+
+The result depends on the following conditions, each tried one by one until one that holds true is found:
+
+@menu
+* region active: region active (2). 
+* inside a string before \"::
+* at last char of the string::
+* in string near \::
+* the next char isn't end of string::
+* inside comment: inside comment (1). 
+* before @samp{lispy-left}::
+* before "::
+* before @samp{lispy-right}::
+* otherwise: otherwise (3). 
+@end menu
+
+@node region active (2)
+@unnumberedsubsec region active
+
+Delete region.
+
+@node inside a string before \"
+@unnumberedsubsec inside a string before \"
+
+Delete \".
+
+@lisp
+"say <cursor>\</cursor>"hi\""
+@end lisp
+-> @code{C-d} ->
+@lisp
+"say <cursor>h</cursor>i\""
+@end lisp
+
+@node at last char of the string
+@unnumberedsubsec at last char of the string
+
+Move to the beginning of string.
+This allows to delete the whole string with the next @code{C-d}.
+
+@example
+(message "more gold is required<cursor>"</cursor>)
+@end example
+-> @code{C-d} ->
+@example
+(message <cursor>"</cursor>more gold is required")
+@end example
+
+@node in string near \
+@unnumberedsubsec in string near \
+
+Remove \.
+
+@example
+(looking-at "\\([a-z]+<cursor>\</cursor>\)")
+@end example
+-> @code{C-d} ->
+@example
+(looking-at "[a-z]+<cursor>"</cursor>)
+@end example
+@example
+(looking-at "<cursor>\</cursor>\([a-z]+\\)")
+@end example
+-> @code{C-d} ->
+@example
+(looking-at "<cursor>[</cursor>a-z]+")
+@end example
+
+@node the next char isn't end of string
+@unnumberedsubsec the next char isn't end of string
+
+Call @samp{delete-char}.
+
+@node inside comment (1)
+@unnumberedsubsec inside comment
+
+Call @samp{delete-char}.
+
+@node before @samp{lispy-left}
+@unnumberedsubsec before @samp{lispy-left}
+
+Delete @samp{arg} sexps.
+
+
+@lisp
+(foo <cursor>(</cursor>bar) (baz))
+@end lisp
+-> @code{2} @code{C-d} ->
+@lisp
+<cursor>(</cursor>foo)
+@end lisp
+
+@node before "
+@unnumberedsubsec before "
+
+Delete string.
+
+@node before @samp{lispy-right}
+@unnumberedsubsec before @samp{lispy-right}
+
+Delete containing sexp.
+
+@lisp
+(foo (bar) (baz<cursor>)</cursor>)
+@end lisp
+-> @code{C-d} ->
+@lisp
+(foo (bar)<cursor>)</cursor>
+@end lisp
+
+@node otherwise (3)
+@unnumberedsubsec otherwise
+
+Call @samp{delete-char}.
+
+@node @samp{lispy-delete-backward}
+@unnumberedsec @samp{lispy-delete-backward}
+
+Bound to @code{DEL}.
+
+Replaces @samp{backward-delete-char}, keeping parens consistent.
+
+The result depends on the following conditions, each tried one by one until one that holds true is found:
+
+@menu
+* region active: region active (3). 
+* at first char of the string::
+* in string near \: in string near \ (1). 
+* in string or comment::
+* after @samp{lispy-right}::
+* before @samp{lispy-left}: before @samp{lispy-left} (1). 
+* after a string::
+* otherwise: otherwise (4). 
+@end menu
+
+@node region active (3)
+@unnumberedsubsec region active
+
+Delete region.
+
+@node at first char of the string
+@unnumberedsubsec at first char of the string
+
+Move to the end of the string.
+This allows to delete the whole string with the next @code{DEL}.
+
+@example
+(message "<cursor>m</cursor>ore gold is required")
+@end example
+-> @code{DEL} ->
+@example
+(message "more gold is required"<cursor>)</cursor>
+@end example
+
+@node in string near \ (1)
+@unnumberedsubsec in string near \
+
+Remove \.
+
+@example
+(looking-at "\\([a-z]+\\)<cursor>"</cursor>)
+@end example
+-> @code{DEL} ->
+@example
+(looking-at "[a-z]+<cursor>"</cursor>)
+@end example
+@example
+(looking-at "\\(<cursor>[</cursor>a-z]+\\)")
+@end example
+-> @code{DEL} ->
+@example
+(looking-at "<cursor>[</cursor>a-z]+")
+@end example
+
+@node in string or comment
+@unnumberedsubsec in string or comment
+
+Call @samp{backward-delete-char}.
+
+@node after @samp{lispy-right}
+@unnumberedsubsec after @samp{lispy-right}
+
+Delete @samp{arg} sexps.
+
+@lisp
+(foo (bar) (baz)<cursor>)</cursor>
+@end lisp
+-> @code{2} @code{DEL} ->
+@lisp
+(foo)<cursor> </cursor>
+@end lisp
+
+@node before @samp{lispy-left} (1)
+@unnumberedsubsec before @samp{lispy-left}
+
+Delete containing sexp.
+
+@lisp
+(foo (bar) (<cursor>b</cursor>az))
+@end lisp
+-> @code{DEL} ->
+@lisp
+(foo (bar)<cursor>)</cursor>
+@end lisp
+
+@node after a string
+@unnumberedsubsec after a string
+
+Delete string.
+
+@example
+(message "more gold is required"<cursor>)</cursor>
+@end example
+-> @code{DEL} ->
+@example
+(message)<cursor> </cursor>
+@end example
+
+@node otherwise (4)
+@unnumberedsubsec otherwise
+
+Call @samp{backward-delete-char}.
+
+@node @samp{lispy-mark}
+@unnumberedsec @samp{lispy-mark}
+
+Bound to @code{C-M-,}.
+
+Mark the smallest comment or string or list that includes point.
+
+This command will expand region when repeated.
+
+@node @samp{lispy-kill-at-point}
+@unnumberedsec @samp{lispy-kill-at-point}
+
+Bound to @code{C-,}.
+
+Kill the smallest comment or string or list that includes point.
+
+@node @samp{lispy-mark-symbol}
+@unnumberedsec @samp{lispy-mark-symbol}
+
+Bound to @code{M-m}.
+
+The result depends on the following conditions, each tried one by one until one that holds true is found:
+
+@menu
+* @samp{lispy-bind-variable} in progress::
+* in comment::
+* looking at space or parens::
+* looking back @samp{lispy-right}: looking back @samp{lispy-right} (1). 
+* region is active::
+* otherwise: otherwise (5). 
+@end menu
+
+@node @samp{lispy-bind-variable} in progress
+@unnumberedsubsec @samp{lispy-bind-variable} in progress
+
+Exit @samp{iedit-mode} and mark the newly bound variable with a region.
+This allows to use @ref{@samp{lispy-convolute}} to place the new @samp{let} binding
+into an appropriate place.
+
+@node in comment
+@unnumberedsubsec in comment
+
+Mark comment.
+
+@node looking at space or parens
+@unnumberedsubsec looking at space or parens
+
+Skip space and parens and mark the next thing between them.
+
+@node looking back @samp{lispy-right} (1)
+@unnumberedsubsec looking back @samp{lispy-right}
+
+Mark last symbol in previous list.
+
+@node region is active
+@unnumberedsubsec region is active
+
+Call @samp{forward-sexp}.
+
+@node otherwise (5)
+@unnumberedsubsec otherwise
+
+Forward to @samp{lispy-mark}.
+
+@node @samp{lispy-string-oneline}
+@unnumberedsec @samp{lispy-string-oneline}
+
+Bound to @code{O}, when a string is marked.
+
+Convert current string to one line.
+
+Starting with
+@example
+(message "foo<cursor> </cursor>
+bar
+baz")
+@end example
+
+pressing @code{M-m O} will give:
+
+@example
+(message "foo\nbar\nbaz"<cursor>)</cursor>
+@end example
+
+This can be useful when debugging a macro-generated function (i.e. it
+doesn't have a body). First produce the body with @samp{symbol-function},
+then prettify the body with @code{M} and @code{O}, then @samp{edebug} with @code{x e}.
+
+@node @samp{lispy-outline-next}
+@unnumberedsec @samp{lispy-outline-next}
+
+Bound to @code{J}.
+
+Takes a numeric prefix @samp{arg} and
+calls @samp{outline-next-visible-heading} @samp{arg} times or until
+past the last @samp{outline-regexp}.
+
+See @ref{@samp{lispy-shifttab}} for more info.
+
+@node @samp{lispy-outline-prev}
+@unnumberedsec @samp{lispy-outline-prev}
+
+Bound to @code{K}.
+
+Takes a numeric prefix @samp{arg} and
+calls @samp{outline-previous-visible-heading} @samp{arg} times or until
+past the first @samp{outline-regexp}.
+
+See @ref{@samp{lispy-shifttab}} for more info.
+
+@node @samp{lispy-shifttab}
+@unnumberedsec @samp{lispy-shifttab}
+
+Bound to @code{I}.
+
+Toggles on/off an @samp{org-mode}-like outline.
+
+To make this work, @samp{lispy-mode} will modify @samp{outline-regexp} and
+@samp{outline-level-function} for the current buffer while it's on.
+
+To give an example of the recommended outline syntax:
+
+@lisp
+;;* Level 1
+;;** Level 2
+;;*** Level 3
+@end lisp
+
+You can create new outlines with @code{M-RET} (@samp{lispy-meta-return}).
+
+You can promote the current outline with:
+@itemize
+@item
+@code{M-right} (@samp{lispy-meta-right}),
+@item
+@code{l} (@samp{lispy-right}).
+@end itemize
+
+You can demote the current outline with:
+@itemize
+@item
+@code{M-left} (@samp{lispy-meta-left}),
+@item
+@code{h} (@samp{lispy-left}).
+@end itemize
+
+Useful together with:
+
+@multitable {aaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+@headitem key
+@tab function name
+@item J
+@tab @ref{@samp{lispy-outline-next}, , lispy-outline-next}
+@item K
+@tab @ref{@samp{lispy-outline-prev}, , lispy-outline-prev}
+@item i
+@tab @ref{@samp{lispy-tab}, , lispy-tab}
+@end multitable
+
+@node @samp{lispy-tab}
+@unnumberedsec @samp{lispy-tab}
+
+Bound to @code{i}.
+
+The result depends on the following conditions, each tried one by one until one that holds true is found:
+
+@menu
+* in outline::
+* region is active: region is active (1). 
+* otherwise: otherwise (6). 
+@end menu
+
+@node in outline
+@unnumberedsubsec in outline
+
+Hide/show outline.
+
+@node region is active (1)
+@unnumberedsubsec region is active
+
+Forward to @ref{@samp{lispy-mark-car}}.
+
+@node otherwise (6)
+@unnumberedsubsec otherwise
+
+Indent and prettify code.
+Prettify means to remove hanging closing parens, extra spaces,
+and to add space where it's needed, e.g. @samp{(lambda (x))} instead of
+@samp{(lambda(x))}:
+
+@lisp
+<cursor>(</cursor>defun test-function ()
+  (message  "testing: %s"
+            (mapconcat
+             (lambda(x) (prin1-to-string
+                    (* x x)
+                    ))
+             (list 0 1 2 3 4 5)
+             ",")
+            )
+  )
+@end lisp
+-> @code{i} ->
+@lisp
+<cursor>(</cursor>defun test-function ()
+  (message "testing: %s"
+           (mapconcat
+            (lambda (x) (prin1-to-string
+                         (* x x)))
+            (list 0 1 2 3 4 5)
+            ",")))
+@end lisp
+
+@node @samp{lispy-edebug-stop}
+@unnumberedsec @samp{lispy-edebug-stop}
+
+Bound to @code{Z}.
+
+Does the same as @code{q} in @samp{edebug}, except current function's arguments
+will be saved to their current values.
+
+This allows to continue debugging with @ref{@samp{lispy-eval}} (@code{e}) from
+@samp{edebug}'s current context.
+
+The advantage is that you can edit the code as you debug, as @samp{edebug}
+puts your code in read-only mode.
+
+@node @samp{lispy-flatten}
+@unnumberedsec @samp{lispy-flatten}
+
+Bound to @code{xf}.
+
+Inline current function or macro call, i.e. replace it with function
+body. The function should be interned and its body find-able.
+
+@lisp
+<cursor>(</cursor>setq-local foo 10)
+@end lisp
+-> @code{xf} ->
+@lisp
+<cursor>(</cursor>set (make-local-variable 'foo) 10)
+@end lisp
+
+@node @samp{lispy-to-ifs}
+@unnumberedsec @samp{lispy-to-ifs}
+
+Bound to @code{xi}.
+
+Transform current @samp{cond} expression to equivalent nested @samp{if}
+expressions. The whitespace, such as comments and newlines, is
+preserved as much as possible.
+
+The reverse is @ref{@samp{lispy-to-cond}}.
+
+@lisp
+<cursor>(</cursor>cond ((region-active-p)
+       (dotimes-protect arg
+         (if (= (point) (region-beginning))
+             (progn
+               (forward-sexp 1)
+               (skip-chars-forward " \n"))
+           (forward-sexp 1))))
+
+      ((looking-at lispy-left)
+       (lispy-forward arg)
+       (let ((pt (point)))
+         (if (lispy-forward 1)
+             (lispy-backward 1)
+           (goto-char pt))))
+
+      ((looking-back lispy-right)
+       (let ((pt (point)))
+         (unless (lispy-forward arg)
+           (goto-char pt)
+           (lispy-backward 1))))
+
+      (t
+       (lispy-forward 1)
+       (lispy-backward 1)))
+@end lisp
+-> @code{xi} ->
+@lisp
+<cursor>(</cursor>if (region-active-p)
+    (dotimes-protect arg
+      (if (= (point) (region-beginning))
+          (progn
+            (forward-sexp 1)
+            (skip-chars-forward " \n"))
+        (forward-sexp 1)))
+
+  (if (looking-at lispy-left)
+      (progn
+        (lispy-forward arg)
+        (let ((pt (point)))
+          (if (lispy-forward 1)
+              (lispy-backward 1)
+            (goto-char pt))))
+
+    (if (looking-back lispy-right)
+        (let ((pt (point)))
+          (unless (lispy-forward arg)
+            (goto-char pt)
+            (lispy-backward 1)))
+
+      (lispy-forward 1)
+      (lispy-backward 1))))
+@end lisp
+
+@node @samp{lispy-to-cond}
+@unnumberedsec @samp{lispy-to-cond}
+
+Bound to @code{xc}.
+
+Transform current nested @samp{if} expressions to an equivalent @samp{cond} expression. Also works for
+@samp{case}. The whitespace, such as comments and newlines, is preserved as much as possible.
+
+The reverse is @ref{@samp{lispy-to-ifs}}.
+
+@lisp
+<cursor>(</cursor>if (region-active-p)
+    (dotimes-protect arg
+      (if (= (point) (region-beginning))
+          (progn
+            (forward-sexp 1)
+            (skip-chars-forward " \n"))
+        (forward-sexp 1)))
+
+  (if (looking-at lispy-left)
+      (progn
+        (lispy-forward arg)
+        (let ((pt (point)))
+          (if (lispy-forward 1)
+              (lispy-backward 1)
+            (goto-char pt))))
+
+    (if (looking-back lispy-right)
+        (let ((pt (point)))
+          (unless (lispy-forward arg)
+            (goto-char pt)
+            (lispy-backward 1)))
+
+      (lispy-forward 1)
+      (lispy-backward 1))))
+@end lisp
+-> @code{xc} ->
+@lisp
+<cursor>(</cursor>cond ((region-active-p)
+       (dotimes-protect arg
+         (if (= (point) (region-beginning))
+             (progn
+               (forward-sexp 1)
+               (skip-chars-forward " \n"))
+           (forward-sexp 1))))
+
+      ((looking-at lispy-left)
+       (lispy-forward arg)
+       (let ((pt (point)))
+         (if (lispy-forward 1)
+             (lispy-backward 1)
+           (goto-char pt))))
+
+      ((looking-back lispy-right)
+       (let ((pt (point)))
+         (unless (lispy-forward arg)
+           (goto-char pt)
+           (lispy-backward 1))))
+
+      (t
+       (lispy-forward 1)
+       (lispy-backward 1)))
+@end lisp
+
+@node @samp{lispy-visit}
+@unnumberedsec @samp{lispy-visit}
+
+Bound to @code{V}.
+
+Visit another file within this project using @uref{https://github.com/bbatsov/projectile, @samp{projectile}} or
+@uref{https://github.com/technomancy/find-file-in-project, @samp{find-file-in-project}} (customize @samp{lispy-visit-method} to choose).
+
+Use @code{V} to call @samp{projectile-find-file}.
+Use @code{2V} to call @samp{projectile-find-file-other-window}.
+
+@node @samp{lispy-narrow}
+@unnumberedsec @samp{lispy-narrow}
+
+Bound to @code{N}.
+
+@uref{http://www.gnu.org/software/emacs/manual/html_node/emacs/Narrowing.html, Narrow} to current sexp or region.
+
+@node @samp{lispy-widen}
+@unnumberedsec @samp{lispy-widen}
+
+Bound to @code{W}.
+
+Forward to @samp{widen}.
+
+@node @samp{lispy-oneline}
+@unnumberedsec @samp{lispy-oneline}
+
+Bound to @code{O}.
+
+Turn current sexp into one line.
+@lisp
+<cursor>(</cursor>progn
+  (foo)
+  (bar))
+@end lisp
+-> @code{O} ->
+@lisp
+<cursor>(</cursor>progn (foo) (bar))
+@end lisp
+
+@node @samp{lispy-multiline}
+@unnumberedsec @samp{lispy-multiline}
+
+Bound to @code{M}.
+
+Extend current sexp into multiple lines.
+Especially useful on results of @samp{macroexpand}.
+
+Turn current sexp into one line.
+@lisp
+<cursor>(</cursor>progn (foo) (bar) (baz))
+@end lisp
+-> @code{M} ->
+@lisp
+<cursor>(</cursor>progn (foo)
+       (bar)
+       (baz))
+@end lisp
+
+@node @samp{lispy-view}
+@unnumberedsec @samp{lispy-view}
+
+Bound to @code{v}.
+
+Recenter current sexp to be on the first line of the window.
+When called twice in a row, recenter back to the original position.
+
+It's just a slightly modified shorthand for the standard @code{C-l} (@samp{recenter-top-bottom}).
+
+@node @samp{lispy-slurp}
+@unnumberedsec @samp{lispy-slurp}
+
+Bound to @code{>}.
+
+Grow either current sexp or region (if it's active) in appropriate
+direction. Opposite of @ref{@samp{lispy-barf}}. With an arg of
+@code{0}, grow as far as possible. With an arg of @code{-1}, grow until the end
+of the line where the current sexp ends or as far as possible before
+that position.
+
+Example 1:
+@lisp
+(progn)<cursor> </cursor>(foo) (bar)
+@end lisp
+-> @code{>} ->
+@lisp
+(progn (foo))<cursor> </cursor>(bar)
+@end lisp
+Example 2:
+@lisp
+"foo" <cursor>(</cursor>bar)
+@end lisp
+-> @code{>} ->
+@lisp
+<cursor>(</cursor>"foo" bar)
+@end lisp
+Example 3:
+
+@lisp
+(foo <span class="region">bar</span><cursor> </cursor>baz)
+@end lisp
+-> @code{>} ->
+@lisp
+(foo <span class="region">bar baz</span><cursor>)</cursor>
+@end lisp
+Example 4:
+
+@lisp
+((foo)<cursor> </cursor>bar baz
+ quux)
+@end lisp
+-> @code{0>} ->
+@lisp
+((foo bar baz
+      quux)<cursor>)</cursor>
+@end lisp
+Example 5:
+
+@lisp
+((foo)<cursor> </cursor>bar baz
+ quux)
+@end lisp
+-> @code{M-->} ->
+@lisp
+((foo bar baz)<cursor> </cursor>
+ quux)
+@end lisp
+
+@node @samp{lispy-barf}
+@unnumberedsec @samp{lispy-barf}
+
+Bound to @code{<}.
+
+Shrink either current sexp or region (if it's active) in appropriate
+direction. Opposite of @ref{@samp{lispy-slurp}}.
+
+Example 1:
+@lisp
+(progn (foo))<cursor> </cursor>(bar)
+@end lisp
+-> @code{<} ->
+@lisp
+(progn)<cursor> </cursor>(foo) (bar)
+@end lisp
+Example 2:
+@lisp
+<cursor>(</cursor>"foo" bar)
+@end lisp
+-> @code{<} ->
+@lisp
+"foo" <cursor>(</cursor>bar)
+@end lisp
+Example 3:
+@lisp
+(foo <span class="region">bar bar</span><cursor>)</cursor>
+@end lisp
+-> @code{<} ->
+@lisp
+(foo <span class="region">bar</span><cursor> </cursor>bar)
+@end lisp
+
+@node @samp{lispy-other-mode}
+@unnumberedsec @samp{lispy-other-mode}
+
+Bound to @code{o}.
+
+This is a minor mode that changes the behavior of several key
+bindings, most notably the @code{hjkl} arrow keys.
+This mode can is turned off automatically after one of its key
+bindings is used. You can toggle it off with @code{o} if you change your
+mind about calling the modified @code{hjkl}.
+
+@multitable {aaaaa} {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+@headitem key
+@tab function name
+@item @code{h}
+@tab @ref{@samp{lispy-move-left}, , lispy-move-left}
+@item @code{j}
+@tab @ref{@samp{lispy-down-slurp}, , lispy-down-slurp}
+@item @code{k}
+@tab @ref{@samp{lispy-up-slurp}, , lispy-up-slurp}
+@item @code{l}
+@tab @ref{@samp{lispy-move-right}, , lispy-move-right}
+@item @code{SPC}
+@tab 
+@item @code{g}
+@tab 
+@end multitable
+
+@node @samp{lispy-move-left}
+@unnumberedsec @samp{lispy-move-left}
+
+Bound to @code{oh}.
+
+Move current expression to the left, outside the current list.
+
+@lisp
+(require 'ob-python)
+(let ((color "Blue"))
+  <cursor>(</cursor>message "What... is your favorite color?")
+  (message "%s. No yel..." color))
+@end lisp
+-> @code{oh} ->
+@lisp
+(require 'ob-python)
+<cursor>(</cursor>message "What... is your favorite color?")
+(let ((color "Blue"))
+  (message "%s. No yel..." color))
+@end lisp
+
+@node @samp{lispy-down-slurp}
+@unnumberedsec @samp{lispy-down-slurp}
+
+Bound to @code{oj}.
+
+Move current expression to become the first element of the first list
+below.
+
+@lisp
+<cursor>(</cursor>first!)
+'(foo bar)
+@end lisp
+-> @code{oj} ->
+@lisp
+'(<cursor>(</cursor>first!)
+  foo bar)
+@end lisp
+
+@node @samp{lispy-up-slurp}
+@unnumberedsec @samp{lispy-up-slurp}
+
+Bound to @code{ok}.
+
+Move current expression to become the last element of the first list
+above.
+
+@lisp
+(list 'my-sword
+      'my-bow)
+<cursor>(</cursor>my-axe)
+@end lisp
+-> @code{ok} ->
+@lisp
+(list 'my-sword
+      'my-bow
+      <cursor>(</cursor>my-axe))
+@end lisp
+
+@node @samp{lispy-move-right}
+@unnumberedsec @samp{lispy-move-right}
+
+Bound to @code{ol}.
+
+Move current expression to the right, outside the current list.
+
+@lisp
+(require 'ob-python)
+(message "What... is your favorite color?")
+(let ((color "Blue"))
+  (message color)
+  <cursor>(</cursor>message "Go on. Off you go."))
+@end lisp
+-> @code{ol} ->
+@lisp
+(require 'ob-python)
+(message "What... is your favorite color?")
+(let ((color "Blue"))
+  (message color))
+<cursor>(</cursor>message "Go on. Off you go.")
+@end lisp
+
+@node @samp{lispy-comment}
+@unnumberedsec @samp{lispy-comment}
+
+Bound to @code{;}.
+
+Comment current expression or region.
+With a prefix arg, comment many expressions.
+With a prefix arg and already inside comment, uncomment instead.
+
+@lisp
+(require 'ob-python)
+<cursor>(</cursor>defun cheeseshop (kind)
+  (message "Do you have any %s?" kind))
+@end lisp
+-> @code{;} ->
+@lisp
+<cursor>(</cursor>require 'ob-python)
+;; (defun cheeseshop (kind)
+;;   (message "Do you have any %s?" kind))
+@end lisp
+
+@node @samp{lispy-clone}
+@unnumberedsec @samp{lispy-clone}
+
+Bound to @code{c}.
+
+Copy current list or region and paste it below, without changing point
+or mark.
+
+With a prefix arg, copy that many times.
+
+@lisp
+<cursor>(</cursor>message "A witch!")
+@end lisp
+-> @code{3c} ->
+@lisp
+<cursor>(</cursor>message "A witch!")
+(message "A witch!")
+(message "A witch!")
+(message "A witch!")
+@end lisp
+
+@node @samp{lispy-goto}
+@unnumberedsec @samp{lispy-goto}
+
+Bound to @code{g}.
+
+Collect the tags (e.g. functions, variables @dots{}) in current directory
+and offer a helm completion list to jump to a selected tag.
+
+@node @samp{lispy-goto-local}
+@unnumberedsec @samp{lispy-goto-local}
+
+Bound to @code{G}.
+
+Similar to @ref{@samp{lispy-goto}}, but only current file's tags are used instead
+of whole directory's tags.
+
+@node @samp{lispy-goto-recursive}
+@unnumberedsec @samp{lispy-goto-recursive}
+
+Bound to @code{ogr}.
+
+Similar to @ref{@samp{lispy-goto}}, but all sub-directories' tags are used in
+addition to directory's tags.
+
+@node @samp{lispy-goto-projectile}
+@unnumberedsec @samp{lispy-goto-projectile}
+
+Bound to @code{0g} and @code{ogp}.
+
+Similar to @ref{@samp{lispy-goto-recursive}}, but @samp{projectile-project-root} is
+used as the base directory.
+
+@node @samp{lispy-goto-elisp-commands}
+@unnumberedsec @samp{lispy-goto-elisp-commands}
+
+Bound to @samp{oge}.
+
+Navigate to interactive Elisp functions (commands) in current file.
+
+@node @samp{lispy-mark-list}
+@unnumberedsec @samp{lispy-mark-list}
+
+Bound to @code{m}.
+
+Mark the current sexp.
+When the mark is already active, deactivate it instead.
+
+@node @samp{lispy-raise}
+@unnumberedsec @samp{lispy-raise}
+
+Bound to @code{r}.
+
+Use current sexp or region as replacement for its parent.
+
+@lisp
+(let ((foo 1))
+  <cursor>(</cursor>+ bar baz))
+@end lisp
+-> @code{r} ->
+@lisp
+<cursor>(</cursor>+ bar baz)
+@end lisp
+
+@node @samp{lispy-move-down}
+@unnumberedsec @samp{lispy-move-down}
+
+Bound to @code{s}.
+
+Move current sexp or region down arg times. Don't exit the parent
+list. Also works for outlines.
+
+@lisp
+(progn
+  <cursor>(</cursor>foo)
+  (bar)
+  (baz))
+@end lisp
+-> @code{s} ->
+@lisp
+(progn
+  (bar)
+  <cursor>(</cursor>foo)
+  (baz))
+@end lisp
+
+@node @samp{lispy-move-up}
+@unnumberedsec @samp{lispy-move-up}
+
+Bound to @code{w}.
+
+Move current sexp or region up arg times. Don't exit the parent list.
+Also works for outlines.
+
+It's the reciprocal of @ref{@samp{lispy-move-down}}.
+
+@node @samp{lispy-teleport}
+@unnumberedsec @samp{lispy-teleport}
+
+Bound to @code{t}.
+
+Move the current sexp or region to a location specified by @ref{@samp{lispy-ace-paren}}.
+Press @code{tt} to teleport to any sexp in the current window.
+
+@node @samp{lispy-undo}
+@unnumberedsec @samp{lispy-undo}
+
+Bound to @code{u}.
+
+Forward to @samp{undo}. If the mark is active, deactivate it first.
+
+@node @samp{lispy-ace-symbol-replace}
+@unnumberedsec @samp{lispy-ace-symbol-replace}
+
+Bound to @code{H}.
+
+Calls @ref{@samp{lispy-ace-symbol}} and deletes the selected symbol.
+
+@node @samp{lispy-eval-other-window}
+@unnumberedsec @samp{lispy-eval-other-window}
+
+Bound to @code{p}.
+
+Eval the current sexp in the context of the other window.
+This is useful for debugging interactive Elisp functions:
+
+@itemize
+@item
+in one window keep the code of the function being debugged
+@item
+in the other window, keep the buffer on which the debugged function
+is supposed to work
+@end itemize
+
+Special behavior in @samp{let} (what gets evaled is on the right):
+@lisp
+(let (<cursor>(</cursor>foo 10))
+  (bar))
+@end lisp
+-> @code{p} ->
+@lisp
+(setq foo 10)
+@end lisp
+Special behavior in @samp{cond} (what gets evaled is on the right):
+@lisp
+(cond <cursor>(</cursor>(foo-1)
+       (bar-1))
+      ((foo-2)
+       (bar-2)))
+@end lisp
+-> @code{p} ->
+@lisp
+(if (foo-1)
+    (progn
+      (bar-1))
+  (message "cond: nil"))
+@end lisp
+Similar special behavior for @samp{pcase}.
+
+Special behavior in @samp{mapcar, =mapc}, @samp{dolist}: cycle the loop variable through the list:
+@lisp
+(mapcar <cursor>(</cursor>lambda (x) (* x x)) '(1 2 3))
+@end lisp
+
+@samp{x} will have value @samp{1} after the first @code{p}, value @samp{2} after the second @code{p} etc.
+
+@node @samp{lispy-describe}
+@unnumberedsec @samp{lispy-describe}
+
+Bound to @code{xh}.
+
+A shorthand for @samp{describe-function} or @samp{describe-variable}.
+
+If you want to call @samp{describe-variable}, you should mark the symbol
+first. You can do this quickly with:
+
+From special:
+
+@itemize
+@item
+@code{2m}, @code{3m}, etc. if you want the second or third element of the list
+accordingly
+@item
+@code{a} to select the symbol with @ref{@samp{lispy-ace-symbol}}
+@end itemize
+
+Globally:
+
+@itemize
+@item
+@code{M-m} to mark symbol at point with @ref{@samp{lispy-mark-symbol}}
+@end itemize
+
+@node @samp{lispy-beginning-of-defun}
+@unnumberedsec @samp{lispy-beginning-of-defun}
+
+Bound to @code{A}.
+
+Forward to @samp{beginning-of-defun}. When called twice in a row, restore
+the previous point and mark positions.
+
+A useful combo while debugging is @code{Aa} to select symbol, and @code{eA} to
+look at its value and go back. Repeat when needed.
+
+@node @samp{lispy-convolute}
+@unnumberedsec @samp{lispy-convolute}
+
+Bound to @code{C}.
+
+Exchange the order of application of two closest outer forms, relative
+to current expression or region.
+
+@lisp
+(if (= (weight person) standard-duck-weight)
+    (unless (sinks-in-water person)
+      <cursor>(</cursor>message "Burn her!")))
+@end lisp
+-> @code{C} ->
+@lisp
+(unless (sinks-in-water person)
+  (if (= (weight person) standard-duck-weight)
+      <cursor>(</cursor>message "Burn her!")))
+@end lisp
+This operation reverses itself.
+See @uref{images/lispy-convolute.gif, gif}.
+
+@node @samp{lispy-ace-char}
+@unnumberedsec @samp{lispy-ace-char}
+
+Bound to @code{Q}.
+
+Call @samp{ace-jump-mode}, while narrowed to current list.
+
+@node @samp{lispy-raise-some}
+@unnumberedsec @samp{lispy-raise-some}
+
+Bound to @code{R}.
+
+Use current sexp and the following (if called from the left), or the
+preceeding (if called from the right) sexps, or the active region
+as replacement for their parent.
+
+Example 1:
+
+@lisp
+(progn
+  (message "one")
+  <cursor>(</cursor>message "two")
+  (message "three"))
+@end lisp
+-> @code{R} ->
+@lisp
+<cursor>(</cursor>message "two")
+(message "three")
+@end lisp
+Example 2:
+
+@lisp
+(progn
+  (message "one")
+  (message "two")<cursor> </cursor>
+  (message "three"))
+@end lisp
+-> @code{R} ->
+@lisp
+progn
+(message "one")
+(message "two")
+@end lisp
+
+@node @samp{lispy-ert}
+@unnumberedsec @samp{lispy-ert}
+
+Bound to @code{xT}.
+
+Forward to @uref{https://www.gnu.org/software/emacs/manual/html_node/ert/index.html, @samp{ert}}.
+
+@node @samp{lispy-stringify}
+@unnumberedsec @samp{lispy-stringify}
+
+Bound to @code{S}.
+
+Transform current sexp into a string.  Quote newlines if @samp{arg}
+isn't 1.
+
+@lisp
+(progn
+  (message "one")
+  <cursor>(</cursor>message "two")
+  (message "three"))
+@end lisp
+-> @code{S} ->
+@lisp
+(progn
+  (message "one")
+  "(message \"two\")"
+  <cursor>(</cursor>message "three"))
+@end lisp
+
+@node @samp{lispy-paste}
+@unnumberedsec @samp{lispy-paste}
+
+Bound to @code{P}.
+
+When region is active, replace it with current kill.
+Forward to @samp{yank} otherwise.
+
+@node @samp{lispy-edebug}
+@unnumberedsec @samp{lispy-edebug}
+
+Bound to @code{xe}.
+
+@uref{http://www.gnu.org/software/emacs/manual/html_node/elisp/Using-Edebug.html, @samp{edebug}} current defun.
+Or @samp{cider-debug-defun-at-point} for Clojure.
+
+@code{2xe} will eval current defun instead.
+
+@node @samp{lispy-debug-step-in}
+@unnumberedsec @samp{lispy-debug-step-in}
+
+Bound to @code{xj}. Works for Elisp and Clojure (commit:dfcd4b9).
+
+@enumerate
+@item
+Evaluate the arguments at the current function's call
+@item
+Jump to the function's definition
+@item
+Set the result of evaluation to the function's arguments
+@end enumerate
+
+For example, starting with:
+
+@lisp
+<cursor>(</cursor>do-stuff 1 (+ 1 1) (+ 2 2))
+@end lisp
+after pressing @code{xj} you will jump to the definition of @samp{do-stuff}:
+@lisp
+<cursor>(</cursor>defun do-stuff (x y z &optional a &rest b)
+  (foo)
+  (bar))
+@end lisp
+At this point the following global variables will be set to their
+corresponding values:
+@multitable {aaa} {aaa}
+@headitem var
+@tab val
+@item x
+@tab 1
+@item y
+@tab 2
+@item z
+@tab 4
+@item a
+@tab nil
+@item b
+@tab nil
+@end multitable
+
+@node @samp{lispy-kill-word}
+@unnumberedsec @samp{lispy-kill-word}
+
+Bound to @code{M-d}.
+
+Kill @samp{arg} words, keeping parens and quotes consistent
+
+@node @samp{lispy-backward-kill-word}
+@unnumberedsec @samp{lispy-backward-kill-word}
+
+Bound to @code{M-DEL}.
+
+Kill @samp{arg} words backward, keeping parens and quotes consistent.
+
+@node @samp{lispy-kill-sentence}
+@unnumberedsec @samp{lispy-kill-sentence}
+
+Bound to @code{M-k}.
+
+Kill until the end of the current list or string.
+
+If located exactly at the beginning of the list or string, kill only
+that list or string instead.
+
+@lisp
+(message "Then shalt thou count to three<cursor>,</cursor>
+no more, no less.
+Three shall be the number thou shalt count,
+and the number of the counting shall be three.")
+@end lisp
+-> @code{M-k} ->
+@lisp
+(message "Then shalt thou count to three<cursor>"</cursor>)
+@end lisp
+
+@node @samp{digit-argument}
+@unnumberedsec @samp{digit-argument}
+
+Bound to @code{0}, @code{1}, @code{2}, @code{3}, @code{4}, @code{5}, @code{6}, @code{7}, @code{8}, @code{9}.
+
+This is the @uref{https://www.gnu.org/software/emacs/manual/html_node/emacs/Arguments.html, standard Emacs function}. Except instead of calling it
+globally with e.g. @code{M-2}, you can call it locally with just e.g. @code{2}.
+
+Many lispy commands take a prefix arg, e.g. @code{3j} is equivalent to
+@code{jjj}.
+
+@bye
