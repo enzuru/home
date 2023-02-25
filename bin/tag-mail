@@ -23,6 +23,7 @@ notmuch tag -inbox +openbsd-commits -- tag:inbox and to:ports-changes@cvs.openbs
 
 notmuch tag -inbox +openbsd -- tag:inbox and to:"/openbsd\.org/"
 notmuch tag -inbox +gnu -- tag:inbox and to:"/gnu\.org/"
+notmuch tag -inbox +gnu -- tag:inbox and to:"/nongnu\.org/"
 notmuch tag -inbox +9front -- tag:inbox and to:"/9front\.org/"
 notmuch tag -inbox +9front -- tag:inbox and to:"/cat-v\.org/"
 notmuch tag -inbox +system -- tag:inbox and from:"/enzu\.ru/"
