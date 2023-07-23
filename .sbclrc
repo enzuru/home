@@ -8,3 +8,5 @@
 
 (sb-ext:restrict-compiler-policy 'debug 3 3)
 (sb-ext:restrict-compiler-policy 'safety 3 3)
+
+(ql:quickload '(:alexandria :serapeum))
