@@ -9,4 +9,13 @@
 (sb-ext:restrict-compiler-policy 'debug 3 3)
 (sb-ext:restrict-compiler-policy 'safety 3 3)
 
+(push (uiop:getcwd) ql:*local-project-directories*)
+
 (ql:quickload '(:alexandria :serapeum :str))
+
+(ql:quickload :cffi)
+(dolist (dir (uiop:getenv-pathnames "LIBRARY_PATH"))
+  ;; The path need / at the end, so ensure this
+  (pushnew (uiop:ensure-directory-pathname dir)
+                   cffi:*foreign-library-directories*
+                   :test #'equal))
