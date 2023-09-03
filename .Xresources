@@ -20,7 +20,7 @@ xterm.eightBitInput: false
 URxvt.foreground: #ffffff
 URxvt.background: #000F14
 URxvt.scrollBar: false
-URxvt.termName: rxvt
+URxvt.termName: rxvt-unicode-256color
 URxvt.saveLines: 100000
 URxvt.buffered: true
 URxvt.cursorBlink: true
