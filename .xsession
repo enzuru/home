@@ -23,7 +23,7 @@ export JAVA18_PATH="$(guix build ${JAVA18_PACKAGE} | grep -- '-jdk$')"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Set background color
-xsetroot -solid "#0c1014"
+xsetroot -solid "#000F14"
 
 # Remove outdated compiled files
 bin/remove-go-files
@@ -41,4 +41,8 @@ then
 fi
 
 # Start Emacs
-exec emacs
+#exec emacs
+#exec openbox-session
+
+export SBCL_HOME=$(dirname $(which sbcl))/../lib/sbcl/
+exec /home/enzuru/bin/stumpwm-boot

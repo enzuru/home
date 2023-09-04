@@ -1,0 +1,66 @@
+(stumpwm:mode-line)
+
+;; Modules
+
+(load-module "cpu")
+(load-module "mem")
+(load-module "end-session")
+
+;; Modes
+
+(which-key-mode)
+
+;; Variables
+
+(setf *window-border-style* :none
+      *hidden-window-color* "^**"
+      *mouse-focus-policy*    :click
+      *float-window-modifier* :SUPER)
+
+;; Modeline
+
+(setf *mode-line-background-color* "#113450"
+      *mode-line-foreground-color* "#FFFFFF"
+      *mode-line-position* :bottom
+      *mode-line-border-width* 0
+      *mode-line-timeout* 2
+      *mode-line-highlight-template* "«~A»"
+      *time-modeline-string* "%a %b %e %k:%M"
+      *window-format* "%m%n%s%c")
+
+(setf *screen-mode-line-format* (list "[^B%n^b] %W^>%d"))
+
+;; Commands
+
+(defcommand hsplit-new () ()
+  (run-commands
+   "hsplit"
+   "move-focus right"
+   "run-shell-command urxvtc -fn xft:Iosevka:style=Regular:size=15"))
+
+(defcommand vsplit-new () ()
+    (run-commands
+     "vsplit"
+     "move-focus down"
+     "run-shell-command urxvtc -fn xft:Iosevka:style=Regular:size=15"))
+
+(defcommand kill-and-remove-split () ()
+  (run-commands
+   "kill"
+   "remove"))
+
+;; tmux emulation
+
+;;; Groups
+
+(define-key *root-map* (kbd "c") "gnew")
+(define-key *root-map* (kbd "n") "gnext")
+(define-key *root-map* (kbd "p") "gprev")
+(define-key *root-map* (kbd "&") "gkill")
+
+;;; Splitting
+
+(define-key *root-map* (kbd "o") "other")
+(define-key *root-map* (kbd "%") "hsplit-new")
+(define-key *root-map* (kbd "\"") "vsplit-new")
+(define-key *root-map* (kbd "x") "kill-and-remove-split")
