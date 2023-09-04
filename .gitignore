@@ -3,7 +3,7 @@
 .docker
 src/
 .Xdefaults
-.auth_info
+.authinfo
 .bash_history
 .cache/
 .ccl-init.lisp
@@ -45,3 +45,5 @@ exercism/
 go/
 quicklisp/dists
 quicklisp/local-projects
+music/
+offlineimap.log
