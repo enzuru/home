@@ -74,3 +74,7 @@
 (define-key *root-map* (kbd "%") "hsplit-and-term")
 (define-key *root-map* (kbd "\"") "vsplit-and-term")
 (define-key *root-map* (kbd "x") "kill-and-remove-split")
+
+;;; Windows
+
+(define-key *root-map* (kbd "b") "select-window")
