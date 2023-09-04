@@ -14,10 +14,13 @@
 
 (setf *window-border-style* :none
       *hidden-window-color* "^**"
-      *mouse-focus-policy*    :click
+      *mouse-focus-policy* :click
       *float-window-modifier* :SUPER)
 
 ;; Modeline
+
+(defparameter cpu::*cpu-modeline-fmt* "%c"
+  "just usage percentage")
 
 (setf *mode-line-background-color* "#113450"
       *mode-line-foreground-color* "#FFFFFF"
@@ -28,32 +31,33 @@
       *time-modeline-string* "%a %b %e %k:%M"
       *window-format* "%m%n%s%c")
 
-(setf *screen-mode-line-format* (list "[^B%n^b] %W^>%d"))
+(setf *screen-mode-line-format* (list "[^B%n^b] %W^>%c %d"))
 
 ;; Commands
 
-(defcommand hsplit-new () ()
-  (run-commands
-   "hsplit"
-   "move-focus right"
-   "run-shell-command urxvtc -fn xft:Iosevka:style=Regular:size=15"))
+(defcommand hsplit-and-term () ()
+  (run-commands "hsplit"
+                "move-focus right"
+                "run-shell-command urxvtc -fn xft:Iosevka:style=Regular:size=15"))
 
-(defcommand vsplit-new () ()
-    (run-commands
-     "vsplit"
-     "move-focus down"
-     "run-shell-command urxvtc -fn xft:Iosevka:style=Regular:size=15"))
+(defcommand vsplit-and-term () ()
+  (run-commands "vsplit"
+                "move-focus down"
+                "run-shell-command urxvtc -fn xft:Iosevka:style=Regular:size=15"))
 
 (defcommand kill-and-remove-split () ()
-  (run-commands
-   "kill"
-   "remove"))
+  (run-commands "kill"
+                "remove"))
+
+(defcommand gnew-and-term () ()
+  (run-commands "gnew"
+                "run-shell-command urxvtc -fn xft:Iosevka:style=Regular:size=15"))
 
 ;; tmux emulation
 
 ;;; Groups
 
-(define-key *root-map* (kbd "c") "gnew")
+(define-key *root-map* (kbd "c") "gnew-and-term")
 (define-key *root-map* (kbd "n") "gnext")
 (define-key *root-map* (kbd "p") "gprev")
 (define-key *root-map* (kbd "&") "gkill")
@@ -61,6 +65,6 @@
 ;;; Splitting
 
 (define-key *root-map* (kbd "o") "other")
-(define-key *root-map* (kbd "%") "hsplit-new")
-(define-key *root-map* (kbd "\"") "vsplit-new")
+(define-key *root-map* (kbd "%") "hsplit-and-term")
+(define-key *root-map* (kbd "\"") "vsplit-and-term")
 (define-key *root-map* (kbd "x") "kill-and-remove-split")
