@@ -1,3 +1,3 @@
 set -Ux JAVA18_PACKAGE "openjdk@18"
 #set -Ux JAVA18_PATH (guix build {$JAVA18_PACKAGE} | grep -- '-jdk$')
-alias e emacsclient
+alias e "emacsclient -c"
