@@ -1,0 +1,3 @@
+#!/bin/sh
+
+guix repl --listen="tcp:37146" &

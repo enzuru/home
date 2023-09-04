@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo du -h -a / | sort -h -r | head -n 20
