@@ -81,3 +81,10 @@
 ;;; Windows
 
 (define-key *root-map* (kbd "b") "select-window")
+
+(if *initializing*
+    (progn
+      (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15 -e glances" t)
+      (gnew "glances")
+      (run-shell-command "icecat")
+      (gnew "browser")))
