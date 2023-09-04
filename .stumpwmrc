@@ -36,22 +36,28 @@
 ;; Commands
 
 (defcommand hsplit-and-term () ()
-  (run-commands "hsplit"
-                "move-focus right"
-                "run-shell-command urxvtc -fn xft:Iosevka:style=Regular:size=15"))
+  (hsplit)
+  (move-focus :right)
+  (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15"))
 
 (defcommand vsplit-and-term () ()
-  (run-commands "vsplit"
-                "move-focus down"
-                "run-shell-command urxvtc -fn xft:Iosevka:style=Regular:size=15"))
+  (vsplit)
+  (move-focus :down)
+  (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15"))
 
 (defcommand kill-and-remove-split () ()
-  (run-commands "kill"
-                "remove"))
+  (delete-window)
+  (remove-split))
 
 (defcommand gnew-and-term () ()
-  (run-commands "gnew"
-                "run-shell-command urxvtc -fn xft:Iosevka:style=Regular:size=15"))
+  (run-commands "gnew")
+  (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15"))
+
+(defcommand gkill-windows-and-group () ()
+  ;; (kill-windows-current-group)
+  (gkill)
+  ;; (select-window-by-number 0)
+  )
 
 ;; tmux emulation
 
@@ -60,11 +66,11 @@
 (define-key *root-map* (kbd "c") "gnew-and-term")
 (define-key *root-map* (kbd "n") "gnext")
 (define-key *root-map* (kbd "p") "gprev")
-(define-key *root-map* (kbd "&") "gkill")
+(define-key *root-map* (kbd "&") "gkill-windows-and-group")
 
 ;;; Splitting
 
-(define-key *root-map* (kbd "o") "other")
+(define-key *root-map* (kbd "o") "fother")
 (define-key *root-map* (kbd "%") "hsplit-and-term")
 (define-key *root-map* (kbd "\"") "vsplit-and-term")
 (define-key *root-map* (kbd "x") "kill-and-remove-split")
