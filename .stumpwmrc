@@ -1,4 +1,6 @@
-(stumpwm:mode-line)
+(in-package :stumpwm)
+
+(mode-line)
 
 ;; Modules
 
@@ -46,18 +48,19 @@
   (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15"))
 
 (defcommand kill-and-remove-split () ()
-  (delete-window)
-  (remove-split))
+  (let ((window (current-window)))
+    (remove-split)
+    (delete-window window)))
 
 (defcommand gnew-and-term () ()
   (run-commands "gnew")
   (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15"))
 
 (defcommand gkill-windows-and-group () ()
-  ;; (kill-windows-current-group)
-  (gkill)
-  ;; (select-window-by-number 0)
-  )
+  (let* ((group (current-group))
+         (group-windows (group-windows group)))
+    (gkill)
+    (kill-windows group-windows)))
 
 ;; tmux emulation
 
