@@ -106,7 +106,7 @@
         (9 nil t :instance "glances"))
       (run-or-raise "urxvt -name glances -e glances" '(:instance "glances"))
 
-      (gnewbg "icecat")
+      (gnew "icecat")
       (define-frame-preference "icecat"
         (9 nil t :instance "icecat"))
       (define-frame-preference "icecat"
