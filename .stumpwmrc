@@ -6,6 +6,7 @@
 
 (load-module "cpu")
 (load-module "mem")
+(load-module "pianobar")
 (load-module "end-session")
 (load-module "ttf-fonts")
 
@@ -44,7 +45,7 @@
       *time-modeline-string* "%a %b %e %k:%M"
       *window-format* "%m%n%s%c")
 
-(setf *screen-mode-line-format* (list "[^B%n^b] %W^>%C %M %d"))
+(setf *screen-mode-line-format* (list " %d %C %M [^B%n^b] %W^>%P"))
 
 (mode-line)
 
