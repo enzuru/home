@@ -22,7 +22,8 @@
 
 ;; Variables
 
-(setf *window-border-style* :none
+(setf *default-bg-color* "#000F14"
+      *window-border-style* :none
       *hidden-window-color* "^**"
       *mouse-focus-policy* :click
       *float-window-modifier* :SUPER)
