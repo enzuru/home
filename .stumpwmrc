@@ -45,7 +45,7 @@
       *time-modeline-string* "%a %b %e %k:%M"
       *window-format* "%m%n%s%c")
 
-(setf *screen-mode-line-format* (list " %d %C %M [^B%n^b] %W^>%P"))
+(setf *screen-mode-line-format* (list "%C | %M | [^B%n^b] %W^>%P | %d"))
 
 (mode-line)
 
