@@ -47,3 +47,7 @@ quicklisp/dists
 quicklisp/local-projects
 music/
 offlineimap.log
+mail/
+urxvtd.log
+locatedb.n
+system-index.txt
