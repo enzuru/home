@@ -10,7 +10,7 @@
 
 (push (uiop:getcwd) ql:*local-project-directories*)
 
-(ql:quickload '(:alexandria :serapeum :str))
+(ql:quickload '(:alexandria :serapeum :str :stumpwm))
 
 (ql:quickload :cffi)
 (dolist (dir (uiop:getenv-pathnames "LIBRARY_PATH"))
@@ -18,3 +18,5 @@
   (pushnew (uiop:ensure-directory-pathname dir)
                    cffi:*foreign-library-directories*
                    :test #'equal))
+
+(in-package :stumpwm)
