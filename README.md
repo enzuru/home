@@ -1,6 +1,6 @@
 # My home directory
 
-This is my home directory on GNU Guix with various dotfiles, config files, and scripts.
+This is my home directory on GNU Guix with Lisp code, various dotfiles, config files, and scripts.
 
 ## Supported platforms
 
