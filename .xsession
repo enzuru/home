@@ -40,7 +40,6 @@ then
     mcron -d
 fi
 
-# Start Emacs
 #exec emacs
 #exec openbox-session
 
