@@ -15,6 +15,7 @@
 
 ;; Fonts
 
+(set-font "-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*")
 (setf xft:*font-dirs* '("/run/current-system/profile/share/fonts/"))
 (setf clx-truetype:cache-font-file (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
 (clx-truetype:cache-fonts)
