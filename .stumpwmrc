@@ -103,14 +103,15 @@
 
       (gnewbg "glances")
       (define-frame-preference "glances"
-        (9 nil t :instance "glances"))
+        (0 nil t :instance "glances"))
       (run-or-raise "urxvt -name glances -e glances" '(:instance "glances"))
 
-      (gnew "icecat")
+      (gnewbg "icecat")
       (define-frame-preference "icecat"
-        (9 nil t :instance "icecat"))
+        (0 t t :title "icecat"))
       (define-frame-preference "icecat"
-        (9 nil t :instance "icecat-default"))
+        (0 t t :instance "icecat"))
       (define-frame-preference "icecat"
-        (9 nil t :title "icecat-default"))
+        (0 t t :class "icecat"))
+      (run-or-raise "bash -a icecat icecat" '(:instance "icecat"))
       (run-shell-command "icecat")))
