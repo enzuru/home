@@ -6,6 +6,9 @@ setxkbmap -option caps:ctrl_modifier
 # Disable access control
 xhost +SI:localuser:$USER
 
+# Set background color
+xsetroot -solid "#000F14"
+
 # Fallback cursor
 xsetroot -cursor_name left_ptr
 
@@ -21,9 +24,6 @@ export JAVA18_PATH="$(guix build ${JAVA18_PACKAGE} | grep -- '-jdk$')"
 
 # Make Java applications aware this is a non-reparenting window manager.
 export _JAVA_AWT_WM_NONREPARENTING=1
-
-# Set background color
-xsetroot -solid "#000F14"
 
 # Remove outdated compiled files
 bin/remove-go-files

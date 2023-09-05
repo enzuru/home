@@ -1,14 +1,24 @@
 (in-package :stumpwm)
 
+(ql:quickload :clx-truetype)
+
 ;; Modules
 
 (load-module "cpu")
 (load-module "mem")
 (load-module "end-session")
+(load-module "ttf-fonts")
 
 ;; Modes
 
 (which-key-mode)
+
+;; Fonts
+
+;; (setf xft:*font-dirs* '("/run/current-system/profile/share/fonts/"))
+;; (setf clx-truetype:cache-font-file (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
+;; (clx-truetype:cache-fonts)
+;; (set-font (make-instance 'xft:font :family "Iosevka" :subfamily "Regular" :size 15))
 
 ;; Variables
 
@@ -93,6 +103,6 @@
         (move-window-to-group (select-window-by-name "glances")
                               group))
       (let ((group (add-group (current-screen) "emacs")))
-        (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15 -e emacs" t)
+        (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15 -e emacs")
         (move-window-to-group (select-window-by-name "emacs")
                               group))))
