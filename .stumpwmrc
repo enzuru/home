@@ -1,7 +1,5 @@
 (in-package :stumpwm)
 
-(mode-line)
-
 ;; Modules
 
 (load-module "cpu")
@@ -10,6 +8,7 @@
 
 ;; Modes
 
+(mode-line)
 (which-key-mode)
 
 ;; Variables
