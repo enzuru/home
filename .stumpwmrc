@@ -73,6 +73,29 @@
     (gkill)
     (kill-windows group-windows)))
 
+(defcommand setup-workspaces () ()
+  (grename "emacs")
+  (define-frame-preference "emacs"
+    (0 t t :class "emacs"))
+  (define-frame-preference "emacs"
+    (0 t t :title "Emacs"))
+  (emacs)
+
+  (gnewbg "glances")
+  (define-frame-preference "glances"
+    (0 nil t :instance "glances"))
+  (run-or-raise "urxvtc -fn xft:Iosevka:style=Regular:size=15 -name glances -e glances" '(:instance "glances"))
+
+  (gnewbg "icecat")
+  (define-frame-preference "icecat"
+    (0 t t :title "icecat"))
+  (define-frame-preference "icecat"
+    (0 t t :instance "icecat"))
+  (define-frame-preference "icecat"
+    (0 t t :class "icecat"))
+  (run-or-raise "bash -a icecat icecat" '(:instance "icecat"))
+  (run-shell-command "icecat"))
+
 ;; tmux emulation
 
 ;;; Groups
@@ -93,26 +116,5 @@
 
 (define-key *root-map* (kbd "b") "select-window")
 
-(if *initializing*
-    (progn
-      (grename "emacs")
-      (define-frame-preference "emacs"
-        (0 t t :class "emacs"))
-      (define-frame-preference "emacs"
-        (0 t t :title "Emacs"))
-      (emacs)
-
-      (gnewbg "glances")
-      (define-frame-preference "glances"
-        (0 nil t :instance "glances"))
-      (run-or-raise "urxvtc -fn xft:Iosevka:style=Regular:size=15 -name glances -e glances" '(:instance "glances"))
-
-      (gnewbg "icecat")
-      (define-frame-preference "icecat"
-        (0 t t :title "icecat"))
-      (define-frame-preference "icecat"
-        (0 t t :instance "icecat"))
-      (define-frame-preference "icecat"
-        (0 t t :class "icecat"))
-      (run-or-raise "bash -a icecat icecat" '(:instance "icecat"))
-      (run-shell-command "icecat")))
+(when *initializing*
+  (setup-workspaces))
