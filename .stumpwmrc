@@ -15,9 +15,9 @@
 
 ;; Fonts
 
-;; (setf xft:*font-dirs* '("/run/current-system/profile/share/fonts/"))
-;; (setf clx-truetype:cache-font-file (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
-;; (clx-truetype:cache-fonts)
+(setf xft:*font-dirs* '("/run/current-system/profile/share/fonts/"))
+(setf clx-truetype:cache-font-file (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
+(clx-truetype:cache-fonts)
 ;; (set-font (make-instance 'xft:font :family "Iosevka" :subfamily "Regular" :size 15))
 
 ;; Variables
