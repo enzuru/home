@@ -30,8 +30,9 @@
 
 ;; Modeline
 
-(defparameter cpu::*cpu-modeline-fmt* "%c"
-  "just usage percentage")
+(defparameter cpu::*cpu-modeline-fmt* "%c")
+
+(defparameter mem::*mem-modeline-fmt* "MEM: %p")
 
 (setf *mode-line-background-color* "#113450"
       *mode-line-foreground-color* "#FFFFFF"
@@ -42,7 +43,7 @@
       *time-modeline-string* "%a %b %e %k:%M"
       *window-format* "%m%n%s%c")
 
-(setf *screen-mode-line-format* (list "[^B%n^b] %W^>%c %d"))
+(setf *screen-mode-line-format* (list "[^B%n^b] %W^>%C %M %d"))
 
 (mode-line)
 
