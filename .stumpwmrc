@@ -34,9 +34,9 @@
 
 (defparameter mem::*mem-modeline-fmt* "MEM: %p")
 
-(setf *mode-line-background-color* "#113450"
+(setf *mode-line-background-color* "#000F14"
       *mode-line-foreground-color* "#FFFFFF"
-      *mode-line-position* :bottom
+      *mode-line-position* :top
       *mode-line-border-width* 0
       *mode-line-timeout* 2
       *mode-line-highlight-template* "«~A»"
