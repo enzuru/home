@@ -8,7 +8,6 @@
 
 ;; Modes
 
-(mode-line)
 (which-key-mode)
 
 ;; Variables
@@ -33,6 +32,8 @@
       *window-format* "%m%n%s%c")
 
 (setf *screen-mode-line-format* (list "[^B%n^b] %W^>%c %d"))
+
+(mode-line)
 
 ;; Commands
 
@@ -83,7 +84,15 @@
 
 (if *initializing*
     (progn
-      (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15 -e glances" t)
-      (gnew "glances")
-      (run-shell-command "icecat")
-      (gnew "browser")))
+      (let ((group (add-group (current-screen) "icecat")))
+        (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15 -e icecat")
+        (move-window-to-group (select-window-by-name "icecat")
+                              group))
+      (let ((group (add-group (current-screen) "glances")))
+        (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15 -e glances" t)
+        (move-window-to-group (select-window-by-name "glances")
+                              group))
+      (let ((group (add-group (current-screen) "emacs")))
+        (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15 -e emacs" t)
+        (move-window-to-group (select-window-by-name "emacs")
+                              group))))
