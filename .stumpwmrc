@@ -87,15 +87,11 @@
     (0 nil t :instance "glances"))
   (run-or-raise "urxvtc -fn xft:Iosevka:style=Regular:size=15 -name glances -e glances" '(:instance "glances"))
 
-  (gnewbg "icecat")
-  (define-frame-preference "icecat"
-    (0 t t :title "icecat"))
-  (define-frame-preference "icecat"
-    (0 t t :instance "icecat"))
-  (define-frame-preference "icecat"
-    (0 t t :class "icecat"))
-  (run-or-raise "bash -a icecat icecat" '(:instance "icecat"))
-  (run-shell-command "icecat"))
+  (gnewbg "firefox")
+  (define-frame-preference "firefox"
+    (0 t t :class "firefox"))
+  (run-or-raise "bash -a firefox firefox" '(:instance "firefox"))
+  (run-shell-command "firefox"))
 
 ;; tmux emulation
 
