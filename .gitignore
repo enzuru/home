@@ -18,7 +18,6 @@ src/
 .guile
 .guile_history
 .guix-profile
-.irssi.backup/
 .irssi/
 .javacpp/
 .lein/
