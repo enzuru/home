@@ -104,7 +104,7 @@
       (gnewbg "glances")
       (define-frame-preference "glances"
         (0 nil t :instance "glances"))
-      (run-or-raise "urxvt -name glances -e glances" '(:instance "glances"))
+      (run-or-raise "urxvtc -fn xft:Iosevka:style=Regular:size=15 -name glances -e glances" '(:instance "glances"))
 
       (gnewbg "icecat")
       (define-frame-preference "icecat"
