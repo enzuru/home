@@ -94,15 +94,23 @@
 
 (if *initializing*
     (progn
-      (let ((group (add-group (current-screen) "icecat")))
-        (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15 -e icecat")
-        (move-window-to-group (select-window-by-name "icecat")
-                              group))
-      (let ((group (add-group (current-screen) "glances")))
-        (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15 -e glances" t)
-        (move-window-to-group (select-window-by-name "glances")
-                              group))
-      (let ((group (add-group (current-screen) "emacs")))
-        (run-shell-command "urxvtc -fn xft:Iosevka:style=Regular:size=15 -e emacs")
-        (move-window-to-group (select-window-by-name "emacs")
-                              group))))
+      (grename "emacs")
+      (define-frame-preference "emacs"
+        (0 t t :class "emacs"))
+      (define-frame-preference "emacs"
+        (0 t t :title "Emacs"))
+      (emacs)
+
+      (gnewbg "glances")
+      (define-frame-preference "glances"
+        (9 nil t :instance "glances"))
+      (run-or-raise "urxvt -name glances -e glances" '(:instance "glances"))
+
+      (gnew "icecat")
+      (define-frame-preference "icecat"
+        (9 nil t :instance "icecat"))
+      (define-frame-preference "icecat"
+        (9 nil t :instance "icecat-default"))
+      (define-frame-preference "icecat"
+        (9 nil t :title "icecat-default"))
+      (run-shell-command "icecat")))
