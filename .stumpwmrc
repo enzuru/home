@@ -39,7 +39,7 @@
       *mode-line-foreground-color* "#FFFFFF"
       *mode-line-position* :top
       *mode-line-border-width* 0
-      *mode-line-timeout* 2
+      *mode-line-timeout* 1
       *mode-line-highlight-template* "«~A»"
       *time-modeline-string* "%a %b %e %k:%M"
       *window-format* "%m%n%s%c")
@@ -73,7 +73,7 @@
   (let* ((group (current-group))
          (group-windows (group-windows group)))
     (gkill)
-    (kill-windows group-windows)))
+    (map 'delete-window group-windows)))
 
 (defcommand setup-workspaces () ()
   (grename "emacs")
