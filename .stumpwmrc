@@ -40,7 +40,7 @@
 (setf *mode-line-background-color* "#000F14"
       *mode-line-foreground-color* "#FFFFFF"
       *mode-line-position* :top
-      *mode-line-border-width* 0
+      *mode-line-border-width* 1
       *mode-line-timeout* 1
       *mode-line-highlight-template* "«~A»"
       *time-modeline-string* "%a %b %e %k:%M"
