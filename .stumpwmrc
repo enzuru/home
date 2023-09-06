@@ -12,15 +12,16 @@
 
 ;; Modes
 
-(which-key-mode)
+;; (which-key-mode)
 
 ;; Fonts
 
-(set-font "-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*")
-(setf xft:*font-dirs* '("/run/current-system/profile/share/fonts/"))
+;; (set-font "-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*")
+(setf xft:*font-dirs* '("/home/enzuru/.guix-profile/share/fonts/truetype/"))
 (setf clx-truetype:cache-font-file (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
+(xft:cache-fonts)
 (clx-truetype:cache-fonts)
-;; (set-font (make-instance 'xft:font :family "Iosevka" :subfamily "Regular" :size 15))
+(set-font (make-instance 'xft:font :family "Fira Code" :subfamily "Regular" :size 10))
 
 ;; Variables
 
