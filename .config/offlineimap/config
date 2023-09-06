@@ -1,6 +1,3 @@
-# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
-# get started fast.
-
 [general]
 accounts = me
 maxsyncaccounts = 1
@@ -19,7 +16,7 @@ localfolders = ~/mail/me
 type = IMAP
 remotehost = mail.enzu.ru
 remoteuser = me@enzu.ru
-remotepass = whatever
+remotepass = password
 ssl = yes
 
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
