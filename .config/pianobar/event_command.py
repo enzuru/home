@@ -28,3 +28,7 @@ if cmd == 'songstart':
         if title and artist:
             nowplaying = "{} - {}".format(artist, title).replace("\n", "")
             f.write(nowplaying)
+
+if cmd == 'songfinish':
+    with open(fn, 'w') as f:
+        f.write("")
