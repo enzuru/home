@@ -18,6 +18,9 @@ xset r rate 200 60
 # Merge resources
 xrdb -merge ~/.Xresources
 
+# Font cache
+fc-cache -rv
+
 # Setup Java
 export JAVA18_PACKAGE="openjdk@18"
 export JAVA18_PATH="$(guix build ${JAVA18_PACKAGE} | grep -- '-jdk$')"
