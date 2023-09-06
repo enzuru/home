@@ -26,5 +26,5 @@ if cmd == 'songstart':
                 split = line.split("=")
                 artist = split[1]
         if title and artist:
-            nowplaying = "{} by {}".format(title, artist).replace("\n", "")
+            nowplaying = "{} - {}".format(artist, title).replace("\n", "")
             f.write(nowplaying)
