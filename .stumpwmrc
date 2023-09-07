@@ -89,7 +89,7 @@
   (gnewbg "glances")
   (define-frame-preference "glances"
     (0 nil t :instance "glances"))
-  (run-or-raise "kitty -name glances glances" '(:instance "glances"))
+  (run-or-raise "kitty --name glances glances" '(:instance "glances"))
 
   (gnewbg "firefox")
   (define-frame-preference "firefox"
