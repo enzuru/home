@@ -10,14 +10,9 @@
 (load-module "end-session")
 (load-module "ttf-fonts")
 
-;; Modes
-
-;; (which-key-mode)
-
 ;; Fonts
 
-;; (set-font "-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*")
-(setf xft:*font-dirs* '("/home/enzuru/.guix-profile/share/fonts/truetype/"))
+(setf xft:*font-dirs* '("~/.guix-profile/share/fonts/truetype/"))
 (setf clx-truetype:cache-font-file (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
 (xft:cache-fonts)
 (clx-truetype:cache-fonts)
@@ -25,7 +20,11 @@
 
 ;; Variables
 
-(setf *default-bg-color* "#000F14"
+(defparameter *background-color* "#000F14")
+(set-bg-color *background-color*)
+
+(setf *default-bg-color* *background-color*
+      *win-bg-color* *background-color*
       *window-border-style* :none
       *hidden-window-color* "^**"
       *mouse-focus-policy* :click
@@ -37,7 +36,7 @@
 
 (defparameter mem::*mem-modeline-fmt* "MEM: %p")
 
-(setf *mode-line-background-color* "#000F14"
+(setf *mode-line-background-color* *background-color*
       *mode-line-foreground-color* "#FFFFFF"
       *mode-line-border-color* "#555555"
       *mode-line-border-width* 1
@@ -79,6 +78,8 @@
     (map 'delete-window group-windows)))
 
 (defcommand setup-workspaces () ()
+  (run-shell-command (format nil "xsetroot -solid \"~$\"" *background-color*))
+
   (grename "emacs")
   (define-frame-preference "emacs"
     (0 t t :class "emacs"))
@@ -94,7 +95,6 @@
   (gnewbg "firefox")
   (define-frame-preference "firefox"
     (0 t t :class "firefox"))
-  ;; (run-or-raise "bash -a firefox firefox" '(:instance "firefox"))
   (run-shell-command "firefox"))
 
 ;; tmux emulation
