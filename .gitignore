@@ -20,7 +20,6 @@ src/
 .guix-profile
 .irssi/
 .javacpp/
-.lein/
 .lesshst
 .links/
 .local/
@@ -50,3 +49,6 @@ mail/
 *.n
 system-index.txt
 .fonts/
+.lein/.nrepl-port
+.lein/repl-history
+.lein/repl-port
