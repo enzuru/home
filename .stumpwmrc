@@ -80,7 +80,7 @@
 (defcommand emacsclient () ()
   (hsplit)
   (move-focus :right)
-  (run-shell-command "emacsclient -c"))
+  (run-or-raise "emacsclient -c" '(:title "emacsclient" :class "emacsclient" :instance "emacsclient")))
 
 (defcommand setup-workspaces () ()
   (run-shell-command (format nil "xsetroot -solid \"~$\"" *background-color*))
@@ -88,8 +88,8 @@
   (grename "emacs")
   ;; (define-frame-preference "emacs"
   ;;   (0 t t :class "emacs"))
-  ;; (define-frame-preference "emacs"
-  ;;   (0 t t :title "Emacs"))
+  (define-frame-preference "emacs"
+    (0 t t :title "Emacs"))
   (emacs)
 
   (gnewbg "glances")
