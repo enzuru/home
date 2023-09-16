@@ -109,6 +109,11 @@
 (define-key *root-map* (kbd "e") "emacsclient")
 (define-key *root-map* (kbd "E") "emacs")
 
+;;; Windows
+
+(define-key *root-map* (kbd "Left") "next")
+(define-key *root-map* (kbd "Right") "prev")
+
 ;;; Groups
 
 (define-key *root-map* (kbd "c") "gnew-and-term")
