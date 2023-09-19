@@ -1,9 +1,12 @@
 (in-package :stumpwm)
 
 (ql:quickload :clx-truetype)
+(ql:quickload :cl-diskspace)
+(ql:quickload :cl-mount-info)
 
 ;; Modules
 
+(load-module "disk")
 (load-module "cpu")
 (load-module "mem")
 (load-module "pianobar")
@@ -16,7 +19,7 @@
 (setf clx-truetype:cache-font-file (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
 (xft:cache-fonts)
 (clx-truetype:cache-fonts)
-(set-font (make-instance 'xft:font :family "Fira Code" :subfamily "Regular" :size 10))
+(set-font (make-instance 'xft:font :family "Fira Code" :subfamily "Regular" :size 12))
 
 ;; Variables
 
@@ -46,7 +49,7 @@
       *time-modeline-string* "%a %b %e %k:%M"
       *window-format* "%m%n%s%c")
 
-(setf *screen-mode-line-format* (list "%C %M [^B%n^b] %W^>%P · %d"))
+(setf *screen-mode-line-format* (list "[^B%n^b] %C %M %D %W^>%P · %d"))
 
 (mode-line)
 
