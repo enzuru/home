@@ -116,8 +116,8 @@
 
 ;;; Windows
 
-(define-key *root-map* (kbd "Left") "next")
-(define-key *root-map* (kbd "Right") "prev")
+(define-key *root-map* (kbd "Left") "pull-hidden-next")
+(define-key *root-map* (kbd "Right") "pull-hidden-previous")
 
 ;;; Groups
 
@@ -128,7 +128,7 @@
 
 ;;; Splitting
 
-(define-key *root-map* (kbd "o") "fother")
+(define-key *root-map* (kbd "o") "next")
 (define-key *root-map* (kbd "%") "hsplit-and-term")
 (define-key *root-map* (kbd "\"") "vsplit-and-term")
 (define-key *root-map* (kbd "x") "kill-and-remove-split")
