@@ -89,16 +89,18 @@
   (run-shell-command (format nil "xsetroot -solid \"~$\"" *background-color*))
 
   (grename "emacs")
-  ;; (define-frame-preference "emacs"
-  ;;   (0 t t :class "emacs"))
   (define-frame-preference "emacs"
     (0 t t :title "Emacs"))
   (emacs)
 
-  (gnewbg "glances")
-  (define-frame-preference "glances"
+  (gnewbg "monitoring")
+  (define-frame-preference "monitoring"
     (0 nil t :instance "glances"))
+  ;; (define-frame-preference "monitoring"
+  ;;   (0 nil t :instance "radeontop"))
   (run-or-raise "kitty --name glances glances" '(:instance "glances"))
+  ;; (vsplit)
+  ;; (run-or-raise "kitty --name radeontop radeontop" '(:instance "radeontop"))
 
   (gnewbg "firefox")
   (define-frame-preference "firefox"
