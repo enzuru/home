@@ -1,10 +1,10 @@
 # enzuru's home directory
 
-This is my home directory on GNU Guix; my dotfiles, scripts, and Lisp code for StumpWM, SBCL, Slynk, Shepherd, etc.
+This is my home directory on [GNU Guix](https://guix.gnu.org/); my dotfiles, scripts, and Lisp code for [StumpWM](https://stumpwm.github.io), [SBCL](https://www.sbcl.org/), [Slynk](https://github.com/joaotavora/sly), [Shepherd](https://www.gnu.org/software/shepherd), etc.
 
 ## StumpWM
 
-I try to have keystrokes that simulate Emacs and Tmux in order to reduce the learning curve. All keystrokes are preceded by `C-t`.
+I try to have keystrokes that simulate Emacs and [Tmux](https://en.wikipedia.org/wiki/Tmux) in order to reduce the learning curve. All keystrokes are preceded by `C-t`.
 
 ### Help
 
