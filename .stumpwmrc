@@ -19,7 +19,7 @@
 (setf clx-truetype:cache-font-file (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
 (xft:cache-fonts)
 (clx-truetype:cache-fonts)
-(set-font (make-instance 'xft:font :family "Fira Code" :subfamily "Regular" :size 13))
+(set-font (make-instance 'xft:font :family "Fira Code" :subfamily "Regular" :size 14))
 
 ;; Variables
 
@@ -31,6 +31,8 @@
       *window-border-style* :none
       *hidden-window-color* "^**"
       *mouse-focus-policy* :click
+      *mode-line-pad-x* 3
+      *mode-line-pad-y* 3
       *float-window-modifier* :SUPER)
 
 ;; Modeline
