@@ -4,7 +4,7 @@ This is my home directory on [GNU Guix](https://guix.gnu.org/); my dotfiles, scr
 
 ## StumpWM
 
-I try to have keystrokes that simulate Emacs and [Tmux](https://en.wikipedia.org/wiki/Tmux) in order to reduce the learning curve. All keystrokes are preceded by `C-t`.
+I try to have keystrokes that simulate Emacs and [tmux](https://github.com/tmux/tmux/wiki) in order to reduce the learning curve. All keystrokes are preceded by `C-t`.
 
 ### Help
 
