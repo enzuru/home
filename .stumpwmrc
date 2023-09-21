@@ -19,7 +19,7 @@
 (setf clx-truetype:cache-font-file (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
 (xft:cache-fonts)
 (clx-truetype:cache-fonts)
-(set-font (make-instance 'xft:font :family "Fira Code" :subfamily "Regular" :size 13))
+(set-font (make-instance 'xft:font :family "Fira Code" :subfamily "Regular" :size 11))
 
 ;; Variables
 
