@@ -87,6 +87,11 @@
   (move-focus :right)
   (run-or-raise "emacsclient -c --frame-parameters='(quote (name . \"emacsclient\"))'" '(:title "emacsclient" :class "emacsclient" :instance "emacsclient")))
 
+(defcommand midnight-commander () ()
+  (hsplit)
+  (move-focus :right)
+  (run-or-raise "kitty --name mc mc" '(:instance "mc")))
+
 (defcommand setup-workspaces () ()
   (run-shell-command (format nil "xsetroot -solid \"~$\"" *background-color*))
 
@@ -115,6 +120,7 @@
 
 (define-key *root-map* (kbd "e") "emacsclient")
 (define-key *root-map* (kbd "E") "emacs")
+(define-key *root-map* (kbd "f") "midnight-commander")
 
 ;;; Windows
 
