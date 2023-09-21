@@ -124,6 +124,7 @@
 
 ;;; Windows
 
+(define-key *root-map* (kbd "b") "select-window")
 (define-key *root-map* (kbd "Left") "pull-hidden-next")
 (define-key *root-map* (kbd "Right") "pull-hidden-previous")
 
@@ -134,16 +135,12 @@
 (define-key *root-map* (kbd "p") "gprev")
 (define-key *root-map* (kbd "&") "gkill-windows-and-group")
 
-;;; Splitting
+;;; Frames
 
 (define-key *root-map* (kbd "o") "next")
 (define-key *root-map* (kbd "%") "hsplit-and-term")
 (define-key *root-map* (kbd "\"") "vsplit-and-term")
 (define-key *root-map* (kbd "x") "kill-and-remove-split")
-
-;;; Windows
-
-(define-key *root-map* (kbd "b") "select-window")
 
 (when *initializing*
   (setup-workspaces))
