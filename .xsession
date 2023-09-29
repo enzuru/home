@@ -18,8 +18,9 @@ xset r rate 200 60
 # Merge resources
 xrdb -merge ~/.Xresources
 
-# Font cache
+# Fonts
 fc-cache -rv
+xset +fp $(dirname $(readlink -f ~/.guix-profile/share/fonts/truetype/fonts.dir))
 
 # Setup Java
 export JAVA18_PACKAGE="openjdk@18"
