@@ -1,7 +1,7 @@
 ;; put this into profiles.clj in ~/.lein folder
 {:user  {:jvm-opts ^:replace ["-Xmx6G" "-XX:-OmitStackTraceInFastThrow"]
          :repl-options {:timeout 180000}
-         :plugins [[cider/cider-nrepl "0.37.1"]
+         :plugins [[cider/cider-nrepl "0.38.1"]
                    [refactor-nrepl "3.9.0"]
                    [lein-ancient "1.0.0-RC3"]
                    [jonase/eastwood "1.4.0"]
