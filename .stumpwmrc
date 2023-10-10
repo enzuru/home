@@ -82,7 +82,7 @@
   (let* ((group (current-group))
          (group-windows (group-windows group)))
     (gkill)
-    (map 'delete-window group-windows)))
+    (mapcar #'delete-window group-windows)))
 
 (defcommand emacsclient () ()
   (hsplit)
