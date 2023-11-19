@@ -45,4 +45,4 @@ I try to have keystrokes that simulate Emacs and [tmux](https://github.com/tmux/
 
 ## License
 
-Licensed under the GPLv3; copyright is assigned to my eponymous nonprofit [enzu.ru](https://enzu.ru)
+Licensed under the GPLv3; copyright is assigned to my eponymous charity [enzu.ru](https://enzu.ru)
