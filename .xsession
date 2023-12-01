@@ -18,6 +18,12 @@ xset r rate 200 60
 # Merge resources
 xrdb -merge ~/.Xresources
 
+# Disable screensaver and display power management
+xset s off
+xset s noblank
+xset dpms 0 0 0
+xset -dpms
+
 # Fonts
 fc-cache -rv
 xset +fp $(dirname $(readlink -f ~/.guix-profile/share/fonts/truetype/fonts.dir))
