@@ -1,0 +1,3 @@
+#!/bin/sh
+guix gc --delete-generations=1m
+rm -rf .cache/
