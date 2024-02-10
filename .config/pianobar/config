@@ -1,2 +1,3 @@
 user = lenzuru@gmail.com
+password = password
 event_command = ~/.config/pianobar/event_command.py
