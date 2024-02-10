@@ -50,8 +50,6 @@ then
     mcron -d
 fi
 
-#exec emacs
-#exec openbox-session
-
 export SBCL_HOME=$(dirname $(which sbcl))/../lib/sbcl/
 exec /home/enzuru/bin/stumpwm-boot
+#exec openbox-session
