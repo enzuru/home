@@ -1,0 +1,2 @@
+#!/bin/sh
+rm -rf ~/.cache/gdm/session.log
