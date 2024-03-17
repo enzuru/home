@@ -31,12 +31,12 @@ notmuch tag -inbox +misc -- tag:inbox
 
 # Archive
 
-notmuch tag -gnu +archive-gnu -- tag:gnu and not date:8weeks..now
-notmuch tag -gnu-commits +archive-gnu-commits -- tag:gnu-commits and not date:8weeks..now
-notmuch tag -gnu-bugs +archive-gnu-bugs -- tag:gnu-bugs and not date:8weeks..now
+notmuch tag -gnu +archive-gnu -- tag:gnu and not date:26weeks..now
+notmuch tag -gnu-commits +archive-gnu-commits -- tag:gnu-commits and not date:26weeks..now
+notmuch tag -gnu-bugs +archive-gnu-bugs -- tag:gnu-bugs and not date:26weeks..now
 
-notmuch tag -openbsd +archive-openbsd -- tag:openbsd and not date:8weeks..now
-notmuch tag -openbsd-commits +archive-openbsd-commits -- tag:openbsd-commits and not date:8weeks..now
-notmuch tag -openbsd-bugs +archive-openbsd-bugs -- tag:openbsd-bugs and not date:8weeks..now
+notmuch tag -openbsd +archive-openbsd -- tag:openbsd and not date:26weeks..now
+notmuch tag -openbsd-commits +archive-openbsd-commits -- tag:openbsd-commits and not date:26weeks..now
+notmuch tag -openbsd-bugs +archive-openbsd-bugs -- tag:openbsd-bugs and not date:26weeks..now
 
-notmuch tag -9front +archive-9front -- tag:9front and not date:8weeks..now
+notmuch tag -9front +archive-9front -- tag:9front and not date:26weeks..now
