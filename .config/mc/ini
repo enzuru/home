@@ -83,7 +83,7 @@ editor_backup_extension=~
 editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
-skin=gray-green-purple256
+skin=julia256
 
 [Layout]
 output_lines=0
@@ -112,11 +112,15 @@ clipboard_store=
 clipboard_paste=
 
 [Colors]
-base_color=
-rxvt=
-color_terminals=
-
+base_color=normal=,default:selected=white,blue:\
+markselect=,:menu=,:menuhot=,:menusel=,:\
+menuhotsel=,:dnormal=,:dfocus=,:dhotnormal=,:dhotfocus=,:\
+input=,:reverse=,:executable=,default:directory=,default:\
+link=,default:device=,default:special=,:core=,:helpnormal=,:\
+helplink=,:helpslink=,:editnormal=,default:
 xterm-kitty=
+
+color_terminals=
 
 [Panels]
 show_mini_info=true
@@ -144,5 +148,5 @@ simple_swap=false
 [Panelize]
 Find *.orig after patching=find . -name \\*.orig -print
 Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
-Find rejects after patching=find . -name \\*.rej -print
 Modified git files=git ls-files --modified
+Find rejects after patching=find . -name \\*.rej -print
