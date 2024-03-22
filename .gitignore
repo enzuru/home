@@ -1,4 +1,8 @@
-.config/
+.config/fish
+.config/htop
+.config/menus
+.config/nano
+.config/pulse
 *.gz
 .docker
 src/

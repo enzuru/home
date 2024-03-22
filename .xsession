@@ -38,18 +38,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # Remove outdated compiled files
 bin/remove-go-files
 
-# Run services if not running
-SHEPHERD_PROC=$(ps -A | grep shepherd | wc --lines)
-if (($SHEPHERD_PROC < 2));
-then
-    shepherd &
-fi
-MCRON_PROC=$(ps -A | grep mcron | wc --lines)
-if (($MCRON_PROC < 2));
-then
-    mcron -d
-fi
-
 export SBCL_HOME=$(dirname $(which sbcl))/../lib/sbcl/
 exec /home/enzuru/bin/stumpwm-boot
 #exec openbox-session

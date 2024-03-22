@@ -1,4 +1,6 @@
 #!/bin/sh
 cd ~/src/profiles
+git pull
 guix pull
+guix home reconfigure reconfigure home/config.scm
 sudo guix system reconfigure config.scm
