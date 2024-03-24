@@ -1,6 +1,6 @@
 # enzuru's home directory
 
-This is my home directory on GNU/Linux; my dotfiles, scripts, configuration, and Lisp code for [StumpWM](https://stumpwm.github.io), [SBCL](https://www.sbcl.org/), [Slynk](https://github.com/joaotavora/sly), etc. It tries to be mostly distro agnostic.
+This is my home directory for POSIX operating systems; my dotfiles, scripts, configuration, and Lisp code for [StumpWM](https://stumpwm.github.io), [SBCL](https://www.sbcl.org/), [Slynk](https://github.com/joaotavora/sly), etc. It tries to be mostly distro and OS agnostic.
 
 ## StumpWM
 
