@@ -1,6 +1,6 @@
 # enzuru's home directory
 
-This is my home directory on [GNU Guix](https://guix.gnu.org/); my dotfiles, scripts, and Lisp code for [StumpWM](https://stumpwm.github.io), [SBCL](https://www.sbcl.org/), [Slynk](https://github.com/joaotavora/sly), [Shepherd](https://www.gnu.org/software/shepherd), etc.
+This is my home directory on GNU/Linux; my dotfiles, scripts, configuration, and Lisp code for [StumpWM](https://stumpwm.github.io), [SBCL](https://www.sbcl.org/), [Slynk](https://github.com/joaotavora/sly), etc. It tries to be mostly distro agnostic.
 
 ## StumpWM
 
