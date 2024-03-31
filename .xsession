@@ -38,6 +38,11 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # Remove outdated compiled files
 bin/remove-go-files
 
+# Start Shepherd if not started already
+if [[ ! -S ${XDG_RUNTIME_DIR-$HOME/.cache}/shepherd/socket ]]; then
+    shepherd
+fi
+
 export SBCL_HOME=$(dirname $(which sbcl))/../lib/sbcl/
 exec /home/enzuru/bin/stumpwm-boot
 #exec openbox-session
