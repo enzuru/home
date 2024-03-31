@@ -1,4 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+echo 'notmuch'
+if [ -f "$HOME/.guix-profile/etc/profile" ]; then
+    . "$HOME/.guix-profile/etc/profile"
+fi
+echo $PATH
 
 notmuch new
 
