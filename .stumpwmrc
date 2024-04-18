@@ -25,7 +25,7 @@
 
 ;; Variables
 
-(defparameter *background-color* "#000F14")
+(defparameter *background-color* "#172030")
 (set-bg-color *background-color*)
 
 (setf *default-bg-color* *background-color*
