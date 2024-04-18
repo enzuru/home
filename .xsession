@@ -7,7 +7,8 @@ setxkbmap -option caps:ctrl_modifier
 xhost +SI:localuser:$USER
 
 # Set background color
-xsetroot -solid "#000F14"
+# xsetroot -solid "#000F14"
+xsetroot -solid "#172030"
 
 # Fallback cursor
 xsetroot -cursor_name left_ptr
