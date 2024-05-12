@@ -92,7 +92,7 @@
 (defcommand midnight-commander () ()
   (hsplit)
   (move-focus :right)
-  (run-or-raise "kitty --name mc mc" '(:instance "mc")))
+  (run-shell-command "kitty --name mc mc"))
 
 (defcommand setup-workspaces () ()
   (run-shell-command (format nil "xsetroot -solid \"~$\"" *background-color*))
