@@ -43,9 +43,9 @@
 
 (defparameter mem::*mem-modeline-fmt* "MEM: %p")
 
-(setf *mode-line-background-color* *background-color*
-      *mode-line-foreground-color* "#FFFFFF"
-      *mode-line-border-color* "#555555"
+(setf *mode-line-background-color* "#121525"
+      *mode-line-foreground-color* "#c6797e"
+      *mode-line-border-color* "gray"
       *mode-line-border-width* 1
       *mode-line-position* :top
       *mode-line-timeout* 1
@@ -139,6 +139,10 @@
 
 ;;; Frames
 
+(define-key *root-map* (kbd "1") "only")
+(define-key *root-map* (kbd "0") "remove-split")
+(define-key *root-map* (kbd "2") "vsplit-and-term")
+(define-key *root-map* (kbd "3") "hsplit-and-term")
 (define-key *root-map* (kbd "o") "next")
 (define-key *root-map* (kbd "%") "hsplit-and-term")
 (define-key *root-map* (kbd "\"") "vsplit-and-term")
