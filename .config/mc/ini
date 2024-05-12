@@ -83,7 +83,7 @@ editor_backup_extension=~
 editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
-skin=julia256
+skin=double-lines
 
 [Layout]
 output_lines=0
@@ -146,7 +146,7 @@ select_flags=6
 simple_swap=false
 
 [Panelize]
-Find *.orig after patching=find . -name \\*.orig -print
 Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
-Modified git files=git ls-files --modified
 Find rejects after patching=find . -name \\*.rej -print
+Modified git files=git ls-files --modified
+Find *.orig after patching=find . -name \\*.orig -print
