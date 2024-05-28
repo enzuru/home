@@ -30,12 +30,13 @@ I try to have keystrokes that simulate Emacs and [tmux](https://github.com/tmux/
 - `n` next group
 - `p` previous group
 - `&` kill group and its windows
+- `C-n` list of groups
 
 ### Frames
 
 - `o` move to next frame
-- `%` horizontal split and new term
-- `"` vertical split and new term
+- `"` or `2` vertical split and new term
+- `%` or `3` horizontal split and new term
 - `x` kill and remove split
 
 ## Supported platforms
