@@ -26,12 +26,12 @@ I try to have keystrokes that simulate Emacs and [tmux](https://github.com/tmux/
 
 ### Groups
 
+- `C-n` select group by name
 - `c` create a new group
 - `n` next group
 - `p` previous group
 - `&` kill group and its windows
-- `C-n` list of groups
-
+- 
 ### Frames
 
 - `o` move to next frame
