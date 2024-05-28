@@ -94,27 +94,41 @@
   (move-focus :right)
   (run-shell-command "kitty --name mc mc"))
 
-(defcommand setup-workspaces () ()
-  (run-shell-command (format nil "xsetroot -solid \"~$\"" *background-color*))
-
+(defun setup-workspace-emacs ()
   (grename "emacs")
   (define-frame-preference "emacs"
     (0 t t :title "Emacs"))
-  (emacs)
+  (emacs))
 
+(defun setup-workspace-monitoring ()
   (gnewbg "monitoring")
   (define-frame-preference "monitoring"
     (0 nil t :instance "glances"))
-  ;; (define-frame-preference "monitoring"
-  ;;   (0 nil t :instance "radeontop"))
-  (run-or-raise "kitty --name glances glances" '(:instance "glances"))
-  ;; (vsplit)
-  ;; (run-or-raise "kitty --name radeontop radeontop" '(:instance "radeontop"))
+  (run-or-raise "kitty --name glances glances" '(:instance "glances")))
 
+(defun setup-workspace-firefox ()
   (gnewbg "firefox")
   (define-frame-preference "firefox"
     (0 t t :class "firefox"))
   (run-shell-command "firefox"))
+
+(defun setup-workspace-llm ()
+  (gnewbg "llm")
+  (define-frame-preference "llm"
+    (0 nil t :instance "llama"))
+  (define-frame-preference "llm"
+    (0 nil t :instance "radeontop"))
+  (run-or-raise "kitty --name llama /home/enzuru/bin/llama" '(:instance "llama"))
+  (vsplit)
+  (run-or-raise "kitty --name radeontop radeontop" '(:instance "radeontop")))
+
+(defcommand setup-workspaces () ()
+  (run-shell-command (format nil "xsetroot -solid \"~$\"" *background-color*))
+
+  (setup-workspace-emacs)
+  (setup-workspace-monitoring)
+  ;; (setup-workspace-llm)
+  (setup-workspace-firefox))
 
 ;; tmux emulation
 
@@ -132,6 +146,7 @@
 
 ;;; Groups
 
+(define-key *root-map* (kbd "C-n") "grouplist")
 (define-key *root-map* (kbd "c") "gnew-and-term")
 (define-key *root-map* (kbd "n") "gnext")
 (define-key *root-map* (kbd "p") "gprev")

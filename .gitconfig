@@ -4,3 +4,5 @@
 	editor = emacsclient
 [core]
 	editor = emacsclient
+[init]
+	defaultBranch = master
