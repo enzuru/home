@@ -19,19 +19,22 @@ notmuch tag -inbox +gnu-commits -- tag:inbox and to:emacs-diffs@gnu.org
 notmuch tag -inbox +gnu-commits -- tag:inbox and to:guix-commits@gnu.org
 notmuch tag -inbox +gnu-commits -- tag:inbox and to:guile-commits@gnu.org
 
-notmuch tag -inbox +9front-commits -- tag:inbox and to:9front-fqa@9front.org
-notmuch tag -inbox +9front-commits -- tag:inbox and to:9front-commits@9front.org
-
 notmuch tag -inbox +openbsd-commits -- tag:inbox and to:source-changes@cvs.openbsd.org
 notmuch tag -inbox +openbsd-commits -- tag:inbox and to:ports-changes@cvs.openbsd.org
 
+notmuch tag -inbox +9front-commits -- tag:inbox and to:9front-fqa@9front.org
+notmuch tag -inbox +9front-commits -- tag:inbox and to:9front-commits@9front.org
+
 # Everything else
 
-notmuch tag -inbox +openbsd -- tag:inbox and to:"/openbsd\.org/"
 notmuch tag -inbox +gnu -- tag:inbox and to:"/gnu\.org/"
 notmuch tag -inbox +gnu -- tag:inbox and to:"/nongnu\.org/"
+
+notmuch tag -inbox +openbsd -- tag:inbox and to:"/openbsd\.org/"
+
 notmuch tag -inbox +9front -- tag:inbox and to:"/9front\.org/"
 notmuch tag -inbox +9front -- tag:inbox and to:"/cat-v\.org/"
+
 notmuch tag -inbox +system -- tag:inbox and from:"/enzu\.ru/"
 notmuch tag -inbox +misc -- tag:inbox
 
@@ -46,3 +49,6 @@ notmuch tag -openbsd-commits +archive-openbsd-commits -- tag:openbsd-commits and
 notmuch tag -openbsd-bugs +archive-openbsd-bugs -- tag:openbsd-bugs and not date:26weeks..now
 
 notmuch tag -9front +archive-9front -- tag:9front and not date:26weeks..now
+
+notmuch tag -system +archive-system -- tag:system and not date:26weeks..now
+notmuch tag -misc +archive-misc -- tag:misc and not date:26weeks..now
