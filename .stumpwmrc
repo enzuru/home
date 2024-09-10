@@ -25,7 +25,7 @@
 
 ;; Variables
 
-(defparameter *background-color* "#172030")
+(defparameter *background-color* "#000F14")
 (set-bg-color *background-color*)
 
 (setf *default-bg-color* *background-color*
@@ -43,9 +43,9 @@
 
 (defparameter mem::*mem-modeline-fmt* "MEM: %p")
 
-(setf *mode-line-background-color* "#001520"
-      *mode-line-foreground-color* "#c6797e"
-      *mode-line-border-color* "#001520"
+(setf *mode-line-background-color* *background-color*
+      *mode-line-foreground-color* "#FFFFFF"
+      *mode-line-border-color* "#555555"
       *mode-line-border-width* 1
       *mode-line-position* :top
       *mode-line-timeout* 1
