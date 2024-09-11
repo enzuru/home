@@ -26,17 +26,19 @@ I try to have keystrokes that simulate Emacs and [tmux](https://github.com/tmux/
 
 ### Groups
 
-- `C-n` select group by name
+- `t` select workspace by name
 - `c` create a new group
 - `n` next group
 - `p` previous group
 - `&` kill group and its windows
-- 
+-
 ### Frames
 
-- `o` move to next frame
+- `0` close split
+- `1` close all other splits
 - `"` or `2` vertical split and new term
 - `%` or `3` horizontal split and new term
+- `o` move to next frame
 - `x` kill and remove split
 
 ## Supported platforms

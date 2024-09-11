@@ -146,7 +146,7 @@
 
 ;;; Groups
 
-(define-key *root-map* (kbd "C-n") "grouplist")
+(define-key *root-map* (kbd "t") "grouplist")
 (define-key *root-map* (kbd "c") "gnew-and-term")
 (define-key *root-map* (kbd "n") "gnext")
 (define-key *root-map* (kbd "p") "gprev")
