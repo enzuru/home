@@ -140,7 +140,7 @@
 
 ;;; Windows
 
-(define-key *root-map* (kbd "b") "select-window")
+(define-key *root-map* (kbd "b") "windowlist")
 (define-key *root-map* (kbd "Left") "pull-hidden-next")
 (define-key *root-map* (kbd "Right") "pull-hidden-previous")
 
