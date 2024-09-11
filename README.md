@@ -26,7 +26,7 @@ I try to have keystrokes that simulate Emacs and [tmux](https://github.com/tmux/
 
 ### Groups
 
-- `t` select workspace by name
+- `T` select workspace by name
 - `c` create a new group
 - `n` next group
 - `p` previous group
