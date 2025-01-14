@@ -103,8 +103,8 @@
 (defun setup-workspace-monitoring ()
   (gnewbg "monitoring")
   (define-frame-preference "monitoring"
-    (0 nil t :instance "btop"))
-  (run-or-raise "kitty --name btop btop" '(:instance "btop")))
+    (0 nil t :instance "glances"))
+  (run-or-raise "kitty --name glances glances" '(:instance "glances")))
 
 (defun setup-workspace-firefox ()
   (gnewbg "firefox")
