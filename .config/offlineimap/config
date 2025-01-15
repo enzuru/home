@@ -14,7 +14,8 @@ localfolders = ~/mail/me
 
 [Repository me-Remote]
 type = IMAP
-remotehost = mail.enzu.ru
+remotehost = imap.fastmail.com
+remoteport = 993
 remoteuser = me@enzu.ru
 remotepass = password
 ssl = yes
