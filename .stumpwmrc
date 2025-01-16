@@ -92,7 +92,7 @@
 (defcommand midnight-commander () ()
   (hsplit)
   (move-focus :right)
-  (run-shell-command "kitty --name mc mc"))
+  (run-shell-command "kitty --name mc mc --nosubshell"))
 
 (defun setup-workspace-emacs ()
   (grename "emacs")
