@@ -3,4 +3,3 @@ set -Ux JAVA18_PACKAGE "openjdk@18"
 alias e ~/bin/e
 set -gx EDITOR ~/bin/e
 set -gx VIEWER ~/bin/e
-nu
