@@ -109,8 +109,8 @@
 (defun setup-workspace-firefox ()
   (gnewbg "firefox")
   (define-frame-preference "firefox"
-    (0 t t :class "firefox"))
-  (run-shell-command "firefox"))
+    (0 nil t :class "Firefox"))
+  (run-or-raise "firefox" '(:class "Firefox")))
 
 (defun setup-workspace-llm ()
   (gnewbg "llm")
