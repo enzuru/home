@@ -17,5 +17,3 @@
   (pushnew (uiop:ensure-directory-pathname dir)
                    cffi:*foreign-library-directories*
                    :test #'equal))
-
-(in-package :stumpwm)
