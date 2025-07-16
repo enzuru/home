@@ -1,7 +1,7 @@
-name: quicklisp
-version: 2023-10-21
-system-index-url: http://beta.quicklisp.org/dist/quicklisp/2023-10-21/systems.txt
-release-index-url: http://beta.quicklisp.org/dist/quicklisp/2023-10-21/releases.txt
-archive-base-url: http://beta.quicklisp.org/
-canonical-distinfo-url: http://beta.quicklisp.org/dist/quicklisp/2023-10-21/distinfo.txt
-distinfo-subscription-url: http://beta.quicklisp.org/dist/quicklisp.txt
+name: ultralisp
+version: 20250715154000
+distinfo-subscription-url: http://dist.ultralisp.org/ultralisp.txt
+distinfo-template-url: http://dist.ultralisp.org/ultralisp/{{version}}/distinfo.txt
+release-index-url: http://dist.ultralisp.org/ultralisp/20250715154000/releases.txt
+system-index-url: http://dist.ultralisp.org/ultralisp/20250715154000/systems.txt
+canonical-distinfo-url: http://dist.ultralisp.org/ultralisp/20250715154000/distinfo.txt
